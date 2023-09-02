@@ -1,0 +1,61 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Footer from "../components/Footer.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title} subTitle={frontmatter.description} >
+    <div class="post-content">
+    <p class="date">{frontmatter.pubDate.slice(0, 10)}</p>
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+
+    <slot />
+    <!-- <div class="tags">
+        {
+            frontmatter.tags.map((tag) => (
+                <p class="tag">
+                    <a href={`/tags/${tag}`}>{tag}</a>
+                </p>
+            ))
+        }
+    </div> -->
+    </div>
+</BaseLayout>
+<style>
+    .post-content {
+        display: grid;
+        gap: 16px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .date {
+        font-weight: 200;
+        font-size: var(--pt-paragon);
+        color: var(--neutral-100);
+    }
+
+    a {
+        color: var(--neutral-50);
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        
+    }
+
+    .tag {
+        margin: 0.05em;
+        border-radius: 0.2em;
+        padding: 0.4em 0.6em;
+        font-size: 1.15em;
+        background-color: var( --primary-500);
+    }
+
+
+    
+</style>

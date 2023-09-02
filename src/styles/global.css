@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:wght@300&family=Rubik&display=swap');
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Root & Typography */
+
+/* Cooll Colors:
+Dark Teal: #025048;
+Minth: #a1c89c;
+
+*/
+
+@font-face {
+    font-family: 'Fixel';
+    src: url('../styles/fonts/FixelVariable.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --line-length: 60ch;
+    --page-padding-inline: calc((100vw - min(var(--line-length), 0vw)) / 2);
+    --font-serif: "Merriweather", serif;
+    --font-sans: "Fixel", system-ui, sans-serif;
+    --font-grotesque: 'Fixel', sans-serif;
+    --font-alt: "ss01";
+    --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    --pt-double-canon: 4.666em;
+    --pt-canon: 3.999em;
+    --pt-double-great-primer: 2.999em;
+    --pt-double-pica: 2em;
+    --pt-paragon: 1.666em;
+    --pt-english: 1.166em;
+    --pt-pica: 1em;
+    --pt-small-pica: 0.916em;
+    --pt-long-primer: 0.833em;
+    --pt-bourgeois: 0.75em;
+    --neutral-50: #f5f5f5;
+    --neutral-100: #a5a5a5;
+    --primary-500: #333;
+    font-family: var(--font-sans);
+    font-size: clamp(100%, 90% + 0.5vw, 150%);
+    line-height: 1.475;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+
+}
+
+ul {
+    padding-inline-start: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    }
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+
+}
+
+html {
+    background-color: var(--neutral-50);
+}
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    background-color: var(--neutral-50);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/* #version {
+    position: absolute;
+    top: 1rem;
+    left: 32px;
+    font-size: var(--pt-bourgeois);
+    padding: 1em 0;
+    color: var(--primary-500);
+    opacity: 20%;
+    display: grid;
+        align-items: center;
+    } */
+
+h1 {
+    font-family: var(--font-grotesque);
+    font-size: var(--pt-double-great-primer);
+    line-height: 1;
+    padding-bottom: 0.3em;
+    font-feature-settings: var(--font-alt);
+    letter-spacing: -0.04em;
+}
+
+h2 {
+    font-family: var(--font-grotesque);
+    font-size: var(--pt-small-pica);
+    font-weight: 400;
+}
+
+
+h3 {
+    font-family: var(--font-grotesque);
+    font-feature-settings: var(--font-alt);
+    font-size: var(--pt-paragon);
+
+}
+
+body  {
+    font-size: var(--pt-pica);
+}
+
+.contains-task-list {
+    padding-inline-start: 0px;
+    list-style: none;
+}
+
+
+/* .hamburger .line  {
+    display: block;
+    width: 32px;
+    height: 1px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+} */
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media only screen and (max-width: 431px)  {
+
+    /* Styles for desktop devices go here */
+    h1 {
+        font-size: var(--pt-double-pica);
+    }
+
+    h2 {
+        font-size: var(--pt-pica);
+    }
+
+    h3 {
+        font-size: var(--pt-english);
+    }
+}

@@ -1,0 +1,24 @@
+---
+const { title, url, pubDate } = Astro.props;
+---
+
+<li><span>{pubDate.slice(0, 7)}</span><a href={url}>{title}</a></li>
+
+<style>
+    li {
+        list-style: none;
+    }
+    span {
+        color: var(--neutral-100);
+        font-size: var(--pt-pica);
+    }
+
+    span::after {
+        content: " ";
+    }
+
+    a {
+        font-size: var(--pt-pica);
+        text-overflow: ellipsis;
+    }
+</style>
