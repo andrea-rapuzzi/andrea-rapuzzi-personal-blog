@@ -151,8 +151,8 @@ h3 {
 
 }
 
-body  {
-    font-size: var(--pt-pica);
+body, p  {
+    font-size: var(--pt-small-pica);
 }
 
 .contains-task-list {
