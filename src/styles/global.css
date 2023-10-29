@@ -69,25 +69,22 @@ ul[role='list'],
 ol[role='list'] {
     list-style: none;
 }
-
+/* Hyperlink UI */
 a:link {
     color: #8bac0f;
     background-color: transparent;
     text-decoration: none;
 }
-
 a:visited {
     color: #8b59a4;
     background-color: transparent;
     text-decoration: none;
 }
-
 a:hover {
     color: #9bbc0f;
     background-color: transparent;
     text-decoration: underline;
 }
-
 a:active {
     color: #ffffff;
     background-color: transparent;
@@ -111,14 +108,6 @@ html {
     background-color: var(--neutral-50);
 }
 
-/* Set core body defaults */
-body {
-    min-height: 100vh;
-    text-rendering: optimizeSpeed;
-    line-height: 1.5;
-    background-color: var(--neutral-50);
-}
-
 /* A elements that don't have a class get default styles */
 a:not([class]) {
     text-decoration-skip-ink: auto;
@@ -139,60 +128,6 @@ select {
     font: inherit;
 }
 
-
-/* #version {
-    position: absolute;
-    top: 1rem;
-    left: 32px;
-    font-size: var(--pt-bourgeois);
-    padding: 1em 0;
-    color: var(--primary-500);
-    opacity: 20%;
-    display: grid;
-        align-items: center;
-    } */
-
-h1 {
-    font-family: var(--font-grotesque);
-    font-size: var(--pt-double-great-primer);
-    line-height: 1;
-    padding-bottom: 0.3em;
-    font-feature-settings: var(--font-alt);
-    letter-spacing: -0.04em;
-}
-
-h2 {
-    font-family: var(--font-grotesque);
-    font-size: var(--pt-small-pica);
-    font-weight: 400;
-}
-
-
-h3 {
-    font-family: var(--font-grotesque);
-    font-feature-settings: var(--font-alt);
-    font-size: var(--pt-paragon);
-
-}
-
-body, p  {
-    font-size: var(--pt-small-pica);
-}
-
-.contains-task-list {
-    padding-inline-start: 0px;
-    list-style: none;
-}
-
-
-/* .hamburger .line  {
-    display: block;
-    width: 32px;
-    height: 1px;
-    margin-bottom: 10px;
-    background-color: #ffffff;
-} */
-
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
@@ -209,18 +144,52 @@ body, p  {
     }
 }
 
-@media only screen and (max-width: 431px)  {
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    max-width: 80%;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    background-color: var(--neutral-50);
+    margin: 0 auto;
+}
 
-    /* Styles for desktop devices go here */
+main {
+    display: grid;
+    gap: 4rem;
+    
+}
+
+/* Font Size*/
     h1 {
-        font-size: var(--pt-double-pica);
+        font-family: var(--font-grotesque);
+        font-size: var(--pt-double-great-primer);
+        line-height: 1;
+        padding-bottom: 0.3em;
+        font-feature-settings: var(--font-alt);
+        letter-spacing: -0.04em;
     }
 
     h2 {
+        font-family: var(--font-grotesque);
         font-size: var(--pt-pica);
+        font-weight: 400;
     }
 
     h3 {
+        font-family: var(--font-grotesque);
+        font-feature-settings: var(--font-alt);
+        font-size: var(--pt-paragon);
+    }
+
+    body {
         font-size: var(--pt-small-pica);
     }
+
+
+.contains-task-list {
+    padding-inline-start: 0px;
+    list-style: none;
 }
+
+

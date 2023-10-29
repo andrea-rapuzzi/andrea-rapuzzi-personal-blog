@@ -68,76 +68,49 @@ const subTitle = "Digital Analytics & CRO Lead @Pirelli"
 </BaseLayout>
 
 <style>
-
-	.intro {
-		background-color: var(--primary-500);
-		padding: 16px 32px;
-		border-radius: 0.2em;
-		font-size: var(--pt-paragon);
-		color: var(--neutral-50);
+	.library {
+		overflow-x: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		height: fit-content;
 	}
 
-.library {
-	overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: fit-content;
-}
-
-
-.bookCarousel {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin-top: 1rem;
-  padding-bottom: 1rem;
-  
-  overflow-x: auto;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-  height: fit-content;
-}
-
-.book {
-  padding: 1rem;
-  margin-right: 1rem;
-  /* border: 1px dashed lightgrey; */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-width: 160px;
-  max-width: 220px
-}
-
-.book > * {
- font-size: var(--pt-small-pica);
-	font-family: var(--font-grotesque);
-	padding-bottom: 0.3em;
-	font-feature-settings: var(--font-alt);
-	letter-spacing: -0.04em;
-}
-
-.bookCover {
+	.bookCarousel {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	margin-top: 1rem;
 	padding-bottom: 1rem;
-}
+	overflow-x: auto;
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
+	height: fit-content;
+	}
 
-.bookAuthor {
-	font-feature-settings: ss00;
-}
+	.book {
+	padding: 1rem;
+	margin-right: 1rem;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	min-width: 160px;
+	max-width: 220px
+	}
 
-.fakebookCover {
-  min-width: 320px;
-  background-color: lightblue;
-  border: 1px dashed darkblue;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 8px;  
-}
+	.book > * {
+	font-size: var(--pt-small-pica);
+		font-family: var(--font-grotesque);
+		padding-bottom: 0.3em;
+		font-feature-settings: var(--font-alt);
+		letter-spacing: -0.04em;
+	}
 
+	.bookCover {
+		padding-bottom: 1rem;
+	}
 
+	.bookAuthor {
+		font-feature-settings: ss00;
+	}
 
 </style>
