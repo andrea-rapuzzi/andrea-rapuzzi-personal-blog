@@ -193,6 +193,12 @@ main {
         font-size: var(--pt-small-pica);
     }
 
+    @media (max-width: 450px) {
+        body {
+                font-size: var(--pt-pica);
+            }
+    }
+
 
 .contains-task-list {
     padding-inline-start: 0px;
