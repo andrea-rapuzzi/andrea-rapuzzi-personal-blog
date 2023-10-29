@@ -15,11 +15,11 @@ const {pageTitle, subTitle} = Astro.props;
 	</head>
 	<body>
 		<Header />
-			<div class="masthead">
-				<div class="hero-message">
-					<h1>{pageTitle}</h1>
-					<h2>{subTitle}</h2>
-				</div>
+		<div class="masthead">
+			<div class="hero-message">
+				<h1>{pageTitle}</h1>
+				<h2>{subTitle}</h2>
+			</div>
 			</div>
 		<main>
 			<slot />
@@ -29,54 +29,26 @@ const {pageTitle, subTitle} = Astro.props;
 </html>
 
 <style>
-    main {
-			display: grid;
-			gap: 6rem;
-			margin: 4rem 2rem;
-            
-		}
 
     .masthead {
         line-height: initial;
-        padding: 0 2rem;
-    }
-    .hero-message {
-        height: 25vh;
+        margin-bottom: 3rem;
+        height: 60vh;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-
+            align-items: flex-end;
     }
+
 
     .cover-image {
         height: 65vh;
         width: 100%;
         object-fit: cover;
+	}
 
-}
+	main {
+		min-height: 45vh;
+	}
 
-
-@media only screen and (min-width: 1024px) {
-  /* Styles for desktop devices go here */
-    main {
-			gap: 6rem;
-			margin: 4rem 8rem;
-		}
-    .masthead {
-
-        padding: 0 8rem;
-        min-block-size: 30vh;
-}
-}
-
-@media only screen and (max-width: 376px)  {
-
-    /* Styles for desktop devices go here */
-    .cover-image {
-        height: 55vh;
-    }
-}
 
 
 </style>
