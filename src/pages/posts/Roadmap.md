@@ -13,8 +13,8 @@ tags: ["astro", "blogging"]
 Per quanto la vita sembri più bella quando si improvvisa, ogni tanto occorre avere un piano per portare a termine i nostri progetti. Buttiamo giù quindi quella che potrebbe essere una lista di quello che manca:
 
 - [x] **0.01**: Go live
-- [ ] **0.02**: Implementare sezione CV
-- [ ] **0.03**: Sitemap & SEO
+- [x] **0.02**: Books 
+- [ ] **0.03**: Implementare sezione CV
 - [ ] **0.04**: Refactoring 
 - [ ] **0.05**: Burger Menu
-- [ ] **0.06**: Books
+- [ ] **0.06**: Sitemap & SEO
