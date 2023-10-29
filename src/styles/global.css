@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:wght@300&family=Rubik&display=swap');
-
 /* Box sizing rules */
 *,
 *::before,
@@ -23,12 +21,21 @@ Minth: #a1c89c;
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Fira';
+    src: url('../styles/fonts/FiraCode-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 :root {
     --line-length: 60ch;
     --page-padding-inline: calc((100vw - min(var(--line-length), 0vw)) / 2);
-    --font-serif: "Merriweather", serif;
-    --font-sans: "Fixel", system-ui, sans-serif;
-    --font-grotesque: 'Fixel', sans-serif;
+    --font-serif: 'Merriweather', serif;
+    --font-sans: 'Fixel','Fira', system-ui, sans-serif;
+    --font-grotesque: 'Fixel', 'Fira', sans-serif;
     --font-alt: "ss01";
     --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     --pt-double-canon: 4.666em;
