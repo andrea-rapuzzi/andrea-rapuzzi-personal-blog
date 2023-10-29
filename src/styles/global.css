@@ -197,6 +197,6 @@ body, p  {
     }
 
     h3 {
-        font-size: var(--pt-english);
+        font-size: var(--pt-small-pica);
     }
 }
