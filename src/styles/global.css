@@ -41,9 +41,9 @@ Minth: #a1c89c;
     --pt-small-pica: 0.916em;
     --pt-long-primer: 0.833em;
     --pt-bourgeois: 0.75em;
-    --neutral-50: #f5f5f5;
+    --neutral-50: #202020;
     --neutral-100: #a5a5a5;
-    --primary-500: #333;
+    --primary-500: #f5f5f5;
     font-family: var(--font-sans);
     font-size: clamp(100%, 90% + 0.5vw, 150%);
     line-height: 1.475;
@@ -61,13 +61,37 @@ blockquote,
 dl,
 dd {
     margin: 0;
+    color: var(--primary-500);
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],
 ol[role='list'] {
     list-style: none;
+}
 
+a:link {
+    color: #8bac0f;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #8b59a4;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9bbc0f;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 ul {
