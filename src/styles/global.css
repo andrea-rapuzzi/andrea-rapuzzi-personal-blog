@@ -34,7 +34,7 @@ Minth: #a1c89c;
     --line-length: 60ch;
     --page-padding-inline: calc((100vw - min(var(--line-length), 0vw)) / 2);
     --font-serif: 'Merriweather', serif;
-    --font-sans: 'Fixel','Fira', system-ui, sans-serif;
+    --font-sans: 'Fixel', system-ui, sans-serif;
     --font-grotesque: 'Fixel', 'Fira', sans-serif;
     --font-alt: "ss01";
     --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
