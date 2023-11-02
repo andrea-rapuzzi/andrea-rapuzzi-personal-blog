@@ -48,7 +48,7 @@ Minth: #a1c89c;
     --pt-small-pica: 0.916em;
     --pt-long-primer: 0.833em;
     --pt-bourgeois: 0.75em;
-    --neutral-50: #1f1f1f;
+    --neutral-50: rgb(31, 31, 31);
     --neutral-100: #d4d4d4;
     --primary-500: #f5f1f0;
     font-family: var(--font-sans);
