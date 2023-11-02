@@ -49,7 +49,7 @@ Minth: #a1c89c;
     --pt-long-primer: 0.833em;
     --pt-bourgeois: 0.75em;
     --neutral-50: #1f1f1f;
-    --neutral-100: #a5a5a5;
+    --neutral-100: #d4d4d4;
     --primary-500: #f5f1f0;
     font-family: var(--font-sans);
     font-size: clamp(100%, 90% + 0.5vw, 150%);

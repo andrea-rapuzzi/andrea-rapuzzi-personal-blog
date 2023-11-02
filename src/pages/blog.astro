@@ -1,13 +1,13 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 import Post from "../components/Post.astro";
+import IndexLayout from "../layouts/IndexLayout.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md");
 const pageTitle = "Blog";
-const subTitle = "Tanti typo e qualche buona idea"
+const subTitle = "Dispatches from a Digital Citizen"
 ---
 
-<BaseLayout pageTitle={pageTitle} subTitle={subTitle}>
+<IndexLayout pageTitle={pageTitle} subTitle={subTitle}>
         <ul>
             {
                 allPosts.map((post) => (
@@ -15,5 +15,5 @@ const subTitle = "Tanti typo e qualche buona idea"
                 ))
             }
         </ul>
-</BaseLayout>
+</IndexLayout>
 

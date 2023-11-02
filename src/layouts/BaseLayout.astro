@@ -32,12 +32,11 @@ const {pageTitle, subTitle} = Astro.props;
 
     .masthead {
         line-height: initial;
-        height: 80vh;
+        height: 30vh;
 		padding-bottom: 4rem;
         display: flex;
             align-items: flex-end;
     }
-
 
     .cover-image {
         height: 65vh;
@@ -46,9 +45,12 @@ const {pageTitle, subTitle} = Astro.props;
 	}
 
 	main {
-		min-height: 45vh;
+		min-height: 15vh;
 	}
 
+	h1 {
+		font-size: var(--pt-double-pica);
+	}
 
 
 </style>
