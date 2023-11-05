@@ -48,9 +48,9 @@ Minth: #a1c89c;
     --pt-small-pica: 0.916em;
     --pt-long-primer: 0.833em;
     --pt-bourgeois: 0.75em;
-    --neutral-50: rgb(31, 31, 31);
-    --neutral-100: #d4d4d4;
-    --primary-500: #f5f1f0;
+    --neutral-500: #1f1f1f;
+    --neutral-300: #BBBBBB;
+    --neutral-100: #FFFFFA;
     font-family: var(--font-sans);
     font-size: clamp(100%, 90% + 0.5vw, 150%);
     line-height: 1.475;
@@ -68,7 +68,7 @@ blockquote,
 dl,
 dd {
     margin: 0;
-    color: var(--primary-500);
+    color: var(--neutral-100);
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -78,12 +78,12 @@ ol[role='list'] {
 }
 /* Hyperlink UI */
 a:link {
-    color: #8bac0f;
+    color: #E47511;
     background-color: transparent;
     text-decoration: none;
 }
 a:visited {
-    color: #8b59a4;
+    color: #dc873d;
     background-color: transparent;
     text-decoration: none;
 }
@@ -112,7 +112,7 @@ html:focus-within {
 }
 
 html {
-    background-color: var(--neutral-50);
+    background-color: var(--neutral-500);
 }
 
 /* A elements that don't have a class get default styles */
@@ -157,7 +157,7 @@ body {
     max-width: 80%;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
-    background-color: var(--neutral-50);
+    background-color: var(--neutral-500);
     margin: 0 auto;
 }
 
@@ -205,4 +205,7 @@ main {
     list-style: none;
 }
 
-
+.line {
+    height: 1px;
+    background-color: var(--neutral-300);
+}
