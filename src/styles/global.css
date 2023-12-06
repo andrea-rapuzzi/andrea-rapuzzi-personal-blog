@@ -179,14 +179,14 @@ main {
 
     h2 {
         font-family: var(--font-grotesque);
-        font-size: var(--pt-pica);
-        font-weight: 400;
+        font-size: var(--pt-paragon);
+        font-weight: 600;
     }
 
     h3 {
         font-family: var(--font-grotesque);
         font-feature-settings: var(--font-alt);
-        font-size: var(--pt-paragon);
+        font-size: var(--pt-english);
     }
 
     body {

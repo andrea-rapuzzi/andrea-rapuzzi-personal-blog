@@ -20,7 +20,7 @@ const { pageTitle, subTitle } = Astro.props;
             <section class="masthead">
             <div class="hero-message">
                 <h1>{pageTitle}</h1>
-                <h2>{subTitle}</h2>
+                <span class="subheading">{subTitle}</span>
             </div>
         </section>
             <slot />
@@ -32,7 +32,7 @@ const { pageTitle, subTitle } = Astro.props;
 <style>
    .masthead {
         line-height: initial;
-        height: 80vh;
+        height: 90svh;
 		padding-bottom: 4rem;
         display: flex;
             align-items: flex-end;
