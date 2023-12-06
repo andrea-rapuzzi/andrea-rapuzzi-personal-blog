@@ -10,30 +10,31 @@ pubDate: 2023-12-06
 tags: ["productivity", "apps"]
 ---
 
-Chi mi conosce sa che negli anni ho sviluppato un certa ossessione per le app di produttività e, all'interno di questo micro-verso dedito all'efficienza, sono particolarmente affascinato dalle applicazione per la gestione delle note.
+Chi mi conosce sa che negli anni ho sviluppato un certa ossessione per le app di produttività e nello specifico per le applicazione per gestire le note.
 
-Come ci racconta il tormentato Horselover Fat in Valis (Philip K. Dick, 1981) la natura dell'universo è l'informazione e i pensieri del cervello vengono da noi sperimentati sottoforma di organizzazione e ri-organizzazione delle informazioni relative all'universo. 
+Come ci racconta il tormentato Horselover Fat in Valis (Philip K. Dick, 1981) la natura dell'universo è l'informazione e i pensieri vengono da noi sperimentati sottoforma di organizzazione e ri-organizzazione delle informazioni relative all'universo. 
 
-Che siano strumenti analogici come un agenda o un post-it, oppure sofisticate app che combinano design essenziale e funzioni all'avanguardia, la scelta di come utilizzare questi strumenti per organizzare i nostri pensieri impatta in maniera radicale nella nostra vita di tutti i giorni. Il collegare e ricollegare informazioni e pensieri è un vero e proprio linguaggio che noi utilizziamo in primo luogo con noi stessi per dare senso a quello che ci circonda.
+Che siano strumenti analogici come un agenda o un post-it o sofisticate app le modalità con cui organizziamo i nostri pensieri impatta la nostra vita di tutti i giorni. Collegare e ricollegare informazioni e ricordi è un vero e proprio linguaggio che noi utilizziamo per dare un senso a quello che ci circonda.
 
-Da questi pochi pensieri nasce una ricerca probabilmente senza fine dello strumento perfetto per dare struttura alle mie informazioni. Nonostante l'obiettivo sia condiviso da tutte le applicazione di questo genere, e il fine ultimo sia in sé estremamente semplice, le modalità per raggiungerlo sono estremamente eterogenee e anche piccole differenze possono portare a impatti significativi nel processo di organizzazione.
+Da questi pochi pensieri nasce la mia ricerca senza fine dello strumento perfetto per dare struttura alle mie informazioni. Nonostante l'obiettivo sia condiviso da tutte le applicazione di questo genere le modalità per raggiungerlo sono estremamente eterogenee e anche piccole differenze possono portare a impatti significativi.
 
-Dopo tanto affannarmi penso però di aver trovato la mia soluzione a questo cruccio ormai decennale: **Obsidian**.
+Dopo tanto affannarmi penso però di aver finalmente trovato la mia soluzione: **Obsidian**.
 
 ## Perché Obsidian?
 
 La bellezza di Obsidian risiede essenzialmente in 3 aspetti principali:
 
-- **Flessibilità**: l'app *vanilla* è abbastanza scarna ma la moltitudine di plugin sviluppati dalla community danno la possibilità all'utente di adattare l'applicazione a qualsiasi processo/attività. 
+- **Flessibilità**: l'app *vanilla* è abbastanza scarna, ma la moltitudine di plugin sviluppati dalla community danno la possibilità all'utente di adattare l'applicazione a qualsiasi processo/attività. 
   
 - **Apertura**: l'applicazione permette di creare/modificare/visualizzare file di testo in formato markdown. Fornisce quindi la possibilità ai suoi utenti di esportare quanto creato in maniera estremamente semplice e veloce, senza alcun lock-in.
   
 - **Privacy**: tutto quello che puoi fare su Obsidian può viaggiare in locale, o attraverso il proprio sistema di cloud-sync preferito. Dando la possibilità all'utente di definire un setup in linea con le sue esigenze
 
-Offre le stesse possibilità di Notion o altri software similari, garantendo però una maggiore indipendenza e soprattutto un'esperienza libera dalle migliaia di feature inutili che questi provider continuano proporre alla propria user base in AB test su scala worldwide.
+Offre le stesse possibilità di Notion o altri software similari, garantendo però una maggiore indipendenza e soprattutto un'esperienza libera dalle migliaia di feature inutili.
 
 ## Il mio setup
-Veniamo un po' al cuore della come funziona il mio Obsidian? Innanzi tutto Obsidian si articola in Vault, ovvero delle macro-cartelle in cui contenere i propri file.
+Ma veniamo al cuore della questione, come funziona il mio Obsidian? Innanzi tutto Obsidian si articola in Vault, ovvero delle macro-cartelle in cui contenere i propri file.
+
 Per il mio setup ho creato *vault* per la gestione delle note, uno per il "Lavoro", salvato direttamente all'interno di OneDrive Aziendale, l'altro dedicato al mio utilizzo "Personale" all'interno di iCloud. La possibilità di caricare questi pacchetti di testo su cloud diversi mi permette di accedere dai device che preferisco, senza avere compromessi riguardo a policy aziendali o gap di sicurezza
 
 ### Plugin e Temi
