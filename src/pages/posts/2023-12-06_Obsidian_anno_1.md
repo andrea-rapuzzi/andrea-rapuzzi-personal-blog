@@ -10,13 +10,11 @@ pubDate: 2023-12-06
 tags: ["productivity", "apps"]
 ---
 
-Chi mi conosce sa che negli anni ho sviluppato un certa ossessione per le app di produttività e nello specifico per le applicazione per gestire le note.
+Chi mi conosce sa che negli anni ho sviluppato un certa ossessione per le app di produttività e nello specifico per le applicazione che utilizzo per gestire le note.
 
-Come ci racconta il tormentato Horselover Fat in Valis (Philip K. Dick, 1981) la natura dell'universo è l'informazione e i pensieri vengono da noi sperimentati sottoforma di organizzazione e ri-organizzazione delle informazioni relative all'universo. 
+Come ci racconta il tormentato Horselover Fat in Valis (Philip K. Dick, 1981) la natura dell'universo è informazione e i nostri pensieri non sono altro che gli sforzi del nostro cervello di fruire, organizzare e ri-organizzare le informazioni relative all'universo stesso. 
 
-Che siano strumenti analogici come un agenda o un post-it o sofisticate app le modalità con cui organizziamo i nostri pensieri impatta la nostra vita di tutti i giorni. Collegare e ricollegare informazioni e ricordi è un vero e proprio linguaggio che noi utilizziamo per dare un senso a quello che ci circonda.
-
-Da questi pochi pensieri nasce la mia ricerca senza fine dello strumento perfetto per dare struttura alle mie informazioni. Nonostante l'obiettivo sia condiviso da tutte le applicazione di questo genere le modalità per raggiungerlo sono estremamente eterogenee e anche piccole differenze possono portare a impatti significativi.
+Da questi pochi pensieri nasce la mia ricerca senza fine dello strumento perfetto per dare struttura alle mie informazioni. Nonostante l'obiettivo sia molto semplice, le modalità per raggiungerlo sono estremamente eterogenee e anche piccole differenze possono portare a impatti significativi. Cercare di razionalizzare i propri pensieri è un vero e proprio linguaggio che usiamo con noi stessi per dare senso a quello che ci circonda.
 
 Dopo tanto affannarmi penso però di aver finalmente trovato la mia soluzione: **Obsidian**.
 
@@ -33,9 +31,11 @@ La bellezza di Obsidian risiede essenzialmente in 3 aspetti principali:
 Offre le stesse possibilità di Notion o altri software similari, garantendo però una maggiore indipendenza e soprattutto un'esperienza libera dalle migliaia di feature inutili.
 
 ## Il mio setup
-Ma veniamo al cuore della questione, come funziona il mio Obsidian? Innanzi tutto Obsidian si articola in Vault, ovvero delle macro-cartelle in cui contenere i propri file.
+Ma veniamo al cuore della questione, come funziona il mio Obsidian? Innanzi tutto Obsidian si articola in Vault, ovvero delle cartelle in cui contenere i propri file di testo.
 
-Per il mio setup ho creato *vault* per la gestione delle note, uno per il "Lavoro", salvato direttamente all'interno di OneDrive Aziendale, l'altro dedicato al mio utilizzo "Personale" all'interno di iCloud. La possibilità di caricare questi pacchetti di testo su cloud diversi mi permette di accedere dai device che preferisco, senza avere compromessi riguardo a policy aziendali o gap di sicurezza
+Per il mio setup ho creato *vault* per la gestione delle note, uno per il "Lavoro", salvato direttamente all'interno di OneDrive Aziendale, l'altro dedicato al mio utilizzo "Personale" all'interno di iCloud. La possibilità di caricare questi pacchetti di testo su cloud diversi mi permette di accedere dai device che preferisco, senza avere compromessi riguardo a policy aziendali o gap di sicurezza.
+
+In termini di cartelle e tag ammetto che c'è ancora un po' di confusione, ma sto cercando di imparare dal [migliore](https://stephango.com/vault)
 
 ### Plugin e Temi
 Come anticipato qualche riga sopra, la propria esperienza di Obsidian dipende dal setup che viene impostato dall'utente. Nel mio caso ho cercato di limitare al massimo l'utilizzo di plugin non necessari per tenere l'ambiente pulito. I principali sforzi sono stati nella creazione din un interfaccia che mi aiutasse a concentrarmi sull'attività di scrittura.
