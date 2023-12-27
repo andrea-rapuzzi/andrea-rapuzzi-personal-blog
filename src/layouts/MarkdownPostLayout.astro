@@ -24,10 +24,12 @@ const { frontmatter } = Astro.props;
     .post-content {
         display: grid;
         gap: 16px;
+        margin: auto;
     }
 
     img {
         width: 100%;
+        margin: auto;
     }
 
     .date {
@@ -40,19 +42,22 @@ const { frontmatter } = Astro.props;
         color: var(--neutral-50);
     }
 
-    .tags {
+    /* .p .tags {
         display: flex;
         flex-wrap: wrap;
         margin: 0 auto;
+        background-color: var(--neutral-300);
         
     }
 
     .tag {
         margin: 0.05em;
+        color: var(--neutral-100);
+        margin: 8px 16px;
         border-radius: 0.2em;
         padding: 0.4em 0.6em;
         font-size: 1.15em;
         background-color: var(--primary-500);
-    }
+    } */
     
 </style>

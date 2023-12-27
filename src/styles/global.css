@@ -35,7 +35,7 @@ Minth: #a1c89c;
     --page-padding-inline: calc((100vw - min(var(--line-length), 0vw)) / 2);
     --font-serif: 'Merriweather', serif;
     --font-sans: 'Fixel', system-ui, sans-serif;
-    --font-grotesque: 'Fixel', 'FixelSemi', sans-serif;
+    --font-grotesque: 'Fixel', 'FixelSemi', system-ui, sans-serif;
     --font-alt: "ss01";
     --font-mono: ui-monospace,, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
     --pt-double-canon: 4.666em;
@@ -72,8 +72,8 @@ dd {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+nav > ul[role='list'],
+nav > ol[role='list'] {
     list-style: none;
 }
 /* Hyperlink UI */
@@ -154,23 +154,26 @@ select {
 /* Set core body defaults */
 body {
     min-height: 100vh;
-    max-width: 80%;
+    max-width: 90%;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     background-color: var(--neutral-500);
     margin: 0 auto;
+    font-size: var(--pt-small-pica);
 }
 
 main {
     display: grid;
-    gap: 4rem;
+    margin: auto;
+    gap: 2rem;
+    margin: 0 1rem;
     
-}
+}w
 
 /* Font Size*/
     h1 {
         font-family: var(--font-grotesque);
-        font-size: var(--pt-double-great-primer);
+        font-size: var(--pt-english);
         line-height: 1;
         padding-bottom: 0.3em;
         font-feature-settings: var(--font-alt);
@@ -179,25 +182,35 @@ main {
 
     h2 {
         font-family: var(--font-grotesque);
-        font-size: var(--pt-paragon);
+        font-size: var(--pt-english);
         font-weight: 600;
+        opacity: 0.6;
     }
 
     h3 {
         font-family: var(--font-grotesque);
         font-feature-settings: var(--font-alt);
         font-size: var(--pt-english);
+        padding-top: 1rem;
     }
 
-    body {
-        font-size: var(--pt-small-pica);
+    p {
+        font-size: var(--pt-small-pica)
     }
+    
+
+    
 
     @media (max-width: 450px) {
         body {
-                font-size: var(--pt-pica);
+                font-size: var(--pt-small-pica);
             }
     }
+        @media (min-width: 740px) {
+            body {
+                max-width: 720px;
+            }
+        }
 
 
 .contains-task-list {
@@ -208,4 +221,9 @@ main {
 .line {
     height: 1px;
     background-color: var(--neutral-300);
+}
+
+.subheading {
+    opacity: 0.6;
+    font-size: var(--pt-pica);
 }

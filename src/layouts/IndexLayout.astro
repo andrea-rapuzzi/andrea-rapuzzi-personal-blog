@@ -18,11 +18,11 @@ const { pageTitle, subTitle } = Astro.props;
         <Header />
         <main>
             <section class="masthead">
-            <div class="hero-message">
-                <h1>{pageTitle}</h1>
-                <span class="subheading">{subTitle}</span>
-            </div>
-        </section>
+                <div class="hero-message">
+                    <h1>{pageTitle}</h1>
+                    <span class="subheading">{subTitle}</span>
+                </div>
+            </section>
             <slot />
         </main>
         <Footer />

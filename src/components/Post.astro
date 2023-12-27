@@ -10,7 +10,11 @@ const { title, url, pubDate } = Astro.props;
     }
     span {
         color: var(--neutral-100);
-        font-size: var(--pt-pica);
+        font-size: var(--pt-long-primer);
+        opacity: 0.6;
+        font-weight: 100;
+        font-family: monospace;
+        
     }
 
     span::after {
@@ -18,7 +22,7 @@ const { title, url, pubDate } = Astro.props;
     }
 
     a {
-        font-size: var(--pt-pica);
+        font-size: var(--pt-small-pica);
         text-overflow: ellipsis;
     }
 </style>

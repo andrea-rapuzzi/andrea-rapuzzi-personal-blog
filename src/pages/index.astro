@@ -11,9 +11,8 @@ const subTitle = "Digital Analytics & CRO Lead @Pirelli"
 
 <BaseLayout pageTitle={pageTitle} subTitle={subTitle}>
 		<div class="intro">
-			<h3>Ciao!</h3>
-			<p>Mi chiamo Andrea è questo è il mio piccolo angolo di &#10024<strong>internet</strong>&#10024. Digital marketer per passione, aspirante pythonista, pessimo copywriter. Dal lunedì al venerdì mi occupo di CRO e Analytics in Pirelli, mentre nel weekend perdo tempo tra film, progetti sgangherati e qualche buon vinile</p><br>
-			<p><i>Nihil difficile volenti</i></p></br>
+			<p>Mi chiamo Andrea è questo è il mio piccolo angolo di &#10024<strong>internet</strong>&#10024. Digital marketer per passione, aspirante pythonista, pessimo copywriter. Dal lunedì al venerdì mi occupo di CRO e Analytics in Pirelli, mentre nel weekend perdo tempo tra film, progetti sgangherati e qualche buon vinile.</p><br>
+			<p class="motto">Nihil difficile volenti</p></br>
 			<div><a href="https://www.linkedin.com/in/andrea-rapuzzi/" target="_blank">→ Qui il mio curriculum vitae</a></div>
 		</div>
 		<section class="hp-section">
@@ -68,6 +67,12 @@ const subTitle = "Digital Analytics & CRO Lead @Pirelli"
 </BaseLayout>
 
 <style>
+	.motto {
+		font-style: italic;
+		font-size:xx-large;
+		font-weight: 100;
+	}
+
 	.library {
 		overflow-x: auto;
 		-ms-overflow-style: none;
@@ -112,9 +117,4 @@ const subTitle = "Digital Analytics & CRO Lead @Pirelli"
 	.bookAuthor {
 		font-feature-settings: ss00;
 	}
-
-	h3 {
-		padding-top: 0.9rem;
-	}
-
 </style>

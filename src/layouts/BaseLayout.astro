@@ -15,13 +15,13 @@ const {pageTitle, subTitle} = Astro.props;
 	</head>
 	<body>
 		<Header />
-		<div class="masthead">
-			<div class="hero-message">
-				<h1>{pageTitle}</h1>
-				<h2>{subTitle}</h2>
-			</div>
-			</div>
 		<main>
+			 <section class="masthead">
+                <div class="hero-message">
+                    <h1>{pageTitle}</h1>
+                    <span class="subheading">{subTitle}</span>
+                </div>
+            </section>
 			<slot />
 		</main>
 		<Footer />
@@ -30,9 +30,13 @@ const {pageTitle, subTitle} = Astro.props;
 
 <style>
 
+	main {
+		min-height: 540px;
+	}
+
     .masthead {
         line-height: initial;
-        height: 30vh;
+        height: 40vh;
 		padding-bottom: 4rem;
         display: flex;
             align-items: flex-end;
@@ -43,14 +47,5 @@ const {pageTitle, subTitle} = Astro.props;
         width: 100%;
         object-fit: cover;
 	}
-
-	main {
-		min-height: 15vh;
-	}
-
-	h1 {
-		font-size: var(--pt-double-pica);
-	}
-
 
 </style>
