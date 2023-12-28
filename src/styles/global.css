@@ -48,7 +48,7 @@ Minth: #a1c89c;
     --pt-small-pica: 0.916em;
     --pt-long-primer: 0.833em;
     --pt-bourgeois: 0.75em;
-    --neutral-500: #1f1f1f;
+    --neutral-500: #1a1a1a;
     --neutral-300: #BBBBBB;
     --neutral-100: #FFFFFA;
     font-family: var(--font-sans);
@@ -203,7 +203,7 @@ main {
 
     @media (max-width: 450px) {
         body {
-                font-size: var(--pt-small-pica);
+                font-size: var(--pt-english);
             }
     }
         @media (min-width: 740px) {
