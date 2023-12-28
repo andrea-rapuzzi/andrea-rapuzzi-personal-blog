@@ -99,11 +99,16 @@ a:active {
 }
 
 ul {
-    padding-inline-start: 0;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    }
+    padding-left: 0;
+}
+
+li {
+    padding-bottom: 0.3rem;
+}
+
+
+        /* overflow: hidden;
+        text-overflow: ellipsis; */
 
 /* Set core root defaults */
 html:focus-within {
@@ -164,11 +169,10 @@ body {
 
 main {
     display: grid;
-    margin: auto;
     gap: 2rem;
     margin: 0 1rem;
     
-}w
+}
 
 /* Font Size*/
     h1 {
