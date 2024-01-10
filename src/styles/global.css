@@ -159,7 +159,7 @@ select {
 /* Set core body defaults */
 body {
     min-height: 100vh;
-    max-width: 90%;
+    max-width: 96%;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     background-color: var(--neutral-500);
