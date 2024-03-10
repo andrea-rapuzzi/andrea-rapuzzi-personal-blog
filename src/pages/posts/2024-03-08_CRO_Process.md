@@ -47,13 +47,13 @@ In modo simile, delegando gran parte del lavoro di front-end al team di sviluppo
 
 Ma vediamo nel dettaglio da cosa si compone ciascuna fase e gate:
 
-**Brief**: è una richiesta formale di un qualsiasi stakeholder del team per approfondire un determinato argomento. Le richieste possono provenire dal team CRO, dal team di UI/UX o da referenti business.
-
 ### Analyze
 
 #### Raccolta 
 
-In questa prima fase esplorativa il team inizia ad analizzare il problema su vari livelli di profondità:
+In questa prima fase esplorativa nasce da una richiesta formale (a.k.a. *brief*) di un qualsiasi stakeholder del team per approfondire un determinato argomento. Le richieste possono provenire dal team CRO, dal team di UI/UX o da referenti business. 
+
+Il team inizia ad analizzare il problema su vari livelli di profondità:
 
 - **Section-level**: analisi del traffico, dei percorsi principali, delle conversioni chiave;
 
@@ -68,7 +68,7 @@ In questa prima fase esplorativa il team inizia ad analizzare il problema su var
 
 A valle di questa prima fase di analisi, procediamo di discussione e sintesi le principali informazioni, trasformando i dati raccolti in insight azionabili attraverso modifiche dell'esperienza utente sul sito.
 
-L'output finale è un report contenente analisi, insight e proposte di miglioramento per il team di UI/UX.
+L'output finale è un *report* contenente analisi, insight e proposte di miglioramento per il team di UI/UX.
 
 ### Prototype
 
@@ -78,5 +78,7 @@ In parallelo al team di front-end, il team  Optmizely si occupa di finalizzare i
 
 
 ### Test
+
+Creato il POC (*proof of concept*) possiamo procedere con l'ultima fase del processo: il test.
 
 In questa fase, l'esperimento viene messo in produzione per valutarne l'impatto sulle metriche. Dopo 2-3 settimane, viene redatto un report dettagliato sui risultati. Se il test ha successo, viene passato al team di rollout; in caso contrario, si discute di eventuali miglioramenti per un nuovo test.
