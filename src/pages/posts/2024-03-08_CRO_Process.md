@@ -1,6 +1,6 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Processi CRO e dinamiche di lavoro"
+title: "Come gestire attività CRO nel 2024"
 author: "Andrea Rapuzzi"
 description: "Trust the process"
 image: 
@@ -10,42 +10,38 @@ pubDate: 2024-03-28
 tags: ["cro", "blogging", "digital marketing"]
 ---
 
-Da circa un anno, abbiamo avviato presso Pirelli un nuovo flusso di ottimizzazione della conversione (CRO) mirato a migliorare l'esperienza degli utenti sul nostro sito principale dei prodotti per auto.
+Da circa un anno, abbiamo avviato presso Pirelli un nuovo flusso di ottimizzazione dell'esperienza utente volto a miglioare i flussi di navigazione e conversione del nostro sito principale.
 
-Questo nuovo approccio non solo ci ha spinto a riconsiderare gli strumenti tecnologici con cui analizziamo l'esperienza utente, formuliamo ipotesi e testiamo gli esperimenti, ma ci ha anche portato a ridefinire i framework di lavoro e i processi utilizzati all'interno del team di Pirelliani e delle agenzie coinvolte.
+Questo nuovo approccio focalizzato sulla CRO (i.e. *conversion rate optimization*) non solo ci ha spinto a riconsiderare gli strumenti con cui analizziamo l'esperienza utente, formuliamo ipotesi e testiamo gli esperimenti, ma ci ha anche portato a ridefinire i framework e processi utilizzati da tutti gli stakeholder convoilti, Pirelliani ed esterni.
 
-Per quanto riguarda gli strumenti, utilizziamo principalmente:
+## Strumenti
+
+Per quanto riguarda gli strumenti, utilizziamo strutturato il nostro stack su 3 principali asset:
 
 - **Google Analytics 4** per analizzare gli eventi principali tracciati;
 - **Contentsquare** per approfondire le interazioni e i percorsi di navigazione;
 - **Optimizely** per l'orchestrazione degli esperimenti (Google Optimize R.I.P.).
 
-Sebbene stiamo ancora esplorando appieno il potenziale di questi strumenti, il vero progresso che abbiamo compiuto nelle ultime settimane è stato principalmente dovuto al cambiamento nei framework e alla distribuzione del lavoro.
+Sebbene dobbiamo ancora riuscire  sfruttare appieno il potenziale di questi strumenti, il vero cambio di marcia che abbiamo compiuto nelle ultime settimane è stato principalmente legato al cambiamento nei framework utilizzati e alla differente distribuzione del lavoro.
+
+## Framework e processi
+
+Dopo varie revisioni,e qualche immancabile risposta piccata, abbiamo adottato un processo che potremmo definire un *Triple Diamond* rivisto e adattato ai nostri bisogni.
 
 
+Le origini del modello *Double Diamond* evangelizzato dal Design Council ([link](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)) sono sicuramente fondamentali per la riuscita di ogni progetto di innovazione, ma può risultare poco adatto a team con cambiamenti rapidi e non lineari. Inoltre, non si presta bene alla sperimentazione, che è il fulcro del nostro lavoro qui in Pirelli.
 
-## Framework
-
-Dopo varie revisioni,e qualche immancabile risposta piccata, abbiamo adottato un processo che potremmo definire un Triple Diamond rivisitato e migliorato.
-
-
-
-Le origini del modello *Double Diamond* evangelizzato dal Design Council ([link](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)) sono sicuramente fondamentali per la riuscita di ogni progetto di innovazione, ma può risultare poco adatto a team con cambiamenti rapidi e non lineari. Inoltre, non si presta bene alla sperimentazione, che è il fulcro del nostro lavoro qui a Pirelli.
-
-Per questo motivo abbiamo preso spunto dal modello *Triple Diamond* proposto in post medium da Design Collective ([link](https://uxdesign.cc/why-the-double-diamond-isnt-enough-adaa48a8aec1)) e l'abbiamo adattato per guidare il nostro processo interno. La nostra versione semplifica le proposte del modello TD, ma si adatta meglio alle competenze presenti nel nostro team.
-
-La nostra rielaborazione, semplifica al punto giusto le proposte del modello TD, ma soprattutto si cala meglio sulle professionalità presenti nel nostro team.
+Per questo motivo abbiamo preso spunto dal modello *Triple Diamond* proposto su Medium da Design Collective ([link](https://uxdesign.cc/why-the-double-diamond-isnt-enough-adaa48a8aec1)) e l'abbiamo adattato per guidare il nostro processo interno. La nostra versione iper-semplifica le proposte del modello TD, ma si adatta meglio alle competenze presenti nel nostro team interno.
 
 ![Triple Diagram Flow](/images/blogpost/Triple_Diamond.png)
 
+Per quanto banale chiave del successo di questa revisione dei processi è stata la chiara definizione delle responsabilità tra i vari team/agenzie coinvolte. In particolare, il team di **Analytics & CRO** che gestisco io è responsabile delle fasi di Analisi e Test, mentre il team di UI/UX e sviluppo gestisce la fase di Prototipazione. I vari gate (Brief, Report, POC e Roll-out) sono gestiti dal Project Managemer per garantire tempi e deliverable consistenti.
 
-Per quanto banale chiave del successo di questa revisione dei processi è stata la chiara definizione delle responsabilità tra i vari team/agenzie coinvolte. In particolare, il team di Analytics & CRO è responsabile delle fasi di Analisi e Test, mentre il team di UI/UX e sviluppo gestisce la fase di Prototipazione. I vari gate (Brief, Report, POC e Roll-out) sono gestiti dal Project Management per garantire tempi e deliverable consistenti.
-
-Un esempio significativo di come la separazione dei compiti abbia migliorato la collaborazione è stato il modo in cui abbiamo strutturato i report durante la fase di analisi. Evitando di includere design dettagliati nei report, abbiamo migliorato il rapporto con il team di UI/UX, che ha mantenuto piena proprietà del lavoro di progettazione. 
+Un esempio significativo di come la separazione dei compiti abbia migliorato la collaborazione tra i vari team è stato il modo in cui abbiamo ri-strutturato i report creati la fase di analisi. Evitando di includere design dettagliati nei report, abbiamo migliorato il rapporto con il team di UI/UX, che ha mantenuto piena ownership del lavoro di progettazione e non ha visto sminuito il proprio apporto al tavolo di lavoro. 
 
 In modo simile, delegando gran parte del lavoro di front-end al team di sviluppo e evitando modifiche dirette tramite Optimizely, abbiamo reso il team di sviluppo maggiormente responsabile e coinvolto nel processo di creazione.
 
-Ma vediamo nel dettaglio da cosa si compone ciascuna fase e gate:
+Per i più stoici di seguito qualche riga di dettaglio che entra nel merito delle principali fasi del nostro Triple Diamond: 
 
 ### Analyze
 
