@@ -1,120 +1,139 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 import BaseLayout from "../layouts/IndexLayout.astro";
-import Post from "../components/Post.astro"
+import Post from "../components/Post.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md");
 
 const pageTitle = "Andrea Rapuzzi";
-const subTitle = "Digital Analytics & CRO Lead @Pirelli"
+const subTitle = "Digital Analytics & CRO Lead @Pirelli";
 ---
 
 <BaseLayout pageTitle={pageTitle} subTitle={subTitle}>
-		<div class="intro">
-			<p>Mi chiamo Andrea è questo è il mio piccolo angolo di &#10024<strong>internet</strong>&#10024. Digital marketer per passione, aspirante pythonista, pessimo copywriter. Dal lunedì al venerdì mi occupo di CRO e Analytics in Pirelli, mentre nel weekend perdo tempo tra film, progetti sgangherati e qualche buon vinile.</p><br>
-			<p class="motto">Nihil difficile volenti</p></br>
-			<div><a href="https://www.linkedin.com/in/andrea-rapuzzi/" target="_blank">→ Qui il mio curriculum vitae</a></div>
-		</div>
-		<section class="hp-section">
-			<div class="line"></div>
-			<h3>Blog</h3>
-			 <ul role="list">
-        		{
-            		allPosts.map((post) => (
-                	<Post url={post.url} title={post.frontmatter.title} pubDate={post.frontmatter.pubDate}/>
-           			 ))
-        		}
-    		</ul>
-			<div><a href="/blog">→ Tutte le note</a></div>
-		</section>
-		<section class="library hp-section">
-			<div class="line"></div>
-			<h3>Ultime letture</h3>
-			<div class="bookCarousel"> 
-				<div class="book bulgakov">
-   				<img class="bookCover" src="https://m.media-amazon.com/images/I/41eNi6K+6mL._SX323_BO1,204,203,200_.jpg" alt="copertina libro Il maestro e Margherita">
-   				<h4>Il maestro e Margherita</h4>
-   				<span class="bookAuthor">M. Bulgakov</span>
-  				</div>
-				<div class="book">
-   				<img class="bookCover" src="https://m.media-amazon.com/images/I/51B5A2I89AL._SX320_BO1,204,203,200_.jpg" alt="copertina libro Considera l'Aragosta">
-   				<h4>Considera l'Aragosta</h4>
-   				<span class="bookAuthor">D. F. Wallace</span>
-  				</div>
-				<div class="book">
-   				<img class="bookCover" src="https://m.media-amazon.com/images/I/41ySCLBnROS._SX296_BO1,204,203,200_.jpg" alt="copertina libro Due Vite">
-   				<h4>Due Vite</h4>
-   				<span class="bookAuthor">E. Trevi</span>
-  				</div>
-				<div class="book">
-   				<img class="bookCover" src="https://m.media-amazon.com/images/I/31Ul1uGaIRL._SX323_BO1,204,203,200_.jpg" alt="copertina libro Mattatoio N.5">
-   				<h4>Mattatoio N.5</h4>
-   				<span class="bookAuthor">K. Vonnegut</span>
-  				</div>
-				<div class="book">
-   				<img class="bookCover" src="https://m.media-amazon.com/images/I/41-dq2jTKUL._SX329_BO1,204,203,200_.jpg" alt="copertina libro Oscuri Talenti">
-   				<h4>Oscuri Talenti</h4>
-   				<span class="bookAuthor">J.M. Miro</span>
-  				</div>
-				<div class="book">
-   				<img class="bookCover" src="https://m.media-amazon.com/images/I/61ocRO+6xrL._AC_UY436_FMwebp_QL65_.jpg" alt="copertina libro Buchi Bianchi">
-   				<h4>Buchi Bianchi</h4>
-   				<span class="bookAuthor">C. Rovelli</span>
-  				</div>
-
-			</div>	
-		</section>
+  <div class="intro">
+    <p>
+      Mi chiamo Andrea è questo è il mio piccolo angolo di &#10024<strong
+        >internet</strong
+      >&#10024. Digital marketer per passione, aspirante pythonista, pessimo
+      copywriter. Dal lunedì al venerdì mi occupo di CRO e Analytics in Pirelli,
+      mentre nel weekend perdo tempo tra film, progetti sgangherati e qualche
+      buon vinile.
+    </p><br />
+    <p class="motto">Nihil difficile volenti</p>
+  </div>
+  <div>
+    <a href="https://www.linkedin.com/in/andrea-rapuzzi/" target="_blank"
+      >→ Qui il mio curriculum vitae</a
+    >
+  </div>
+  <section class="hp-section">
+    <div class="line"></div>
+    <h3>Blog</h3>
+    <ul role="list">
+      {
+        allPosts.map((post) => (
+          <Post
+            url={post.url}
+            title={post.frontmatter.title}
+            pubDate={post.frontmatter.pubDate}
+          />
+        ))
+      }
+    </ul>
+    <div><a href="/blog">→ Tutte le note</a></div>
+  </section>
+  <section class="library hp-section">
+    <div class="line"></div>
+    <h3>Ultime letture</h3>
+    <div class="bookCarousel">
+      <div class="book">
+        <img
+          class="bookCover"
+          src="/images/book-covers/tomorrow-tomorrow-tomorrow.png"
+          alt="copertina libro Il maestro e Margherita"
+        />
+        <h4>Tomorrow and Tomorrow and Tomorrow</h4>
+        <span class="bookAuthor">Grabrielle Zevin</span>
+      </div>
+      <div class="book">
+        <img
+          class="bookCover"
+          src="/images/book-covers/considera-l-aragosta.png"
+          alt="Considera l'aragosta"
+        />
+        <h4>Considera l'aragosta</h4>
+        <span class="bookAuthor">David D. Wallace</span>
+      </div>
+      <div class="book">
+        <img
+          class="bookCover"
+          src="/images/book-covers/estasi-culinarie.png"
+          alt="Estasi Culinarie"
+        />
+        <h4>Estasi culinarie</h4>
+        <span class="bookAuthor">Muriel Barbery</span>
+      </div>
+      <div class="book">
+        <img
+          class="bookCover"
+          src="/images/book-covers/quando-abbiamo-smesso-di-capire-il-mondo.png"
+          alt="Quando abbiamo smesso di capire il mondo"
+        />
+        <h4>Quando abbiamo smesso di capire il mondo</h4>
+        <span class="bookAuthor">Benjamìn Labatut</span>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-	.motto {
-		font-style: italic;
-		font-size:xx-large;
-		font-weight: 100;
-	}
+  .motto {
+    font-style: italic;
+    font-size: xx-large;
+    font-weight: 100;
+  }
 
-	.library {
-		overflow-x: auto;
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-		height: fit-content;
-	}
+  .library {
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-	.bookCarousel {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	margin-top: 1rem;
-	padding-bottom: 1rem;
-	overflow-x: auto;
-	-ms-overflow-style: none; 
-	scrollbar-width: none; 
-	height: fit-content;
-	}
+  .bookCarousel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: fit-content;
+  }
 
-	.book {
-	padding: 1rem;
-	margin-right: 1rem;
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	min-width: 160px;
-	max-width: 220px
-	}
+  .book {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 240px;
+    max-width: 260px;
+  }
 
-	.book > * {
-	font-size: var(--pt-small-pica);
-		font-family: var(--font-grotesque);
-		padding-bottom: 0.3em;
-		font-feature-settings: var(--font-alt);
-		letter-spacing: -0.04em;
-	}
+  .book > * {
+    font-size: var(--pt-small-pica);
+    font-family: var(--font-grotesque);
+    font-feature-settings: var(--font-alt);
+    letter-spacing: -0.04em;
+  }
 
-	.bookCover {
-		padding-bottom: 1rem;
-	}
+  .bookCover {
+    padding-bottom: 1rem;
+  }
 
-	.bookAuthor {
-		font-feature-settings: ss00;
-	}
+  .bookAuthor {
+    font-feature-settings: ss00;
+    padding-top: 0.3rem;
+    font-weight: 200;
+  }
 </style>
