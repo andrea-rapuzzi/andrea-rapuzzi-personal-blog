@@ -5,6 +5,13 @@ import Post from "../components/Post.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md");
 
+// Verifica che le date siano correttamente formattate prima di ordinare
+allPosts.sort((a, b) => {
+  const dateA = new Date(a.frontmatter.pubDate).getTime();
+  const dateB = new Date(b.frontmatter.pubDate).getTime();
+  return dateB - dateA;
+});
+
 const pageTitle = "Andrea Rapuzzi";
 const subTitle = "Digital Analytics & CRO Lead @Pirelli";
 ---
