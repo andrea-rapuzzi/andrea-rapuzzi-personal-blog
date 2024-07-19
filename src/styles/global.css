@@ -1,3 +1,5 @@
+/* RESETS */
+
 /* Box sizing rules */
 *,
 *::before,
@@ -5,29 +7,6 @@
     box-sizing: border-box;
 }
 
-/* Root & Typography */
-
-/* Cooll Colors:
-Dark Teal: #025048;
-Minth: #a1c89c;
-
-*/
-
-@font-face {
-    font-family: 'Fixel';
-    src: url('../styles/fonts/FixelVariable.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'FixelSemi';
-    src: url('../styles/fonts/FixelText-SemiBold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
 
 
 :root {
@@ -174,6 +153,10 @@ main {
     
 }
 
+
+
+
+
 /* Font Size*/
     h1 {
         font-family: var(--font-grotesque);
@@ -230,4 +213,20 @@ main {
 .subheading {
     opacity: 0.6;
     font-size: var(--pt-pica);
+}
+
+@font-face {
+    font-family: 'Fixel';
+    src: url('../styles/fonts/FixelVariable.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FixelSemi';
+    src: url('../styles/fonts/FixelText-SemiBold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }

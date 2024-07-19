@@ -1,0 +1,6 @@
+/* GLOBAL CSS */
+
+@import url(/src/styles/global.css);
+@import url(/src/styles/typography.css);
+@import url(/src/styles/components.css);
+@import url(/src/styles/layout.css);

@@ -1,0 +1,48 @@
+/* components.css */
+
+/* Component-specific styles go here */
+
+/* Book Carousel */
+.book {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 240px;
+    max-width: 260px;
+}
+
+.book>* {
+    font-size: var(--pt-small-pica);
+    font-family: var(--font-grotesque);
+    font-feature-settings: var(--font-alt);
+    letter-spacing: -0.04em;
+}
+
+.bookCover {
+    padding-bottom: 1rem;
+}
+
+.bookAuthor {
+    padding-top: 0.3rem;
+    font-size: var(--pt-small-pica);
+    opacity: 0.6;
+}
+
+.library {
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.bookCarousel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: fit-content;
+}

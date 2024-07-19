@@ -1,0 +1,48 @@
+/* layout.css */
+
+.line {
+    height: 1px;
+    background-color: var(--neutral-300);
+}
+
+/* Hyperlink UI */
+a:link {
+    color: #E47511;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #dc873d;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9bbc0f;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.contains-task-list {
+    padding-inline-start: 0px;
+    list-style: none;
+}
+
+@media (max-width: 450px) {
+    body {
+        font-size: var(--pt-english);
+    }
+}
+
+@media (min-width: 740px) {
+    body {
+        max-width: 720px;
+    }
+}

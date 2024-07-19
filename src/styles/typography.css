@@ -1,0 +1,50 @@
+/* typography.css */
+
+@font-face {
+    font-family: 'Fixel';
+    src: url('../styles/fonts/FixelVariable.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FixelSemi';
+    src: url('../styles/fonts/FixelText-SemiBold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Font Size */
+h1 {
+    font-family: var(--font-grotesque);
+    font-size: var(--pt-english);
+    line-height: 1;
+    padding-bottom: 0.3em;
+    font-feature-settings: var(--font-alt);
+    letter-spacing: -0.04em;
+}
+
+h2 {
+    font-family: var(--font-grotesque);
+    font-size: var(--pt-english);
+    font-weight: 600;
+    opacity: 0.6;
+}
+
+h3 {
+    font-family: var(--font-grotesque);
+    font-feature-settings: var(--font-alt);
+    font-size: var(--pt-english);
+    padding-top: 1rem;
+}
+
+p {
+    font-size: var(--pt-small-pica);
+}
+
+.subheading {
+    opacity: 0.6;
+    font-size: var(--pt-pica);
+}
