@@ -46,3 +46,44 @@
     scrollbar-width: none;
     height: fit-content;
 }
+
+
+/* Hyperlink UI */
+a:link {
+    color: #E47511;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #dc873d;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9bbc0f;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #ffffff;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.contains-task-list {
+    padding-inline-start: 0px;
+    list-style: none;
+}
+
+.line {
+    height: 1px;
+    background-color: var(--neutral-300);
+}
+
+.subheading {
+    opacity: 0.6;
+    font-size: var(--pt-pica);
+}

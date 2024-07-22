@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-
+/* Root values */
 
 :root {
     --line-length: 60ch;
@@ -55,27 +55,6 @@ nav > ul[role='list'],
 nav > ol[role='list'] {
     list-style: none;
 }
-/* Hyperlink UI */
-a:link {
-    color: #E47511;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:visited {
-    color: #dc873d;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:hover {
-    color: #9bbc0f;
-    background-color: transparent;
-    text-decoration: underline;
-}
-a:active {
-    color: #ffffff;
-    background-color: transparent;
-    text-decoration: underline;
-}
 
 ul {
     padding-left: 0;
@@ -86,13 +65,8 @@ li {
 }
 
 
-        /* overflow: hidden;
-        text-overflow: ellipsis; */
-
-/* Set core root defaults */
 html:focus-within {
     scroll-behavior: smooth;
-
 }
 
 html {
@@ -150,83 +124,16 @@ main {
     display: grid;
     gap: 2rem;
     margin: 0 1rem;
-    
 }
 
-
-
-
-
-/* Font Size*/
-    h1 {
-        font-family: var(--font-grotesque);
-        font-size: var(--pt-english);
-        line-height: 1;
-        padding-bottom: 0.3em;
-        font-feature-settings: var(--font-alt);
-        letter-spacing: -0.04em;
-    }
-
-    h2 {
-        font-family: var(--font-grotesque);
-        font-size: var(--pt-english);
-        font-weight: 600;
-        opacity: 0.6;
-    }
-
-    h3 {
-        font-family: var(--font-grotesque);
-        font-feature-settings: var(--font-alt);
-        font-size: var(--pt-english);
-        padding-top: 1rem;
-    }
-
-    p {
-        font-size: var(--pt-small-pica)
-    }
-    
-
-    
-
-    @media (max-width: 450px) {
-        body {
-                font-size: var(--pt-english);
-            }
-    }
-        @media (min-width: 740px) {
-            body {
-                max-width: 720px;
-            }
+@media (max-width: 450px) {
+    body {
+            font-size: var(--pt-english);
         }
-
-
-.contains-task-list {
-    padding-inline-start: 0px;
-    list-style: none;
 }
+    @media (min-width: 740px) {
+        body {
+            max-width: 720px;
+        }
+    }
 
-.line {
-    height: 1px;
-    background-color: var(--neutral-300);
-}
-
-.subheading {
-    opacity: 0.6;
-    font-size: var(--pt-pica);
-}
-
-@font-face {
-    font-family: 'Fixel';
-    src: url('../styles/fonts/FixelVariable.ttf') format('ttf');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'FixelSemi';
-    src: url('../styles/fonts/FixelText-SemiBold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
