@@ -43,37 +43,33 @@ In modo simile, delegando gran parte del lavoro di front-end al team di sviluppo
 
 Per i più stoici di seguito qualche riga di dettaglio che entra nel merito delle principali fasi del nostro Triple Diamond: 
 
-### Analyze
+### 1 Analyze
 
-#### Raccolta 
+#### 1.1 Raccolta 
 
 In questa prima fase esplorativa nasce da una richiesta formale (a.k.a. *brief*) di un qualsiasi stakeholder del team per approfondire un determinato argomento. Le richieste possono provenire dal team CRO, dal team di UI/UX o da referenti business. 
 
 Il team inizia ad analizzare il problema su vari livelli di profondità:
 
-- **Section-level**: analisi del traffico, dei percorsi principali, delle conversioni chiave;
-
+- **Site level**: analisi del traffico, dei percorsi principali, delle conversioni chiave;
 - **Page Level**: analisi delle performance di singole pagine (tasso di uscita, conversioni);
-
-- **Page-level**: una volta identificate le aree più succose andiamo ad analizzare le performance di singole pagine in termini di Exit rate, Conversioni. All'interno di questo livello solitamente andiamo ad inserire anche un'analisi dei session recording per avere una visione qualitativa della UX.
-
-- **Zone-level**: analisi di componenti specifiche delle pagine (tasso di click, esposizione delle zone, attrattività dei contenuti).
+- **Zone level**: una volta identificate le aree più succose andiamo ad analizzare le performance di singole pagine in termini di Exit rate, Conversioni. All'interno di questo livello solitamente andiamo ad inserire anche un'analisi dei session recording per avere una visione qualitativa della UX.
 
 
-#### Insight
+#### 1.2 Insight
 
 A valle di questa prima fase di analisi, procediamo di discussione e sintesi le principali informazioni, trasformando i dati raccolti in insight azionabili attraverso modifiche dell'esperienza utente sul sito.
 
 L'output finale è un *report* contenente analisi, insight e proposte di miglioramento per il team di UI/UX.
 
-### Prototype
+###  2. Prototype
 
 Questa fase si divide in due sezioni: DESIGN e SVILUPPO. Il team di UI/UX crea flussi e interfacce, mentre il team di sviluppo implementa il design e prepara l'AB test. Il team di Optimizely si occupa della configurazione dell'esperimento.
 
 In parallelo al team di front-end, il team  Optmizely si occupa di finalizzare il setup dell'esperimento, impostando variabili e metriche da monitorare durante l'analisi.
 
 
-### Test
+### 3. Test
 
 Creato il POC (*proof of concept*) possiamo procedere con l'ultima fase del processo: il test.
 
