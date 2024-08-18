@@ -1,51 +1,51 @@
 ---
-import "../styles/global.css";
+import "../styles/styles.css";
+
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
-const {pageTitle, subTitle} = Astro.props;
+const { pageTitle, subTitle } = Astro.props;
 ---
+
 <html lang="it">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" href="/favicon.jpg" type="image/x-icon" />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<Header />
-		<main>
-			 <section class="masthead">
-                <div class="hero-message">
-                    <h1>{pageTitle}</h1>
-                    <span class="subheading">{subTitle}</span>
-                </div>
-            </section>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.jpg" type="image/x-icon" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="masthead">
+        <div class="hero-message">
+          <h1>{pageTitle}</h1>
+          <span class="subheading">{subTitle}</span>
+        </div>
+      </section>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
 
 <style>
+  main {
+    min-height: 540px;
+  }
 
-	main {
-		min-height: 540px;
-	}
+  .masthead {
+    line-height: initial;
+    height: 40vh;
+    padding-bottom: 4rem;
+    display: flex;
+    align-items: flex-end;
+  }
 
-    .masthead {
-        line-height: initial;
-        height: 40vh;
-		padding-bottom: 4rem;
-        display: flex;
-            align-items: flex-end;
-    }
-
-    .cover-image {
-        height: 65vh;
-        width: 100%;
-        object-fit: cover;
-	}
-
+  .cover-image {
+    height: 65vh;
+    width: 100%;
+    object-fit: cover;
+  }
 </style>

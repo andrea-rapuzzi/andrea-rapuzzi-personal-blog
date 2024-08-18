@@ -42,6 +42,7 @@ h3 {
 
 p {
     font-size: var(--pt-small-pica);
+    padding-bottom: 2rem;
 }
 
 .subheading {
