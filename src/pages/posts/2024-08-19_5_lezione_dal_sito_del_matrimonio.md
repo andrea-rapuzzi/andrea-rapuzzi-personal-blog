@@ -1,6 +1,6 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "5 Lezioni creando il sito del matrimonio"
+title: "5 Lezioni scoperte creando il sito del matrimonio"
 author: "Andrea Rapuzzi"
 description: ""
 image: 
