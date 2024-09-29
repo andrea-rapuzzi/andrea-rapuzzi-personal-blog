@@ -1,6 +1,6 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Come gestire attività CRO nel 2024"
+title: "Processi CRO, status 2024"
 author: "Andrea Rapuzzi"
 description: "Trust the process"
 image: 

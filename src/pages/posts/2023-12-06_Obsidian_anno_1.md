@@ -1,6 +1,6 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Un anno con Obsidian"
+title: "Obsidian, anno 1"
 author: "Andrea Rapuzzi"
 description: "e qualche considerazione sulla ricerca dell'app note perfetta"
 image: 

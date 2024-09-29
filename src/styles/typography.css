@@ -1,5 +1,178 @@
 /* typography.css */
 
+/* TODS */
+
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+address,
+p,
+hr,
+pre,
+blockquote,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+figure,
+figcaption,
+div,
+table,
+caption,
+form,
+fieldset {
+    margin: 0;
+}
+
+input,
+button,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+body {
+    line-height: 1.5;
+    text-decoration-skip-ink: auto;
+    font-optical-sizing: auto;
+    font-variant-ligatures: common-ligatures no-discretionary-ligatures no-historical-ligatures contextual;
+    font-kerning: normal;
+}
+
+button,
+input,
+label {
+    line-height: 1.1;
+}
+
+.flow>*+* {
+    margin-block-start: var(--flow-space, 1em);
+}
+
+.prose {
+    --flow-space: 1.5em;
+}
+
+.dlig {
+    font-variant-ligatures: discretionary-ligatures;
+}
+
+.hlig {
+    font-variant-ligatures: historical-ligatures;
+}
+
+.dlig.hlig {
+    font-variant-ligatures: discretionary-ligatures historical-ligatures;
+}
+
+/* Apply both historic and discretionary */
+
+.pnum {
+    font-variant-numeric: proportional-nums;
+}
+
+.tnum {
+    font-variant-numeric: tabular-nums;
+}
+
+.lnum {
+    font-variant-numeric: lining-nums;
+}
+
+.onum {
+    font-variant-numeric: oldstyle-nums;
+}
+
+.zero {
+    font-variant-numeric: slashed-zero;
+}
+
+.pnum.zero {
+    font-variant-numeric: proportional-nums slashed-zero;
+}
+
+/* Apply slashed zeroes to proportional numerals */
+.tnum.zero {
+    font-variant-numeric: tabular-nums slashed-zero;
+}
+
+.lnum.zero {
+    font-variant-numeric: lining-nums slashed-zero;
+}
+
+.onum.zero {
+    font-variant-numeric: oldstyle-nums slashed-zero;
+}
+
+.tnum.lnum.zero {
+    font-variant-numeric: tabular-nums lining-nums slashed-zero;
+}
+
+.frac {
+    font-variant-numeric: diagonal-fractions;
+}
+
+.afrc {
+    font-variant-numeric: stacked-fractions;
+}
+
+.ordn {
+    font-variant-numeric: ordinal;
+}
+
+.smcp {
+    font-variant-caps: small-caps;
+}
+
+.c2sc {
+    font-variant-caps: unicase;
+}
+
+.hist {
+    font-variant-alternates: historical-forms;
+}
+
+.centered {
+    text-align: center;
+    text-wrap: balance;
+}
+
+.uppercase {
+    text-transform: uppercase;
+    --opentype-case: "case" on;
+}
+
+.smallcaps {
+    font-variant-caps: all-small-caps;
+    font-variant-numeric: oldstyle-nums;
+}
+
+.prose {
+    text-wrap: pretty;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+    font-size-adjust: 0.507;
+}
+
+strong,
+b,
+th {
+    font-weight: bold;
+    font-size-adjust: 0.514;
+}
+
 @font-face {
     font-family: 'Fixel';
     src: url('../styles/fonts/FixelVariable.ttf') format('ttf');
