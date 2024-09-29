@@ -10,38 +10,38 @@ pubDate: 2024-03-28
 tags: ["cro", "blogging", "digital marketing"]
 ---
 
-Da circa un anno, abbiamo avviato presso Pirelli un nuovo flusso di ottimizzazione dell'esperienza utente volto a miglioare i flussi di navigazione e conversione del nostro sito principale.
-
-Questo nuovo approccio focalizzato sulla CRO (i.e. *conversion rate optimization*) non solo ci ha portato a riconsiderare gli strumenti con cui analizziamo l'esperienza utente, formuliamo ipotesi e testiamo gli esperimenti, ma ci ha anche portato a ridefinire i framework e processi utilizzati da tutti gli stakeholder convoilti, Pirelliani ed esterni.
+Da circa un anno abbiamo avviato in Pirelli un nuovo tavolo di lavoro volto ad ottimizzare dell'esperienza utente e il tasso di conversione del nostro sito principale.
+Questo nuovo approccio, focalizzato sulla CRO, non solo ci ha portato a riconsiderare gli strumenti con cui lavoriamo, ma ci ha anche obbligato a ridefinire i framework e i processi alla base delle nostre attività.
 
 ## Strumenti
 
-Per quanto riguarda gli strumenti, il nostro stack attuale si basa su 3 principali asset:
+Per quanto riguarda gli strumenti, il nostro stack attuale si basa su 3 principali tool:
 
-- **Google Analytics 4** per analizzare gli eventi principali tracciati;
+- **Google Analytics 4** per analizzare gli eventi principali tracciati sul sito;
 - **Contentsquare** per approfondire le interazioni e i percorsi di navigazione;
 - **Optimizely** per l'orchestrazione degli esperimenti (Google Optimize R.I.P.).
 
-Sebbene dobbiamo ancora riuscire  sfruttare appieno il potenziale di questi strumenti, il vero cambio di marcia che abbiamo compiuto nelle ultime settimane è stato principalmente legato al cambiamento nei framework utilizzati e alla differente distribuzione del lavoro.
+Siamo ancora lontani dal riuscire a sfruttare appieno il potenziale di questi 3 strumenti, ma come anticipavo il vero cambio di marcia che abbiamo compiuto è principalmente  legato alla revisione dei processi di lavoro che definiscono il coinvolgimento degli stakeholder interni ed esterni nel processo di UX.
 
 ## Framework e processi
 
-Dopo varie revisioni,e qualche immancabile risposta piccata, abbiamo adottato un processo che potremmo definire un *Triple Diamond* rivisto e adattato ai nostri bisogni.
+Dopo varie revisioni, e qualche immancabile risposta piccata, abbiamo adottato un processo che potremmo definire un *Triple Diamond*, rivisto e adattato ai nostri bisogni.
 
 
-Le origini del modello *Double Diamond* ideato dal Design Council ([link](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)) sono sicuramente chiave per la riuscita di ogni progetto di innovazione, ma può risultare poco adatto a team con cambiamenti frequenti e non lineari come il nostro. Inoltre, non si presta bene alla sperimentazione, che è il fulcro del nostro lavoro qui in Pirelli.
+Il modello *Double Diamond* (ideato dal Design Council, [fonte](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)) è sicuramente un ottimo punto di partenza  per gestire i progetti di innovazione, ma può risultare poco adatto a team con cambiamenti frequenti e non lineari come il nostro. Inoltre penso non si presti molto alla sperimentazione, che è il fulcro del  lavoro che stiamo cercando di introdurre in Pirelli.
 
-Per questo motivo abbiamo preso spunto dal modello *Triple Diamond* proposto da Design Collective ([link](https://uxdesign.cc/why-the-double-diamond-isnt-enough-adaa48a8aec1)) e l'abbiamo adattato per guidare il nostro processo interno. La nostra versione iper-semplifica le proposte del modello TD, ma si adatta meglio alle competenze presenti nel nostro team interno.
+Per questo motivo abbiamo preso spunto dal modello *Triple Diamond* ideato da Design Collective ([fonte](https://uxdesign.cc/why-the-double-diamond-isnt-enough-adaa48a8aec1)) e lo abbiamo adattato ai nostri bisogni interni, semplificando dove serviva e ridefinendo alcune delle attività da portare a termine all'interno di ciascuna fase. 
 
 ![Triple Diagram Flow](/images/blogpost/Triple_Diamond.png)
 
-Per quanto banale, chiave del successo di questa revisione dei processi è stata la chiara definizione delle responsabilità tra i vari team/agenzie coinvolte. Il processo si è articolato essenzialmente in 2 fasi. Nella prima abbiamo lavorato ad un espensione del core team, che inzialmente si occupava delle maggior parte delle fasi progettuali, andando a coinvolgere in maniera diretta i team UI e Dev. nella seconda fase in vece ci siamo occupato di ridefinire i perimetri di ogni team in modo da non pestarci i piedi.
+Per quanto banale, chiave per il successo di questa revisione è stata la chiara assegnazione delle responsabilità tra i vari team/agenzie coinvolti. Il processo si è articolato essenzialmente in 2 fasi. 
+Nella prima abbiamo lavorato ad un espansione del "core team", che inzialmente si occupava delle maggior parte delle fasi progettuali, mentre nel nuovo assetto si va a focalizzare sulle fasi di **Analisi** e **Test**. I team di UI e Sviluppo invece entrano appieno nel flusso di CRO, andando a occuparsi della fase di **Prototipazione**.
 
-In particolare, il team di **Analytics & CRO** che gestisco io è diventato esclusivamente responsabile delle fasi di Analisi e Test, mentre il team di UI/UX e sviluppo gestisce la fase di Prototipazione. I vari gate (Brief, Report, POC e Roll-out) sono gestiti dal Project Manager per garantire tempi e deliverable consistenti.
+I vari gate (Brief, Report, POC e Roll-out) sono gestiti dal Project Manager per garantire tempi e deliverable consistenti.
 
-Un esempio significativo di come la separazione dei compiti abbia migliorato la collaborazione tra i vari team è stato il modo in cui abbiamo ri-strutturato i report creati la fase di analisi. Evitando di includere design dettagliati nei report, abbiamo migliorato il rapporto con il team di UI/UX, che ha mantenuto piena ownership del lavoro di progettazione e non ha visto sminuito il proprio apporto al tavolo di lavoro. 
+Un esempio significativo di come la separazione dei compiti abbia migliorato la collaborazione tra i vari team è stato il modo in cui abbiamo ri-strutturato i report creati durante la fase di analisi. Evitando di includere design dettagliati nei report, abbiamo migliorato il rapporto con il team di UI, che ha mantenuto piena ownership del lavoro di progettazione e non ha visto sminuito il proprio apporto al tavolo di lavoro. 
 
-In modo simile, delegando gran parte del lavoro di front-end al team di sviluppo e evitando modifiche dirette tramite Optimizely, abbiamo reso il team di sviluppo maggiormente responsabile e coinvolto nel processo di creazione.
+In modo simile, delegando gran parte del lavoro di front-end al team di sviluppo, abbiamo reso il team di sviluppo maggiormente responsabile e coinvolto nel processo di creazione.
 
 In pratica abbiamo ottenuto di più facendo meno.
 
