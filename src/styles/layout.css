@@ -31,7 +31,7 @@ a:active {
 }
 
 .contains-task-list {
-    padding-inline-start: 4px;
+    padding-inline-start: 24px;
     list-style: none;
 }
 
