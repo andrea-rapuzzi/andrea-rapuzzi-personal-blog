@@ -6,7 +6,7 @@ const { frontmatter } = Astro.props;
 <BaseLayout pageTitle={frontmatter.title} subTitle={frontmatter.description} >
     <div class="post-content">
     <p class="date">{frontmatter.pubDate.slice(0, 10)}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+    <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
 
     <slot />
     <!-- <div class="tags">
@@ -23,13 +23,15 @@ const { frontmatter } = Astro.props;
 <style>
     .post-content {
         display: grid;
-        gap: 16px;
+        gap: 0px;
         margin: auto;
     }
 
     img {
         width: 100%;
         margin: auto;
+        border-radius: 8px;
+        padding: 16px 0;
     }
 
     .date {
@@ -41,7 +43,6 @@ const { frontmatter } = Astro.props;
     a {
         color: var(--neutral-50);
     }
-
 
     /* .p .tags {
         display: flex;
