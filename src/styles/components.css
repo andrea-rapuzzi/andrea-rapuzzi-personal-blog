@@ -73,11 +73,6 @@ a:active {
     text-decoration: underline;
 }
 
-.contains-task-list {
-    padding-inline-start: 24px;
-    list-style: none;
-}
-
 .line {
     height: 1px;
     background-color: var(--neutral-300);
