@@ -28,8 +28,9 @@
     --pt-long-primer: 0.833em;
     --pt-bourgeois: 0.75em;
     --neutral-500: #100F0F;
-    --neutral-300: #BBBBBB;
-    --neutral-100: #FFFFFA;
+    --neutral-900: #100F0F;
+    --neutral-300: #d2c2c2;
+    --neutral-100: #FEFAED;
     font-family: var(--font-sans);
     font-size: clamp(100%, 90% + 0.5vw, 150%);
     line-height: 1.475;
