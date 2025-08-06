@@ -1,6 +1,6 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Processi CRO, status 2024"
+title: "Come fare CRO 2024"
 author: "Andrea Rapuzzi"
 description: "Trust the process"
 image: 
