@@ -7,7 +7,7 @@ image:
     url: ""
     alt: ""
 pubDate: 2023-05-28
-tags: ["astro", "blogging", "DIY"]
+tags: ["astro", "blog", "DIY"]
 ---
 Dagli albori di MySpace creare il mio piccolo angolo di <i>world wide web</i> è sempre stato un dei sogno nel cassetto. Purtroppo una pigrizia infinitò e il liceo classico non mi hanno messo mai in carreggiata per portare a casa questo progetto. Fino ad oggi.
 

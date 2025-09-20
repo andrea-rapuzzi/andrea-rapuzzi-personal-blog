@@ -2,7 +2,7 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Is this the death of the Generalist?"
 author: "Andrea Rapuzzi"
-description: "Pensieri sparsi su insicurezze esistenziali"
+description: "Pensieri sparsi e insicurezze esistenziali"
 image: 
     url: ""
     alt: ""

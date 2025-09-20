@@ -7,7 +7,7 @@ image:
     url: ""
     alt: ""
 pubDate: 2024-03-28
-tags: ["cro", "blogging", "digital marketing"]
+tags: ["cro", "blog", "digital marketing"]
 ---
 
 Da circa un anno abbiamo avviato in Pirelli un nuovo tavolo di lavoro volto ad ottimizzare dell'esperienza utente e il tasso di conversione del nostro sito principale.

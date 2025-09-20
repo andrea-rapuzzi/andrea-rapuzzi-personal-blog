@@ -1,13 +1,13 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Lezioni dal sito del matrimonio"
+title: "Wedding site, learning site"
 author: "Andrea Rapuzzi"
 description: ""
 image: 
     url: ""
     alt: ""
 pubDate: 2024-08-18
-tags: ["blogging", "DIY"]
+tags: ["blog", "DIY"]
 ---
 
 Rapido post di recap su cosa ho imparato costruendo il mini-sito per il mio matrimonio.
