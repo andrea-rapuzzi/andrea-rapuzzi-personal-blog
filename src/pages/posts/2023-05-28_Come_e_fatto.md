@@ -1,6 +1,6 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Come ho creato questo sito"
+title: "Howdy"
 author: "Andrea Rapuzzi"
 description: "Nani sulle spalle di giganti"
 image: 
@@ -9,7 +9,7 @@ image:
 pubDate: 2023-05-28
 tags: ["astro", "blog", "DIY"]
 ---
-Dagli albori di MySpace creare il mio piccolo angolo di <i>world wide web</i> è sempre stato un dei sogno nel cassetto. Purtroppo una pigrizia infinitò e il liceo classico non mi hanno messo mai in carreggiata per portare a casa questo progetto. Fino ad oggi.
+Dagli albori di Wordpress creare il mio piccolo angolo di <i>world wide web</i> è sempre stato un dei sogno nel cassetto. Purtroppo una pigrizia infinitò e il liceo classico non mi hanno messo mai in carreggiata per portare a casa questo progetto. Fino ad oggi.
 
 In mondo digitale sempre più decentralizzato non potevo esimermi da fare almeno un tentativo prima di soccombere nuovamente ad una della mille piattaforme del buon Zuckerberg.
 
@@ -24,7 +24,7 @@ Per fortuna molta gente più capace e dedita di me ha messo a disposizione di tu
 
 Una volta recuperate le basi di webdesign grazie a FreeCodeCamp e identificato Astro come framework di partenza, è stato sufficiente mettere insieme pochi pezzi per mandare finalmente live il mio primo sito. 
 
-**Credits**:
+**Colophon**:
 - **Hosting**: Netflify (costo 0€)
 - **Front-End Framework**: Astro (costo 0€)
 - **Font**: Fixel by MacPaw (costo 0€)

@@ -1,8 +1,8 @@
 --- 
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Come fare CRO 2024"
+title: "CRO pragmatica 2024"
 author: "Andrea Rapuzzi"
-description: "Trust the process"
+description: "Shine bright like a diamond"
 image: 
     url: ""
     alt: ""
