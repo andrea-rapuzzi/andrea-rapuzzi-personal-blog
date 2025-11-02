@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/IndexLayout.astro";
 import Post from "../components/Post.astro";
+import BookCarousel from "../components/BookCarousel.astro";
 
 type Post = {
   frontmatter: {
@@ -64,44 +65,7 @@ const subTitle = "CX Lead @Nestlé";
   <section class="library hp-section">
     <div class="line"></div>
     <h3>Ultime letture</h3>
-    <div class="bookCarousel">
-      <div class="book">
-        <img
-          class="bookCover"
-          src="/images/book-covers/macchine-come-me-mc.png"
-          alt="copertina libro Macchine come Me"
-        />
-        <h4>Macchine come me</h4>
-        <span class="bookAuthor">Ian McEwan</span>
-      </div>
-      <div class="book">
-        <img
-          class="bookCover"
-          src="/images/book-covers/la-mia-famiglia-e-altri-animali.png"
-          alt="copertina libro La mia famiglia e altri animali"
-        />
-        <h4>La mia famiglia e altri animali</h4>
-        <span class="bookAuthor">Gerald Durrell</span>
-      </div>
-      <div class="book">
-        <img
-          class="bookCover"
-          src="/images/book-covers/considera-l-aragosta.png"
-          alt="copertina del libro Considera l'aragosta"
-        />
-        <h4>Considera l'aragosta</h4>
-        <span class="bookAuthor">David F. Wallace</span>
-      </div>
-      <div class="book">
-        <img
-          class="bookCover"
-          src="/images/book-covers/quando-abbiamo-smesso-di-capire-il-mondo.png"
-          alt="Quando abbiamo smesso di capire il mondo"
-        />
-        <h4>Quando abbiamo smesso di capire il mondo</h4>
-        <span class="bookAuthor">Benjamìn Labatut</span>
-      </div>
-    </div>
+    <BookCarousel />
   </section>
 </BaseLayout>
 

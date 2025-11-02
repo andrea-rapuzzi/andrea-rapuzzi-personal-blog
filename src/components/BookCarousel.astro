@@ -1,0 +1,124 @@
+---
+interface Book {
+  cover: string;
+  title: string;
+  author: string;
+  alt: string;
+}
+
+const books: Book[] = [
+  {
+    cover: "/images/book-covers/macchine-come-me-mc.png",
+    title: "Macchine come me",
+    author: "Ian McEwan",
+    alt: "copertina libro Macchine come Me",
+  },
+  {
+    cover: "/images/book-covers/la-mia-famiglia-e-altri-animali.png",
+    title: "La mia famiglia e altri animali",
+    author: "Gerald Durrell",
+    alt: "copertina libro La mia famiglia e altri animali",
+  },
+  {
+    cover: "/images/book-covers/considera-l-aragosta.png",
+    title: "Considera l'aragosta",
+    author: "David F. Wallace",
+    alt: "copertina del libro Considera l'aragosta",
+  },
+  {
+    cover: "/images/book-covers/quando-abbiamo-smesso-di-capire-il-mondo.png",
+    title: "Quando abbiamo smesso di capire il mondo",
+    author: "Benjamìn Labatut",
+    alt: "Quando abbiamo smesso di capire il mondo",
+  },
+];
+---
+
+<div class="bookCarousel" id="bookCarousel">
+  {
+    books.map((book) => (
+      <div class="book">
+        <img class="bookCover" src={book.cover} alt={book.alt} draggable="false" />
+        <h4>{book.title}</h4>
+        <span class="bookAuthor">{book.author}</span>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .bookCarousel {
+    cursor: grab;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    height: fit-content;
+  }
+
+  .bookCarousel:active {
+    cursor: grabbing;
+  }
+
+  .book {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-width: 240px;
+    max-width: 260px;
+  }
+
+  .book > * {
+    font-size: var(--pt-small-pica);
+    font-family: var(--font-grotesque);
+    font-feature-settings: var(--font-alt);
+    letter-spacing: -0.04em;
+  }
+
+  .bookCover {
+    padding-bottom: 1rem;
+  }
+
+  .bookAuthor {
+    padding-top: 0.3rem;
+    font-size: var(--pt-small-pica);
+    opacity: 0.6;
+  }
+</style>
+
+<script>
+  const slider = document.getElementById('bookCarousel');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // Moltiplicatore per la velocità di scroll
+    slider.scrollLeft = scrollLeft - walk;
+  });
+</script>
