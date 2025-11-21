@@ -51,17 +51,25 @@ dd {
 }
 
 ul {
-    padding-left: 24px;
     list-style: disc;
+    
 }
 
 li {
     padding-bottom: 0.3rem;
 }
 
+a:link {
+    padding-left: 8px;
+}
+
 
 html:focus-within {
     scroll-behavior: smooth;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 html {
