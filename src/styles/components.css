@@ -61,11 +61,11 @@ a:visited {
     text-decoration: none;
 }
 
-a:hover {
+/* a:hover {
     color: #9bbc0f;
     background-color: transparent;
     text-decoration: underline;
-}
+} */
 
 a:active {
     color: #ffffff;
