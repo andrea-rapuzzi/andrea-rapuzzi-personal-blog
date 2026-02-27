@@ -1,22 +1,25 @@
-/* RESETS */
+/* ------------------------------------------------------------
+   global.css · lightweight reset + base variables
+   keep selectors minimal for speedy parsing on mobile
+   ------------------------------------------------------------ */
 
-/* Box sizing rules */
-*,
-*::before,
-*::after {
+/* box-sizing + margin reset for all elements */
+*, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
 }
 
-/* Root values */
-
 :root {
-    --line-length: 60ch;
-    --page-padding-inline: calc((100vw - min(var(--line-length), 0vw)) / 2);
+    /* typography */
+    --line-length: 40ch; /* wider line length for desktop */
+    /* --page-padding-inline: calc((100vw - min(var(--line-length), 0vw)) / 2); */
     --font-serif: 'Merriweather', serif;
     --font-sans: 'Fixel', system-ui, sans-serif;
-    --font-grotesque: 'Fixel', 'FixelSemi', system-ui, sans-serif;
+    --font-grotesque: 'Fixel','FixelSemi',system-ui,sans-serif;
     --font-alt: "ss01";
     --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+
+    /* scale (em-based) */
     --pt-double-canon: 4.666em;
     --pt-canon: 3.999em;
     --pt-double-great-primer: 2.999em;
@@ -27,84 +30,78 @@
     --pt-small-pica: 0.916em;
     --pt-long-primer: 0.833em;
     --pt-bourgeois: 0.75em;
+
+    /* colours */
     --neutral-500: #1a1a1a;
     --neutral-300: #BBBBBB;
     --neutral-100: #FFFFFA;
+
     font-family: var(--font-sans);
     font-size: clamp(100%, 90% + 0.5vw, 150%);
     line-height: 1.475;
-}
-
-/* Remove default margin */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-    margin: 0;
+    background-color: var(--neutral-500);
     color: var(--neutral-100);
 }
 
-ul {
-    list-style: disc;
-    
-}
-
-li {
-    padding-bottom: 0.3rem;
-}
-
-a:link {
-    padding-left: 8px;
-}
-
-
-html:focus-within {
-    scroll-behavior: smooth;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 0;
-}
-
 html {
-    background-color: var(--neutral-500);
+    background: var(--neutral-500);
+    scroll-behavior: smooth;
 }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-    text-decoration-skip-ink: auto;
+body {
+    /* full-height flex container that centers its children horizontally */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* breathing room from viewport edges */
+    padding-inline: var(1rem);
+
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    font-size: var(--pt-small-pica);
+    min-width: 320px;
 }
 
-/* Make images easier to work with */
-img,
-picture {
-    max-width: 100%;
-    display: block;
+
+
+/* mobile typography tweak */
+@media (max-width: 450px) {
+    body { font-size: var(--pt-english); }
 }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-    font: inherit;
+/* main width constraints; body remains full-width with padding */
+main {
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: var(--line-length, 40ch);
+    width: 100%;
+    /* keep content legible on very small screens */
+    min-width: 280px;
 }
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+/* enforce a comfortable minimum for content on medium+ screens */
+@media (min-width: 800px) {
+    main { min-width: 800px; }
+}
+
+/* remove old body width restrictions */
+
+
+ul { list-style: disc; padding-left: 0; }
+li { padding-bottom: 0.3rem; }
+a { padding-left: 8px; }
+a:not([class]) { text-decoration-skip-ink: auto; }
+
+/* media and form defaults */
+img,picture { max-width:100%; display:block; }
+input,button,textarea,select { font:inherit; }
+
+/* reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
-    html:focus-within {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -112,32 +109,4 @@ select {
     }
 }
 
-/* Set core body defaults */
-body {
-    min-height: 100vh;
-    max-width: 96%;
-    text-rendering: optimizeSpeed;
-    line-height: 1.5;
-    background-color: var(--neutral-500);
-    font-size: var(--pt-small-pica);
-    margin: auto;
-}
-
-main {
-    display: grid;
-    gap: 2rem;
-    margin: 0 1rem;
-}
-
-@media (max-width: 450px) {
-    body {
-            font-size: var(--pt-english);
-        }
-}
-    @media (min-width: 740px) {
-        body {
-            max-width: 720px;
-            margin: auto !important;
-        }
-    }
 

@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../layouts/IndexLayout.astro";
 import Post from "../components/Post.astro";
-import BookCarousel from "../components/BookCarousel.astro";
 
-type Post = {
+// tipo condivisibile, eventualmente spostabile in un file `types.ts`
+type BlogPost = {
   frontmatter: {
     title: string;
     pubDate: string;
@@ -14,59 +14,59 @@ type Post = {
 };
 
 const postImports = import.meta.glob("../pages/posts/*.md", { eager: true });
-const allPosts = Object.values(postImports) as Post[];
+const allPosts = Object.values(postImports) as BlogPost[];
 
-// Verifica che le date siano correttamente formattate prima di ordinare
+// ordinamento discendente, una sola conversione della data
 allPosts.sort((a, b) => {
-  const dateA = new Date(a.frontmatter.pubDate).getTime();
-  const dateB = new Date(b.frontmatter.pubDate).getTime();
-  return dateB - dateA;
+  return (
+    new Date(b.frontmatter.pubDate).valueOf() -
+    new Date(a.frontmatter.pubDate).valueOf()
+  );
 });
 
 const pageTitle = "Andrea Rapuzzi";
-const subTitle = "CX Lead @Nestlé";
+const subTitle = "CX Lead @Nestlé Waters";
 ---
 
 <BaseLayout pageTitle={pageTitle} subTitle={subTitle}>
   <div class="intro">
     <p>
-      Ciao! io sono Andrea è questo è il mio piccolo angolo di &#10024<strong
-        >internet</strong
-      >&#10024. Digital marketer per passione, programmatore della domenica,
-      pessimo copywriter. Dal lunedì al venerdì mi occupo di CX e dati in
-      Nestlé, mentre nel weekend perdo tempo tra film, progetti sgangherati, e
-      qualche buon vinile.
-    </p><br />
+      Ciao! io sono Andrea e questo è il mio piccolo angolo di
+      <strong>internet</strong>. Digital marketer per passione, programmatore
+      della domenica, pessimo copywriter. Dal lunedì al venerdì mi occupo di
+      CX e dati in Nestlé, mentre nel weekend perdo tempo tra film, progetti
+      sgangherati, e qualche buon vinile.
+    </p>
     <p class="motto">Nihil difficile volenti</p>
   </div>
-  <div>
-    <a href="https://www.linkedin.com/in/andrea-rapuzzi/" target="_blank"
+
+  <p>
+    <a
+      href="https://www.linkedin.com/in/andrea-rapuzzi/"
+      target="_blank"
+      rel="noopener"
       >→ Qui il mio curriculum vitae</a
     >
-  </div>
+  </p>
+
   <section class="hp-section">
     <div class="line"></div>
     <h3>Blog</h3>
-    <br />
+
     <ul role="list">
-      {
-        allPosts.map((post) => (
-          <Post
-            url={post.url}
-            title={post.frontmatter.title}
-            pubDate={post.frontmatter.pubDate}
-          />
-        ))
-      }
+      {allPosts.map((post) => (
+        <Post
+          url={post.url}
+          title={post.frontmatter.title}
+          pubDate={post.frontmatter.pubDate}
+        />
+      ))}
     </ul>
-    <br />
-    <div><a href="/blog">→ Tutte le note</a></div>
+
+    <p><a href="/blog">→ Tutte le note</a></p>
   </section>
-  <!-- <section class="library hp-section">
-    <div class="line"></div>
-    <h3>Ultime letture</h3>
-    <BookCarousel />
-  </section> -->
+
+  <!-- library section removed/disabled until serva realmente -->
 </BaseLayout>
 
 <style>
@@ -76,52 +76,8 @@ const subTitle = "CX Lead @Nestlé";
     font-weight: 100;
   }
 
-  .library {
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* .bookCarousel {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin-top: 1rem;
-    padding-bottom: 1rem;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: fit-content;
-  }
-
-  .book {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-width: 240px;
-    max-width: 260px;
-  }
-
-  .book > * {
-    font-size: var(--pt-small-pica);
-    font-family: var(--font-grotesque);
-    font-feature-settings: var(--font-alt);
-    letter-spacing: -0.04em;
-  }
-
-  .bookCover {
-    padding-bottom: 1rem;
-  }
-
-  .bookAuthor {
-    padding-top: 0.3rem;
-    font-size: var(--pt-small-pica);
-    opacity: 0.6;
-  } */
-
   ul {
-    padding-left: 0px;
+    padding-left: 0;
     list-style: disc;
   }
 </style>

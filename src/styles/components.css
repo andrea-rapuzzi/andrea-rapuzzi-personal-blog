@@ -1,84 +1,49 @@
-/* components.css */
+/* components.css – compact helpers */
 
-/* Component-specific styles go here */
+/* book carousel scrolling helpers */
+.book,
+.bookCarousel {
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-/* Book Carousel */
 .book {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-width: 240px;
-    max-width: 260px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 240px;
+  max-width: 260px;
 }
 
-.book>* {
-    font-size: var(--pt-small-pica);
-    font-family: var(--font-grotesque);
-    font-feature-settings: var(--font-alt);
-    letter-spacing: -0.04em;
+.book > * {
+  font-size: var(--pt-small-pica);
+  font-family: var(--font-grotesque);
+  font-feature-settings: var(--font-alt);
+  letter-spacing: -0.04em;
 }
 
-.bookCover {
-    padding-bottom: 1rem;
-}
+.bookCover { padding-bottom: 1rem; }
 
 .bookAuthor {
-    padding-top: 0.3rem;
-    font-size: var(--pt-small-pica);
-    opacity: 0.6;
-}
-
-.library {
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  padding-top: 0.3rem;
+  font-size: var(--pt-small-pica);
+  opacity: 0.6;
 }
 
 .bookCarousel {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin-top: 1rem;
-    padding-bottom: 1rem;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: fit-content;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  height: fit-content;
 }
 
-
-/* Hyperlink UI */
-a:link {
-    color: #E47511;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-a:visited {
-    color: #dc873d;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-/* a:hover {
-    color: #9bbc0f;
-    background-color: transparent;
-    text-decoration: underline;
-} */
-
-a:active {
-    color: #ffffff;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.line {
-    height: 1px;
-    background-color: var(--neutral-300);
-}
 
 .subheading {
-    opacity: 0.6;
-    font-size: var(--pt-pica);
+  opacity: 0.6;
+  font-size: var(--pt-pica);
 }
+
+/* anchors and line styles live in layout.css */

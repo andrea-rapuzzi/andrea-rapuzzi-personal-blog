@@ -1,47 +1,29 @@
-/* layout.css */
+/* layout.css – minimal helpers */
 
 .line {
     height: 1px;
-    background-color: var(--neutral-300);
+    background: var(--neutral-300);
 }
 
-/* Hyperlink UI */
-a:link {
-    color: #E47511;
-    background-color: transparent;
+/* link colour variables for easy theming */
+:root {
+    --link: #E47511;
+    --link-visited: #dc873d;
+    --link-hover: #9bbc0f;
+    --link-active: #ffffff;
+}
+
+a {
+    color: var(--link);
     text-decoration: none;
 }
+a:visited { color: var(--link-visited); }
+a:hover,
 
-a:visited {
-    color: #dc873d;
-    background-color: transparent;
-    text-decoration: none;
-}
+a:focus { color: var(--link-hover); text-decoration: underline; }
+a:active { color: var(--link-active); }
 
-a:hover {
-    color: #9bbc0f;
-    background-color: transparent;
-    text-decoration: underline;
-}
+.contains-task-list { list-style: none; }
 
-a:active {
-    color: #ffffff;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.contains-task-list {
-    list-style: none;
-}
-
-@media (max-width: 450px) {
-    body {
-        font-size: var(--pt-english);
-    }
-}
-
-@media (min-width: 740px) {
-    body {
-        max-width: 720px;
-    }
-}
+/* media queries are defined in global.css; only include layout-specific
+   overrides here if necessary */
