@@ -1,0 +1,240 @@
+---
+const { frontmatter } = Astro.props;
+
+const date = new Date(frontmatter.pubDate);
+const formattedDate = date.toLocaleDateString('it-IT', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{frontmatter.title} — Andrea Rapuzzi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="post-header">
+      <nav class="post-nav">
+        <a href="/" class="post-nav__back">← Andrea Rapuzzi</a>
+      </nav>
+      <div class="post-meta">
+        {frontmatter.tags?.map((tag: string) => (
+          <span class="post-meta__tag">{tag}</span>
+        ))}
+        <time class="post-meta__date">{formattedDate}</time>
+      </div>
+      <h1 class="post-title">{frontmatter.title}</h1>
+      {frontmatter.description && (
+        <p class="post-description">{frontmatter.description}</p>
+      )}
+    </header>
+
+    <article class="post-body">
+      <slot />
+    </article>
+
+    <footer class="post-footer">
+      <a href="/" class="post-footer__back">← Torna alla home</a>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --color-bg: #f8f6f1;
+    --color-surface: #ffffff;
+    --color-ink: #1a1a18;
+    --color-muted: #6b6b65;
+    --color-accent: #c8502a;
+    --color-border: #e2dfd8;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+</style>
+
+<style>
+  .post-header {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .post-nav {
+    margin-bottom: 2.5rem;
+  }
+
+  .post-nav__back {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.2s;
+  }
+
+  .post-nav__back:hover {
+    color: var(--color-ink);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .post-meta__tag {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 99px;
+    background: #f0ece4;
+    color: #7a5c3a;
+    border: 1px solid #e0d8cc;
+  }
+
+  .post-meta__date {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-left: 0.25rem;
+  }
+
+  .post-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .post-description {
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .post-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-ink);
+  }
+
+  .post-body :global(h2) {
+    font-family: var(--font-serif);
+    font-size: 1.625rem;
+    font-weight: 700;
+    margin: 2.5rem 0 1rem;
+    line-height: 1.25;
+  }
+
+  .post-body :global(h3) {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .post-body :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .post-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-body :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-body :global(blockquote) {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .post-body :global(code) {
+    font-size: 0.875em;
+    background: #f0ece4;
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+  }
+
+  .post-body :global(pre) {
+    background: var(--color-ink);
+    color: #f8f6f1;
+    padding: 1.5rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-body :global(pre code) {
+    background: none;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+
+  .post-footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 2rem 5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .post-footer__back {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.2s;
+  }
+
+  .post-footer__back:hover {
+    color: var(--color-ink);
+  }
+</style>

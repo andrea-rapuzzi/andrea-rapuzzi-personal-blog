@@ -1,0 +1,268 @@
+---
+const books = [
+  {
+    title: "Invisible Cities",
+    author: "Italo Calvino",
+    year: "1972",
+    note: "Ogni città è un frammento del possibile. Ogni viaggio è un ritorno.",
+    spine: "#c47a3a",
+    cover: "linear-gradient(160deg, #e8a86c 0%, #c47a3a 100%)",
+  },
+  {
+    title: "The Design of Everyday Things",
+    author: "Don Norman",
+    year: "1988",
+    note: "Il libro che ha cambiato come guardo ogni oggetto che tocco.",
+    spine: "#2d5f7a",
+    cover: "linear-gradient(160deg, #5a9fba 0%, #2d5f7a 100%)",
+  },
+  {
+    title: "A Pattern Language",
+    author: "Christopher Alexander",
+    year: "1977",
+    note: "253 pattern per costruire luoghi in cui la vita fiorisce.",
+    spine: "#5a6e3a",
+    cover: "linear-gradient(160deg, #8aaa5c 0%, #5a6e3a 100%)",
+  },
+  {
+    title: "Thinking, Fast and Slow",
+    author: "Daniel Kahneman",
+    year: "2011",
+    note: "I bias che guidano ogni scelta. Imprescindibile per chi fa ricerca.",
+    spine: "#7a3a5a",
+    cover: "linear-gradient(160deg, #ba6090 0%, #7a3a5a 100%)",
+  },
+  {
+    title: "The Staff Engineer's Path",
+    author: "Tanya Reilly",
+    year: "2022",
+    note: "Non solo per ingegneri: sulla leadership tecnica e l'impatto sistemico.",
+    spine: "#4a4a5a",
+    cover: "linear-gradient(160deg, #8a8aaa 0%, #4a4a5a 100%)",
+  },
+  {
+    title: "Oblique Strategies",
+    author: "Brian Eno",
+    year: "1975",
+    note: "Cento carte per sbloccare la creatività. Funzionano ancora.",
+    spine: "#7a5a2a",
+    cover: "linear-gradient(160deg, #ba9a5a 0%, #7a5a2a 100%)",
+  },
+  {
+    title: "Ways of Seeing",
+    author: "John Berger",
+    year: "1972",
+    note: "Come guardiamo determina cosa vediamo. Tutto il design parte da qui.",
+    spine: "#3a3a3a",
+    cover: "linear-gradient(160deg, #7a7a7a 0%, #3a3a3a 100%)",
+  },
+];
+---
+
+<section class="books">
+  <div class="books__header">
+    <h2 class="books__heading">Letture</h2>
+    <a href="/letture" class="books__all">Tutti i libri →</a>
+  </div>
+
+  <div class="books__track-wrap" role="region" aria-label="Libri letti di recente">
+    <div class="books__track">
+      {books.map((book) => (
+        <div class="book-card">
+          <div class="book-card__cover" style={`background: ${book.cover};`}>
+            <div class="book-card__spine" style={`background: ${book.spine};`}></div>
+            <div class="book-card__cover-inner">
+              <p class="book-card__cover-title">{book.title}</p>
+              <p class="book-card__cover-author">{book.author}</p>
+            </div>
+          </div>
+          <div class="book-card__info">
+            <h3 class="book-card__title">{book.title}</h3>
+            <p class="book-card__author">{book.author} · {book.year}</p>
+            <p class="book-card__note">"{book.note}"</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .books {
+    padding: 0 0 var(--section-gap);
+    overflow: hidden;
+  }
+
+  .books__header {
+    padding: 3rem 2rem 2.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .books__heading {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .books__all {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    transition: opacity 0.2s;
+  }
+
+  .books__all:hover {
+    opacity: 0.7;
+  }
+
+  .books__track-wrap {
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .books__track-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .books__track-wrap:active {
+    cursor: grabbing;
+  }
+
+  .books__track {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 2rem 2rem max(2rem, calc((100vw - var(--max-width)) / 2));
+    width: max-content;
+    align-items: flex-start;
+  }
+
+  .book-card {
+    flex-shrink: 0;
+    width: 168px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .book-card__cover {
+    width: 168px;
+    height: 224px;
+    border-radius: 2px 6px 6px 2px;
+    position: relative;
+    box-shadow:
+      -4px 0 8px rgba(0,0,0,0.25),
+      4px 4px 16px rgba(0,0,0,0.18),
+      inset 2px 0 4px rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+
+  .book-card:hover .book-card__cover {
+    transform: translateY(-5px) rotate(-1deg);
+    box-shadow:
+      -4px 0 10px rgba(0,0,0,0.3),
+      8px 10px 24px rgba(0,0,0,0.22),
+      inset 2px 0 4px rgba(255,255,255,0.1);
+  }
+
+  .book-card__spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 18px;
+    border-radius: 2px 0 0 2px;
+    opacity: 0.85;
+  }
+
+  .book-card__cover-inner {
+    padding: 1rem 1rem 1rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+  }
+
+  .book-card__cover-title {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.3;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  .book-card__cover-author {
+    font-size: 0.6875rem;
+    color: rgba(255,255,255,0.75);
+    margin-top: 0.25rem;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+
+  .book-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .book-card__title {
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-ink);
+  }
+
+  .book-card__author {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  .book-card__note {
+    font-size: 0.75rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+    font-style: italic;
+    margin-top: 0.25rem;
+  }
+</style>
+
+<script>
+  // Drag-to-scroll on books carousel
+  const track = document.querySelector('.books__track-wrap') as HTMLElement | null;
+  if (track) {
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>
