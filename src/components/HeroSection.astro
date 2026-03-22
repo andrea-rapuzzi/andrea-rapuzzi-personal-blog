@@ -3,9 +3,6 @@
 
 <section class="hero">
   <div class="hero__inner">
-    <div class="hero__meta">
-      <span class="hero__label">Portfolio</span>
-    </div>
     <h1 class="hero__name">Andrea Rapuzzi</h1>
     <p class="hero__title">CX Lead @Nestlé Waters</p>
     <p class="hero__bio">
@@ -14,7 +11,6 @@
     </p>
     <div class="hero__links">
       <a href="/about" class="hero__link hero__link--primary">Chi sono</a>
-      <a href="/work" class="hero__link">Lavori →</a>
     </div>
   </div>
   <div class="hero__deco" aria-hidden="true">
@@ -52,22 +48,23 @@
   }
 
   .hero__name {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 6.5rem);
-    font-weight: 700;
+    font-weight: 400;
     line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--color-ink);
+    letter-spacing: 0.04em;
+    color: var(--color-heading);
   }
 
   .hero__title {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 400;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--color-accent);
     margin-top: 0.25rem;
-    letter-spacing: 0.04em;
   }
 
   .hero__bio {

@@ -62,7 +62,6 @@ const books = [
 <section class="books">
   <div class="books__header">
     <h2 class="books__heading">Letture</h2>
-    <a href="/letture" class="books__all">Tutti i libri →</a>
   </div>
 
   <div class="books__track-wrap" role="region" aria-label="Libri letti di recente">
@@ -104,9 +103,10 @@ const books = [
   }
 
   .books__heading {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
+    letter-spacing: 0.03em;
   }
 
   .books__all {

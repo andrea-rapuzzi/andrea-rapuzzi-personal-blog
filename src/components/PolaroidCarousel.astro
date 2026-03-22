@@ -1,6 +1,34 @@
 ---
-// Placeholder photos with gradient colors, varied sizes and rotations
-const photos = [
+import { Image } from 'astro:assets';
+
+// Per aggiungere foto reali:
+// 1. Metti il file in src/assets/photos/nome-foto.jpg
+// 2. Importalo: import milaFoto from '../assets/photos/nome-foto.jpg';
+// 3. Aggiungilo all'array con { src: miaFoto, alt: '...', caption: '...', rotate: 0 }
+//
+// I campi width/height sono usati solo per i placeholder a gradiente.
+// Con foto reali le dimensioni vengono lette automaticamente da Astro.
+
+type PhotoReal = {
+  src: ImageMetadata;
+  alt: string;
+  caption: string;
+  rotate: number;
+};
+
+type PhotoPlaceholder = {
+  src?: undefined;
+  alt: string;
+  caption: string;
+  rotate: number;
+  bg: string;
+  width: number;
+  height: number;
+};
+
+type Photo = PhotoReal | PhotoPlaceholder;
+
+const photos: Photo[] = [
   {
     alt: "Milano, Duomo al tramonto",
     caption: "Milano '25",
@@ -71,9 +99,14 @@ const photos = [
       {photos.map((photo) => (
         <div
           class="polaroid"
-          style={`--rotate: ${photo.rotate}deg; --w: ${photo.width}px; --h: ${photo.height}px;`}
+          style={photo.src
+            ? `--rotate: ${photo.rotate}deg;`
+            : `--rotate: ${photo.rotate}deg; --w: ${photo.width}px; --h: ${photo.height}px;`}
         >
-          <div class="polaroid__photo" style={`background: ${photo.bg};`} aria-label={photo.alt}></div>
+          {photo.src
+            ? <Image src={photo.src} alt={photo.alt} class="polaroid__photo polaroid__photo--real" />
+            : <div class="polaroid__photo" style={`background: ${photo.bg};`} aria-label={photo.alt}></div>
+          }
           <p class="polaroid__caption">{photo.caption}</p>
         </div>
       ))}
@@ -99,9 +132,10 @@ const photos = [
   }
 
   .polaroids__heading {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 400;
+    letter-spacing: 0.03em;
   }
 
   .polaroids__sub {
@@ -157,6 +191,11 @@ const photos = [
     width: 100%;
     height: var(--h);
     display: block;
+  }
+
+  .polaroid__photo--real {
+    height: auto;
+    object-fit: cover;
   }
 
   .polaroid__caption {
