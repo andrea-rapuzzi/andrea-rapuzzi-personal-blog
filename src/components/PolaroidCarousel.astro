@@ -1,0 +1,238 @@
+---
+import { Image } from 'astro:assets';
+
+// Per aggiungere foto reali:
+// 1. Metti il file in src/assets/photos/nome-foto.jpg
+// 2. Importalo: import milaFoto from '../assets/photos/nome-foto.jpg';
+// 3. Aggiungilo all'array con { src: miaFoto, alt: '...', caption: '...', rotate: 0 }
+//
+// I campi width/height sono usati solo per i placeholder a gradiente.
+// Con foto reali le dimensioni vengono lette automaticamente da Astro.
+
+type PhotoReal = {
+  src: ImageMetadata;
+  alt: string;
+  caption: string;
+  rotate: number;
+};
+
+type PhotoPlaceholder = {
+  src?: undefined;
+  alt: string;
+  caption: string;
+  rotate: number;
+  bg: string;
+  width: number;
+  height: number;
+};
+
+type Photo = PhotoReal | PhotoPlaceholder;
+
+const photos: Photo[] = [
+  {
+    alt: "Milano, Duomo al tramonto",
+    caption: "Milano '25",
+    bg: "linear-gradient(135deg, #d4a96a 0%, #a07040 100%)",
+    width: 200,
+    height: 220,
+    rotate: -2.5,
+  },
+  {
+    alt: "Workshop di co-design",
+    caption: "Workshop co-design",
+    bg: "linear-gradient(135deg, #7ba7bc 0%, #4a7a96 100%)",
+    width: 180,
+    height: 240,
+    rotate: 1.8,
+  },
+  {
+    alt: "Appunti e sketchbook",
+    caption: "Sketchbook vol.3",
+    bg: "linear-gradient(135deg, #c5a88a 0%, #8a6545 100%)",
+    width: 220,
+    height: 200,
+    rotate: -1.2,
+  },
+  {
+    alt: "Lisbon, Alfama",
+    caption: "Lisbona nov.",
+    bg: "linear-gradient(135deg, #e8a87c 0%, #c07050 100%)",
+    width: 190,
+    height: 230,
+    rotate: 3.0,
+  },
+  {
+    alt: "Talk a conference",
+    caption: "On stage",
+    bg: "linear-gradient(135deg, #9b9ea4 0%, #6b6e74 100%)",
+    width: 210,
+    height: 210,
+    rotate: -0.8,
+  },
+  {
+    alt: "Caffè e lettura mattutina",
+    caption: "Morning ritual",
+    bg: "linear-gradient(135deg, #c49a6c 0%, #8a6a3c 100%)",
+    width: 175,
+    height: 245,
+    rotate: 2.2,
+  },
+  {
+    alt: "Natura, montagna",
+    caption: "Dolomiti '25",
+    bg: "linear-gradient(135deg, #82a882 0%, #527a52 100%)",
+    width: 230,
+    height: 195,
+    rotate: -1.7,
+  },
+];
+---
+
+<section class="polaroids">
+  <div class="polaroids__header">
+    <h2 class="polaroids__heading">Momenti</h2>
+    <p class="polaroids__sub">Una raccolta non curata</p>
+  </div>
+
+  <div class="polaroids__track-wrap" role="region" aria-label="Galleria fotografica polaroid">
+    <div class="polaroids__track">
+      {photos.map((photo) => (
+        <div
+          class="polaroid"
+          style={photo.src
+            ? `--rotate: ${photo.rotate}deg;`
+            : `--rotate: ${photo.rotate}deg; --w: ${photo.width}px; --h: ${photo.height}px;`}
+        >
+          {photo.src
+            ? <Image src={photo.src} alt={photo.alt} class="polaroid__photo polaroid__photo--real" />
+            : <div class="polaroid__photo" style={`background: ${photo.bg};`} aria-label={photo.alt}></div>
+          }
+          <p class="polaroid__caption">{photo.caption}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .polaroids {
+    padding: 0 0 var(--section-gap);
+    overflow: hidden;
+  }
+
+  .polaroids__header {
+    padding: 0 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto 2.5rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .polaroids__heading {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .polaroids__sub {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    font-style: italic;
+  }
+
+  .polaroids__track-wrap {
+    overflow-x: auto;
+    overflow-y: visible;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2rem;
+  }
+
+  .polaroids__track-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .polaroids__track-wrap:active {
+    cursor: grabbing;
+  }
+
+  .polaroids__track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 2rem 1rem max(2rem, calc((100vw - var(--max-width)) / 2));
+    width: max-content;
+  }
+
+  .polaroid {
+    flex-shrink: 0;
+    width: var(--w);
+    background: #ffffff;
+    padding: 10px 10px 40px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.06);
+    transform: rotate(var(--rotate));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+  }
+
+  .polaroid:hover {
+    transform: rotate(0deg) scale(1.04);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 10;
+    position: relative;
+  }
+
+  .polaroid__photo {
+    width: 100%;
+    height: var(--h);
+    display: block;
+  }
+
+  .polaroid__photo--real {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .polaroid__caption {
+    margin-top: 8px;
+    font-family: 'Caveat', 'Comic Sans MS', cursive, sans-serif;
+    font-size: 0.875rem;
+    color: #444;
+    text-align: center;
+    line-height: 1;
+    padding: 0 4px;
+  }
+</style>
+
+<script>
+  // Drag-to-scroll on polaroid carousel
+  const track = document.querySelector('.polaroids__track-wrap') as HTMLElement | null;
+  if (track) {
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>
