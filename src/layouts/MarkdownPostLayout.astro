@@ -1,4 +1,6 @@
 ---
+import { tagColor } from '../utils/tagColors';
+
 const { frontmatter } = Astro.props;
 
 const date = new Date(frontmatter.pubDate);
@@ -18,36 +20,53 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     <title>{frontmatter.title} — Andrea Rapuzzi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Pirata+One&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <header class="post-header">
-      <nav class="post-nav">
-        <a href="/" class="post-nav__back">← Andrea Rapuzzi</a>
-      </nav>
-      <div class="post-meta">
-        {frontmatter.tags?.map((tag: string) => (
-          <span class="post-meta__tag">{tag}</span>
-        ))}
-        <time class="post-meta__date">{formattedDate}</time>
-      </div>
-      <h1 class="post-title">{frontmatter.title}</h1>
-      {frontmatter.description && (
-        <p class="post-description">{frontmatter.description}</p>
-      )}
-    </header>
+    <div class="post-page">
+      <header class="post-header">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb__list">
+            <li class="breadcrumb__item"><a href="/" class="breadcrumb__link">Home</a></li>
+            <li class="breadcrumb__item"><a href="/blog" class="breadcrumb__link">Scrittura</a></li>
+            <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">{frontmatter.title}</li>
+          </ol>
+        </nav>
 
-    <article class="post-body">
-      <slot />
-    </article>
+        <h1 class="post-title">{frontmatter.title}</h1>
+        {frontmatter.description && (
+          <p class="post-description">{frontmatter.description}</p>
+        )}
 
-    <footer class="post-footer">
-      <a href="/" class="post-footer__back">← Torna alla home</a>
-    </footer>
+        <div class="post-meta">
+          {frontmatter.tags?.map((tag: string) => {
+            const { bg, text } = tagColor(tag);
+            return <span class="post-meta__tag" style={`background:${bg};color:${text}`}>{tag}</span>;
+          })}
+          <time class="post-meta__date">{formattedDate}</time>
+        </div>
+      </header>
+
+      <article class="post-body">
+        <slot />
+      </article>
+
+      <footer class="post-footer">
+        <a href="/blog" class="post-footer__back">← Tutti gli articoli</a>
+      </footer>
+    </div>
   </body>
 </html>
 
 <style is:global>
+  @font-face {
+    font-family: 'Bajern';
+    src: url('/Bajern.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -61,8 +80,8 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     --color-heading: #30323E;
     --color-muted: #6b6b65;
     --color-accent: #74A89E;
-    --color-border: #e2dfd8;
-    --font-display: 'Pirata One', Georgia, serif;
+    --color-border: #d8e0e4;
+    --font-display: 'Bajern', Georgia, serif;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
   }
@@ -75,43 +94,87 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     -webkit-font-smoothing: antialiased;
   }
 
-  body {
-    min-height: 100vh;
-  }
-
+  body { min-height: 100vh; }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
+
+  .breadcrumb__list { list-style: none; }
 </style>
 
 <style>
-  .post-header {
-    max-width: 720px;
+  /* ── Outer container — allineato al hero ── */
+  .post-page {
+    max-width: var(--max-width, 1200px);
     margin: 0 auto;
-    padding: 4rem 2rem 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* ── Text column — larghezza leggibile, left-aligned ── */
+  .post-header,
+  .post-body,
+  .post-footer {
+    max-width: 68ch;
+  }
+
+  /* ── Breadcrumb ── */
+  .post-header {
+    padding-top: 3.5rem;
+    padding-bottom: 5rem;
     border-bottom: 1px solid var(--color-border);
   }
 
-  .post-nav {
+  .breadcrumb {
     margin-bottom: 2.5rem;
   }
 
-  .post-nav__back {
-    font-size: 0.875rem;
-    font-weight: 500;
+  .breadcrumb__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb__item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  .breadcrumb__item + .breadcrumb__item::before {
+    content: '/';
+    color: var(--color-border);
+  }
+
+  .breadcrumb__link {
     color: var(--color-muted);
     transition: color 0.2s;
   }
 
-  .post-nav__back:hover {
+  .breadcrumb__link:hover {
     color: var(--color-ink);
   }
 
+  .breadcrumb__item--current {
+    color: var(--color-ink);
+    font-weight: 500;
+    /* truncate if too long */
+    max-width: 40ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ── Post meta ── */
   .post-meta {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
-    margin-bottom: 1.25rem;
+    margin-top: 2rem;
   }
 
   .post-meta__tag {
@@ -119,11 +182,8 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: lowercase;
-    padding: 0.2rem 0.55rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 99px;
-    background: #f0ece4;
-    color: #7a5c3a;
-    border: 1px solid #e0d8cc;
   }
 
   .post-meta__date {
@@ -132,53 +192,58 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     margin-left: 0.25rem;
   }
 
+  /* ── Post title ── */
   .post-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-size: clamp(3rem, 8vw, 6.5rem);
     font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: 0.04em;
+    line-height: 1.5;
+    letter-spacing: 0em;
     color: var(--color-heading);
-    margin-bottom: 1rem;
+    margin-top: 7rem;
+    margin-bottom: 0.25rem;
   }
 
   .post-description {
-    font-size: 1.125rem;
-    line-height: 1.65;
+    max-width: 52ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
     color: var(--color-muted);
-    font-style: italic;
+    margin-top: 0.5rem;
   }
 
+  /* ── Post body ── */
   .post-body {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-    font-size: 1.0625rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-size: 1.125rem;
     line-height: 1.8;
     color: var(--color-ink);
   }
 
   .post-body :global(h2) {
-    font-family: var(--font-display);
-    font-size: 1.625rem;
-    font-weight: 400;
-    letter-spacing: 0.03em;
+    font-family: var(--font-sans);
+    font-size: 1.375rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
     color: var(--color-heading);
-    margin: 2.5rem 0 1rem;
-    line-height: 1.25;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
   }
 
   .post-body :global(h3) {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 400;
-    letter-spacing: 0.03em;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
     color: var(--color-heading);
-    margin: 2rem 0 0.75rem;
+    margin-top: 2.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
   }
 
   .post-body :global(p) {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.625rem;
   }
 
   .post-body :global(a) {
@@ -190,19 +255,27 @@ const formattedDate = date.toLocaleDateString('it-IT', {
   .post-body :global(ul),
   .post-body :global(ol) {
     padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.625rem;
   }
 
   .post-body :global(li) {
     margin-bottom: 0.5rem;
+    line-height: 1.75;
   }
 
   .post-body :global(blockquote) {
     border-left: 3px solid var(--color-accent);
-    padding-left: 1.25rem;
-    margin: 2rem 0;
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    margin: 2.5rem 0;
     color: var(--color-muted);
     font-style: italic;
+    font-size: 1.125rem;
+  }
+
+  .post-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 3rem 0;
   }
 
   .post-body :global(code) {
@@ -218,19 +291,25 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     padding: 1.5rem;
     border-radius: 6px;
     overflow-x: auto;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.625rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
   }
 
   .post-body :global(pre code) {
     background: none;
     padding: 0;
-    font-size: 0.875rem;
   }
 
+  .post-body :global(img) {
+    border-radius: 6px;
+    margin: 2rem 0;
+  }
+
+  /* ── Footer ── */
   .post-footer {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 2rem 2rem 5rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
     border-top: 1px solid var(--color-border);
   }
 
@@ -243,5 +322,18 @@ const formattedDate = date.toLocaleDateString('it-IT', {
 
   .post-footer__back:hover {
     color: var(--color-ink);
+  }
+
+  @media (max-width: 640px) {
+    .post-header,
+    .post-body,
+    .post-footer {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .breadcrumb__item--current {
+      max-width: 24ch;
+    }
   }
 </style>
