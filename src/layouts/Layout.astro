@@ -16,6 +16,12 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Pirata+One&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+    <link rel="preload" href="/Bajern.otf" as="font" type="font/otf" crossorigin="anonymous" />
+    <script is:inline>
+      document.fonts.load('1em Bajern').then(function() {
+        document.documentElement.classList.add('fonts-ready');
+      });
+    </script>
   </head>
   <body>
     <slot />
@@ -28,7 +34,7 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
     src: url('/Bajern.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
   }
 
   *, *::before, *::after {
@@ -45,7 +51,7 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
     --color-muted: #6b6b65;
     --color-accent: #74A89E;
     --color-border: #d8e0e4;
-    --font-display: 'Bajern', Georgia, serif;
+    --font-display: Georgia, serif;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
     --max-width: 1200px;
@@ -72,6 +78,10 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
 
   h1, h2, h3, h4, h5, h6 {
     color: var(--color-heading);
+  }
+
+  html.fonts-ready {
+    --font-display: 'Bajern', Georgia, serif;
   }
 
   h2 {
