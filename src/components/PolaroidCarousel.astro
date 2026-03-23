@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-import imgSpeaker from '../assets/photos/Polaroid/Speaker_al_CX_Circle.webp';
-import imgMarried from '../assets/photos/Polaroid/Just_Married.jpg';
-import imgOlimpiadi from '../assets/photos/Polaroid/Olmpiadi_2026.jpeg';
-import imgFriends from '../assets/photos/Polaroid/Goodbye_Friends.jpg';
-import imgAngera from '../assets/photos/Polaroid/Traversata_di_Angera.jpeg';
-import imgGiappone from '../assets/photos/Polaroid/Viaggio_in_giappone.JPG';
+import { Image } from "astro:assets";
+import imgSpeaker from "../assets/photos/Polaroid/Speaker_al_CX_Circle.webp";
+import imgOlimpiadi from "../assets/photos/Polaroid/Olmpiadi_2026.jpeg";
+import imgFriends from "../assets/photos/Polaroid/Goodbye_Friends.jpg";
+import imgAngera from "../assets/photos/Polaroid/Traversata_di_Angera.jpeg";
+import imgMarried from "../assets/photos/Polaroid/Just_Married.jpg";
+import imgGiappone from "../assets/photos/Polaroid/Viaggio_in_giappone.JPG";
 
 type PhotoReal = {
   src: ImageMetadata;
@@ -27,12 +27,42 @@ type PhotoPlaceholder = {
 type Photo = PhotoReal | PhotoPlaceholder;
 
 const photos: Photo[] = [
-  { src: imgSpeaker,   alt: "On stage al CX Circle",         caption: "CX Circle",         rotate: -2.0 },
-  { src: imgMarried,   alt: "Appena sposati",                  caption: "Just Married",       rotate: 1.8  },
-  { src: imgOlimpiadi, alt: "Hockey alle Olimpiadi 2026",      caption: "Olimpiadi '26",      rotate: -1.2 },
-  { src: imgFriends,   alt: "Con gli amici",                   caption: "Goodbye Friends",    rotate: 2.5  },
-  { src: imgAngera,    alt: "Traversata di Angera",            caption: "Angera",             rotate: -0.8 },
-  { src: imgGiappone,  alt: "Viaggio in Giappone",             caption: "Giappone",           rotate: 1.5  },
+  {
+    src: imgOlimpiadi,
+    alt: "Hockey alle Olimpiadi 2026",
+    caption: "Olimpiadi '26",
+    rotate: -1.2,
+  },
+  {
+    src: imgFriends,
+    alt: "Con gli amici",
+    caption: "Goodbye Friends",
+    rotate: 2.5,
+  },
+  {
+    src: imgAngera,
+    alt: "Traversata di Angera",
+    caption: "Angera",
+    rotate: -0.8,
+  },
+  {
+    src: imgSpeaker,
+    alt: "On stage al CX Circle",
+    caption: "CX Circle",
+    rotate: -2.0,
+  },
+  {
+    src: imgGiappone,
+    alt: "Viaggio in Giappone",
+    caption: "Giappone",
+    rotate: 1.5,
+  },
+  {
+    src: imgMarried,
+    alt: "Appena sposati",
+    caption: "Just Married",
+    rotate: 1.8,
+  },
 ];
 ---
 
@@ -42,22 +72,41 @@ const photos: Photo[] = [
     <p class="polaroids__sub">Una raccolta non curata</p>
   </div>
 
-  <div class="polaroids__track-wrap" role="region" aria-label="Galleria fotografica polaroid">
+  <div
+    class="polaroids__track-wrap"
+    role="region"
+    aria-label="Galleria fotografica polaroid"
+  >
     <div class="polaroids__track">
-      {photos.map((photo) => (
-        <div
-          class="polaroid"
-          style={photo.src
-            ? `--rotate: ${photo.rotate}deg;`
-            : `--rotate: ${photo.rotate}deg; --w: ${photo.width}px; --h: ${photo.height}px;`}
-        >
-          {photo.src
-            ? <Image src={photo.src} alt={photo.alt} width={400} height={440} class="polaroid__photo polaroid__photo--real" />
-            : <div class="polaroid__photo" style={`background: ${photo.bg};`} aria-label={photo.alt}></div>
-          }
-          <p class="polaroid__caption">{photo.caption}</p>
-        </div>
-      ))}
+      {
+        photos.map((photo) => (
+          <div
+            class="polaroid"
+            style={
+              photo.src
+                ? `--rotate: ${photo.rotate}deg;`
+                : `--rotate: ${photo.rotate}deg; --w: ${photo.width}px; --h: ${photo.height}px;`
+            }
+          >
+            {photo.src ? (
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                width={400}
+                height={440}
+                class="polaroid__photo polaroid__photo--real"
+              />
+            ) : (
+              <div
+                class="polaroid__photo"
+                style={`background: ${photo.bg};`}
+                aria-label={photo.alt}
+              />
+            )}
+            <p class="polaroid__caption">{photo.caption}</p>
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -124,15 +173,21 @@ const photos: Photo[] = [
     padding: 10px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.06);
+    box-shadow:
+      0 4px 18px rgba(0, 0, 0, 0.13),
+      0 1px 4px rgba(0, 0, 0, 0.06);
     transform: rotate(var(--rotate));
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     will-change: transform;
   }
 
   .polaroid:hover {
     transform: rotate(0deg) scale(1.04);
-    box-shadow: 0 12px 36px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow:
+      0 12px 36px rgba(0, 0, 0, 0.18),
+      0 2px 8px rgba(0, 0, 0, 0.08);
     z-index: 10;
     position: relative;
   }
@@ -154,7 +209,7 @@ const photos: Photo[] = [
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Caveat', 'Comic Sans MS', cursive, sans-serif;
+    font-family: "Caveat", "Comic Sans MS", cursive, sans-serif;
     font-size: 1rem;
     color: #444;
     text-align: center;
@@ -165,23 +220,31 @@ const photos: Photo[] = [
 
 <script>
   // Drag-to-scroll on polaroid carousel
-  const track = document.querySelector('.polaroids__track-wrap') as HTMLElement | null;
+  const track = document.querySelector(
+    ".polaroids__track-wrap",
+  ) as HTMLElement | null;
   if (track) {
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
 
-    track.addEventListener('mousedown', (e) => {
+    track.addEventListener("mousedown", (e) => {
       isDown = true;
-      track.style.cursor = 'grabbing';
+      track.style.cursor = "grabbing";
       startX = e.pageX - track.offsetLeft;
       scrollLeft = track.scrollLeft;
     });
 
-    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-    track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener("mouseleave", () => {
+      isDown = false;
+      track.style.cursor = "grab";
+    });
+    track.addEventListener("mouseup", () => {
+      isDown = false;
+      track.style.cursor = "grab";
+    });
 
-    track.addEventListener('mousemove', (e) => {
+    track.addEventListener("mousemove", (e) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - track.offsetLeft;

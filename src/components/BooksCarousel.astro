@@ -4,7 +4,6 @@ const books = [
     title: "Le mie stupide intenzioni",
     author: "Bernardo Zannoni",
     year: "2021",
-    note: "Una faina che impara a leggere e scopre che la vita fa male comunque.",
     spine: "#8a5a3a",
     cover: "linear-gradient(160deg, #c49070 0%, #8a5a3a 100%)",
   },
@@ -12,7 +11,6 @@ const books = [
     title: "Quello che possiamo sapere",
     author: "Ian McEwan",
     year: "2023",
-    note: "La coscienza, il libero arbitrio e una storia d'amore improbabile.",
     spine: "#3a5a7a",
     cover: "linear-gradient(160deg, #6a9aba 0%, #3a5a7a 100%)",
   },
@@ -20,7 +18,6 @@ const books = [
     title: "Fiori per Algernon",
     author: "Daniel Keyes",
     year: "1966",
-    note: "L'intelligenza non è sinonimo di felicità. Charlie lo impara nel modo peggiore.",
     spine: "#6a3a6a",
     cover: "linear-gradient(160deg, #aa6aaa 0%, #6a3a6a 100%)",
   },
@@ -28,7 +25,6 @@ const books = [
     title: "Project Hail Mary",
     author: "Andy Weir",
     year: "2021",
-    note: "Un uomo solo nello spazio, senza memoria. Il miglior sci-fi degli ultimi anni.",
     spine: "#2a5a4a",
     cover: "linear-gradient(160deg, #5a9a80 0%, #2a5a4a 100%)",
   },
@@ -36,7 +32,6 @@ const books = [
     title: "Schegge",
     author: "Bret Easton Ellis",
     year: "2023",
-    note: "Los Angeles, gli anni Ottanta, il terrore che striscia sotto la superficie.",
     spine: "#4a4a4a",
     cover: "linear-gradient(160deg, #8a8a8a 0%, #4a4a4a 100%)",
   },
@@ -44,7 +39,6 @@ const books = [
     title: "Considera l'aragosta",
     author: "David Foster Wallace",
     year: "2005",
-    note: "Saggi che cambiano prospettiva. Ogni pagina è un esercizio di attenzione.",
     spine: "#7a5a2a",
     cover: "linear-gradient(160deg, #baa060 0%, #7a5a2a 100%)",
   },
@@ -52,7 +46,6 @@ const books = [
     title: "Abbiamo smesso di capire il mondo",
     author: "Benjamín Labatut",
     year: "2020",
-    note: "La scienza al limite della comprensione umana. Bellissimo e inquietante.",
     spine: "#2a3a5a",
     cover: "linear-gradient(160deg, #5a6a9a 0%, #2a3a5a 100%)",
   },
@@ -78,7 +71,6 @@ const books = [
           <div class="book-card__info">
             <h3 class="book-card__title">{book.title}</h3>
             <p class="book-card__author">{book.author} · {book.year}</p>
-            <p class="book-card__note">"{book.note}"</p>
           </div>
         </div>
       ))}
@@ -230,13 +222,7 @@ const books = [
     color: var(--color-muted);
   }
 
-  .book-card__note {
-    font-size: 0.75rem;
-    line-height: 1.55;
-    color: var(--color-muted);
-    font-style: italic;
-    margin-top: 0.25rem;
-  }
+
 </style>
 
 <script>

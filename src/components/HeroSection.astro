@@ -8,11 +8,14 @@ interface Props {
 }
 
 const {
-  heading = 'Andrea Rapuzzi',
-  subtitle = 'CX Lead @Nestlé Waters',
-  bio = "Designer che lavora all'intersezione tra esperienza utente e identità di marca. Trasformo complessità in chiarezza, dati in decisioni, interfacce in esperienze memorabili.",
-  cta = { label: 'Chi sono', href: '/about' },
-  topPadding = '7rem',
+  heading = "Andrea Rapuzzi",
+  subtitle = "CX Lead @Nestlé Waters",
+  bio = "Ciao! io sono Andrea e questo è il mio piccolo angolo di internet. Digital marketer per passione, programmatore della domenica, pessimo copywriter. Dal lunedì al venerdì mi occupo di CX in Nestlé, mentre nel weekend perdo tempo tra film, progetti sgangherati, e qualche buon vinile.",
+  cta = {
+    label: "Il mio CV",
+    href: "https://www.linkedin.com/in/andrea-rapuzzi/",
+  },
+  topPadding = "7rem",
 } = Astro.props;
 ---
 
@@ -21,11 +24,15 @@ const {
     <h1 class="hero__name">{heading}</h1>
     {subtitle && <p class="hero__title">{subtitle}</p>}
     {bio && <p class="hero__bio">{bio}</p>}
-    {cta && (
-      <div class="hero__links">
-        <a href={cta.href} class="hero__link hero__link--primary">{cta.label}</a>
-      </div>
-    )}
+    {
+      cta && (
+        <div class="hero__links">
+          <a href={cta.href} class="hero__link hero__link--primary">
+            {cta.label}
+          </a>
+        </div>
+      )
+    }
   </div>
   <div class="hero__deco" aria-hidden="true">
     <span class="hero__deco-year">2026</span>
@@ -66,7 +73,7 @@ const {
     font-size: clamp(3rem, 8vw, 6.5rem);
     font-weight: 400;
     line-height: 1.5;
-    letter-spacing: 0.0em;
+    letter-spacing: 0em;
     color: var(--color-heading);
   }
 
