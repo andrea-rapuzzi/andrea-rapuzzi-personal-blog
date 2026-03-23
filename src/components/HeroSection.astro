@@ -1,17 +1,31 @@
 ---
+interface Props {
+  heading?: string;
+  subtitle?: string;
+  bio?: string;
+  cta?: { label: string; href: string } | null;
+  topPadding?: string;
+}
+
+const {
+  heading = 'Andrea Rapuzzi',
+  subtitle = 'CX Lead @Nestlé Waters',
+  bio = "Designer che lavora all'intersezione tra esperienza utente e identità di marca. Trasformo complessità in chiarezza, dati in decisioni, interfacce in esperienze memorabili.",
+  cta = { label: 'Chi sono', href: '/about' },
+  topPadding = '7rem',
+} = Astro.props;
 ---
 
-<section class="hero">
+<section class="hero" style={`padding-top: ${topPadding}`}>
   <div class="hero__inner">
-    <h1 class="hero__name">Andrea Rapuzzi</h1>
-    <p class="hero__title">CX Lead @Nestlé Waters</p>
-    <p class="hero__bio">
-      Designer che lavora all'intersezione tra esperienza utente e identità di marca.
-      Trasformo complessità in chiarezza, dati in decisioni, interfacce in esperienze memorabili.
-    </p>
-    <div class="hero__links">
-      <a href="/about" class="hero__link hero__link--primary">Chi sono</a>
-    </div>
+    <h1 class="hero__name">{heading}</h1>
+    {subtitle && <p class="hero__title">{subtitle}</p>}
+    {bio && <p class="hero__bio">{bio}</p>}
+    {cta && (
+      <div class="hero__links">
+        <a href={cta.href} class="hero__link hero__link--primary">{cta.label}</a>
+      </div>
+    )}
   </div>
   <div class="hero__deco" aria-hidden="true">
     <span class="hero__deco-year">2026</span>
@@ -51,16 +65,16 @@
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 6.5rem);
     font-weight: 400;
-    line-height: 1;
-    letter-spacing: 0.04em;
+    line-height: 1.5;
+    letter-spacing: 0.0em;
     color: var(--color-heading);
   }
 
   .hero__title {
     font-family: var(--font-sans);
     font-style: normal;
-    font-size: clamp(1.1rem, 2.2vw, 1.75rem);
-    font-weight: 300;
+    font-size: clamp(0.75rem, 1.4vw, 1rem);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--color-accent);

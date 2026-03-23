@@ -1,0 +1,290 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import { tagColor } from '../utils/tagColors';
+
+const allPosts = await getCollection('posts');
+
+const posts = allPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map((post) => ({
+    title: post.data.title,
+    excerpt: post.data.description,
+    date: post.data.pubDate.toLocaleDateString('it-IT', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    }),
+    tags: post.data.tags,
+    url: `/posts/${post.slug}`,
+  }));
+
+const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
+---
+
+<Layout title="Scrittura — Andrea Rapuzzi">
+  <main>
+    <div class="blog-hero-wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item"><a href="/" class="breadcrumb__link">Home</a></li>
+          <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">Scrittura</li>
+        </ol>
+      </nav>
+    </div>
+
+    <HeroSection
+      heading="Scrittura"
+      subtitle="Articoli, note e riflessioni"
+      bio="Un archivio di pensieri su design, tecnologia e tutto ciò che si trova nel mezzo."
+      cta={null}
+    />
+
+    <div class="blog">
+      <div class="blog__inner">
+
+        <aside class="blog__tags" aria-label="Filtra per tag">
+          <h2 class="blog__tags-heading">Tag</h2>
+          <ul class="blog__tag-list">
+            {allTags.map((tag) => {
+              const { bg, text } = tagColor(tag);
+              return (
+                <li>
+                  <button
+                    class="blog__tag"
+                    data-tag={tag}
+                    style={`--tag-bg:${bg};--tag-text:${text};background:${bg};color:${text}`}
+                  >{tag}</button>
+                </li>
+              );
+            })}
+          </ul>
+        </aside>
+
+        <div class="blog__articles">
+          {posts.map((post) => (
+            <a href={post.url} class="article-card" data-tags={post.tags.join(',')}>
+              <div class="article-card__tags">
+                {post.tags.map((tag: string) => {
+                  const { bg, text } = tagColor(tag);
+                  return <span class="article-card__tag" style={`background:${bg};color:${text}`}>{tag}</span>;
+                })}
+              </div>
+              <h3 class="article-card__title">{post.title}</h3>
+              {post.excerpt && <p class="article-card__excerpt">{post.excerpt}</p>}
+              <footer class="article-card__footer">
+                <time class="article-card__date">{post.date}</time>
+              </footer>
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* ── Breadcrumb ── */
+  .blog-hero-wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3.5rem 2rem 0;
+  }
+
+  .breadcrumb__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb__item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  .breadcrumb__item + .breadcrumb__item::before {
+    content: '/';
+    color: var(--color-border);
+  }
+
+  .breadcrumb__link {
+    color: var(--color-muted);
+    transition: color 0.2s;
+  }
+
+  .breadcrumb__link:hover {
+    color: var(--color-ink);
+  }
+
+  .breadcrumb__item--current {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .blog {
+    padding: 0 2rem var(--section-gap);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .blog__inner {
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Tags sidebar */
+  .blog__tags-heading {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+  }
+
+  .blog__tag-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .blog__tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, outline 0.15s;
+  }
+
+  .blog__tag:hover {
+    opacity: 0.75;
+  }
+
+  .blog__tag[aria-pressed="true"] {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  .article-card[hidden] {
+    display: none;
+  }
+
+  /* Articles list */
+  .blog__articles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .article-card {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+
+  .article-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .article-card__tag {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+  }
+
+  .article-card__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-heading);
+  }
+
+  .article-card__excerpt {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+  }
+
+  .article-card__footer {
+    border-top: 1px solid var(--color-border);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+
+  .article-card__date {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 768px) {
+    .blog__inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .blog__tag-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<script>
+  const tagButtons = document.querySelectorAll<HTMLButtonElement>('.blog__tag[data-tag]');
+  const cards = document.querySelectorAll<HTMLElement>('.article-card[data-tags]');
+
+  let active: string | null = null;
+
+  tagButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag!;
+
+      if (active === tag) {
+        // deselect
+        active = null;
+        btn.setAttribute('aria-pressed', 'false');
+        cards.forEach((c) => c.removeAttribute('hidden'));
+      } else {
+        // select new tag
+        active = tag;
+        tagButtons.forEach((b) => b.setAttribute('aria-pressed', b.dataset.tag === tag ? 'true' : 'false'));
+        cards.forEach((c) => {
+          const tags = c.dataset.tags!.split(',');
+          tags.includes(tag) ? c.removeAttribute('hidden') : c.setAttribute('hidden', '');
+        });
+      }
+    });
+  });
+</script>

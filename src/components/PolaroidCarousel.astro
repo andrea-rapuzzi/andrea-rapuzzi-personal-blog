@@ -1,13 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-
-// Per aggiungere foto reali:
-// 1. Metti il file in src/assets/photos/nome-foto.jpg
-// 2. Importalo: import milaFoto from '../assets/photos/nome-foto.jpg';
-// 3. Aggiungilo all'array con { src: miaFoto, alt: '...', caption: '...', rotate: 0 }
-//
-// I campi width/height sono usati solo per i placeholder a gradiente.
-// Con foto reali le dimensioni vengono lette automaticamente da Astro.
+import imgSpeaker from '../assets/photos/Polaroid/Speaker_al_CX_Circle.webp';
+import imgMarried from '../assets/photos/Polaroid/Just_Married.jpg';
+import imgOlimpiadi from '../assets/photos/Polaroid/Olmpiadi_2026.jpeg';
+import imgFriends from '../assets/photos/Polaroid/Goodbye_Friends.jpg';
+import imgAngera from '../assets/photos/Polaroid/Traversata_di_Angera.jpeg';
+import imgGiappone from '../assets/photos/Polaroid/Viaggio_in_giappone.JPG';
 
 type PhotoReal = {
   src: ImageMetadata;
@@ -29,62 +27,12 @@ type PhotoPlaceholder = {
 type Photo = PhotoReal | PhotoPlaceholder;
 
 const photos: Photo[] = [
-  {
-    alt: "Milano, Duomo al tramonto",
-    caption: "Milano '25",
-    bg: "linear-gradient(135deg, #d4a96a 0%, #a07040 100%)",
-    width: 200,
-    height: 220,
-    rotate: -2.5,
-  },
-  {
-    alt: "Workshop di co-design",
-    caption: "Workshop co-design",
-    bg: "linear-gradient(135deg, #7ba7bc 0%, #4a7a96 100%)",
-    width: 180,
-    height: 240,
-    rotate: 1.8,
-  },
-  {
-    alt: "Appunti e sketchbook",
-    caption: "Sketchbook vol.3",
-    bg: "linear-gradient(135deg, #c5a88a 0%, #8a6545 100%)",
-    width: 220,
-    height: 200,
-    rotate: -1.2,
-  },
-  {
-    alt: "Lisbon, Alfama",
-    caption: "Lisbona nov.",
-    bg: "linear-gradient(135deg, #e8a87c 0%, #c07050 100%)",
-    width: 190,
-    height: 230,
-    rotate: 3.0,
-  },
-  {
-    alt: "Talk a conference",
-    caption: "On stage",
-    bg: "linear-gradient(135deg, #9b9ea4 0%, #6b6e74 100%)",
-    width: 210,
-    height: 210,
-    rotate: -0.8,
-  },
-  {
-    alt: "Caffè e lettura mattutina",
-    caption: "Morning ritual",
-    bg: "linear-gradient(135deg, #c49a6c 0%, #8a6a3c 100%)",
-    width: 175,
-    height: 245,
-    rotate: 2.2,
-  },
-  {
-    alt: "Natura, montagna",
-    caption: "Dolomiti '25",
-    bg: "linear-gradient(135deg, #82a882 0%, #527a52 100%)",
-    width: 230,
-    height: 195,
-    rotate: -1.7,
-  },
+  { src: imgSpeaker,   alt: "On stage al CX Circle",         caption: "CX Circle",         rotate: -2.0 },
+  { src: imgMarried,   alt: "Appena sposati",                  caption: "Just Married",       rotate: 1.8  },
+  { src: imgOlimpiadi, alt: "Hockey alle Olimpiadi 2026",      caption: "Olimpiadi '26",      rotate: -1.2 },
+  { src: imgFriends,   alt: "Con gli amici",                   caption: "Goodbye Friends",    rotate: 2.5  },
+  { src: imgAngera,    alt: "Traversata di Angera",            caption: "Angera",             rotate: -0.8 },
+  { src: imgGiappone,  alt: "Viaggio in Giappone",             caption: "Giappone",           rotate: 1.5  },
 ];
 ---
 
@@ -104,7 +52,7 @@ const photos: Photo[] = [
             : `--rotate: ${photo.rotate}deg; --w: ${photo.width}px; --h: ${photo.height}px;`}
         >
           {photo.src
-            ? <Image src={photo.src} alt={photo.alt} class="polaroid__photo polaroid__photo--real" />
+            ? <Image src={photo.src} alt={photo.alt} width={400} height={440} class="polaroid__photo polaroid__photo--real" />
             : <div class="polaroid__photo" style={`background: ${photo.bg};`} aria-label={photo.alt}></div>
           }
           <p class="polaroid__caption">{photo.caption}</p>
@@ -123,7 +71,7 @@ const photos: Photo[] = [
   .polaroids__header {
     padding: 0 2rem;
     max-width: var(--max-width);
-    margin: 0 auto 2.5rem;
+    margin: 0 auto 1.25rem;
     border-top: 1px solid var(--color-border);
     padding-top: 3rem;
     display: flex;
@@ -171,9 +119,11 @@ const photos: Photo[] = [
 
   .polaroid {
     flex-shrink: 0;
-    width: var(--w);
+    width: var(--w, 200px);
     background: #ffffff;
-    padding: 10px 10px 40px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 4px 18px rgba(0,0,0,0.13), 0 1px 4px rgba(0,0,0,0.06);
     transform: rotate(var(--rotate));
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -194,17 +144,21 @@ const photos: Photo[] = [
   }
 
   .polaroid__photo--real {
-    height: auto;
+    width: 200px;
+    height: 220px;
     object-fit: cover;
   }
 
   .polaroid__caption {
-    margin-top: 8px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Caveat', 'Comic Sans MS', cursive, sans-serif;
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: #444;
     text-align: center;
-    line-height: 1;
+    line-height: 1.2;
     padding: 0 4px;
   }
 </style>

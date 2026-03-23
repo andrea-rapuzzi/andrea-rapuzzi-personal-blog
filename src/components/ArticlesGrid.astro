@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { tagColor } from '../utils/tagColors';
 
 const allPosts = await getCollection('posts');
 
@@ -33,9 +34,10 @@ const articles = allPosts
       {articles.map((item) => (
         <a href={item.url} class="article-card">
           <div class="article-card__tags">
-            {item.tags.map((tag: string) => (
-              <span class="article-card__tag">{tag}</span>
-            ))}
+            {item.tags.map((tag: string) => {
+              const { bg, text } = tagColor(tag);
+              return <span class="article-card__tag" style={`background:${bg};color:${text}`}>{tag}</span>;
+            })}
           </div>
           <h3 class="article-card__title">{item.title}</h3>
           <p class="article-card__excerpt">{item.excerpt}</p>
@@ -120,9 +122,6 @@ const articles = allPosts
     text-transform: lowercase;
     padding: 0.3rem 0.75rem;
     border-radius: 99px;
-    background: #30323E;
-    color: #F5F7F8;
-    border: 1px solid #F5F7F8;
   }
 
   .article-card__title {
