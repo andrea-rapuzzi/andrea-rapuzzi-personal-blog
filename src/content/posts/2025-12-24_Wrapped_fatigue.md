@@ -1,14 +1,14 @@
 --- 
 title: "Wrapped fatigue"
 author: "Andrea Rapuzzi"
-description: "Cosa viene dopo i wrapped?"
+description: "E la mia listening age che è fuori scala"
 image: 
     url: ""
     alt: ""
 pubDate: 2025-12-24
 tags: ["blog", "digital",]
 ---
-Potrebbe essere il grinch in me, o più semplicemente una reazione alla proliferazione spasmodica di recap di fine anno, ma la mia hot take natalizia è questa: il 2025 segna il declino dei “Wrapped”.
+Potrebbe essere il grinch in me, o semplicemente una reazione allergica alla proliferazione di recap di fine anno, ma la mia hot take natalizia è che il 2025 segna il declino dei “Wrapped”.
 Ma per capire da come sono arrivato a questa conclusione, e soprattutto dove penso che andremo, occorre fare un passo indietro e capire come siamo arrivati alla *febbre* dei Wrapped.
 
 ##  Web 2.0 e gli Zeitgeist

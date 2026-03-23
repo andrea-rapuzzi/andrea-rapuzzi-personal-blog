@@ -1,12 +1,12 @@
 --- 
-title: "CRO pragmatica 2024"
+title: "CRO pragmatica"
 author: "Andrea Rapuzzi"
 description: "Shine bright like a diamond"
 image: 
     url: ""
     alt: ""
 pubDate: 2024-03-28
-tags: ["cro", "blog", "digital marketing"]
+tags: ["cro", "digital marketing"]
 ---
 
 Da circa un anno abbiamo avviato in Pirelli un nuovo tavolo di lavoro volto ad ottimizzare dell'esperienza utente e il tasso di conversione del nostro sito principale.

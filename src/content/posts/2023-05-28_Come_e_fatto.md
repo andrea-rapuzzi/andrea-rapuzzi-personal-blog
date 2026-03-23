@@ -6,7 +6,7 @@ image:
     url: ""
     alt: ""
 pubDate: 2023-05-28
-tags: ["astro", "blog", "DIY"]
+tags: ["astro", "DIY"]
 ---
 Dai primi anni di MSN, l’idea di costruire un mio spazio personale online è rimasta un progetto rimandato. Tra pigrizia cronica e un liceo classico poco allineato al tema, non sono mai riuscito a concretizzarlo. Fino ad oggi.
 
