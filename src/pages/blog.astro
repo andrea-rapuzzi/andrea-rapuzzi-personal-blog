@@ -17,7 +17,7 @@ const posts = allPosts
       year: 'numeric',
     }),
     tags: post.data.tags,
-    url: `/posts/${post.slug}`,
+    url: `/posts/${post.id}`,
   }));
 
 const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
