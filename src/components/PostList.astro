@@ -1,0 +1,193 @@
+---
+export interface PostItem {
+  title: string;
+  excerpt?: string;
+  date: string;
+  tags: string[];
+  url: string;
+}
+
+interface Props {
+  posts: PostItem[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="post-list">
+  {posts.map((post) => (
+    <li class="post-row" data-tags={post.tags.join(',')}>
+      <a href={post.url} class="post-row__link">
+        <time class="post-row__date">{post.date}</time>
+        <div class="post-row__main">
+          <h3 class="post-row__title">{post.title}</h3>
+          {post.excerpt && (
+            <div class="post-row__more">
+              <p class="post-row__excerpt">{post.excerpt}</p>
+            </div>
+          )}
+        </div>
+        <span class="post-row__tags">{post.tags.join(' · ')}</span>
+        <span class="post-row__arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .post-row {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .post-row[hidden] {
+    display: none;
+  }
+
+  .post-row__link {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr auto 1.25rem;
+    column-gap: 1.5rem;
+    align-items: start;
+    padding: 1.25rem 0;
+  }
+
+  .post-row__date,
+  .post-row__tags {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .post-row__tags {
+    text-align: right;
+    text-transform: lowercase;
+  }
+
+  .post-row__title {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-heading);
+    transition: transform 0.3s ease, color 0.2s;
+  }
+
+  .post-row__arrow {
+    color: var(--color-accent);
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+
+  .post-row__excerpt {
+    padding-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+    max-width: 60ch;
+  }
+
+  .post-row__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Dettagli nascosti solo dove esiste l'hover; su touch restano visibili */
+  @media (hover: hover) {
+    .post-row__more {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows 0.35s ease, opacity 0.3s ease;
+    }
+
+    .post-row__excerpt {
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .post-row__link:hover .post-row__more,
+    .post-row__link:focus-visible .post-row__more {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    .post-row__link:hover .post-row__title,
+    .post-row__link:focus-visible .post-row__title {
+      transform: translateX(4px);
+      color: var(--color-ink);
+    }
+
+    .post-row__link:hover .post-row__arrow,
+    .post-row__link:focus-visible .post-row__arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Reveal allo scroll (progressive enhancement) */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .post-row {
+        animation: row-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+    }
+  }
+
+  @keyframes row-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-row__more,
+    .post-row__title,
+    .post-row__arrow {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .post-row__link {
+      grid-template-columns: 1fr 1.25rem;
+      row-gap: 0.25rem;
+    }
+
+    .post-row__date {
+      grid-column: 1 / -1;
+    }
+
+    .post-row__main {
+      grid-column: 1;
+    }
+
+    .post-row__tags {
+      grid-column: 1;
+      text-align: left;
+    }
+
+    .post-row__arrow {
+      grid-column: 2;
+      grid-row: 2;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
