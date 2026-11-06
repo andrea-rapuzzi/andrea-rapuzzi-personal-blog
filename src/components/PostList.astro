@@ -77,7 +77,7 @@ const { posts } = Astro.props;
     font-weight: 500;
     line-height: 1.5;
     color: var(--color-heading);
-    transition: transform 0.3s ease, color 0.2s;
+    transition: transform 200ms var(--ease-out), color 150ms ease;
   }
 
   .post-row__arrow {
@@ -85,7 +85,7 @@ const { posts } = Astro.props;
     line-height: 1.5;
     opacity: 0;
     transform: translateX(-6px);
-    transition: opacity 0.25s, transform 0.25s;
+    transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
   }
 
   .post-row__excerpt {
@@ -107,7 +107,7 @@ const { posts } = Astro.props;
       display: grid;
       grid-template-rows: 0fr;
       opacity: 0;
-      transition: grid-template-rows 0.35s ease, opacity 0.3s ease;
+      transition: grid-template-rows 250ms var(--ease-out), opacity 200ms var(--ease-out);
     }
 
     .post-row__excerpt {

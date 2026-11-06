@@ -1,4 +1,8 @@
 ---
+import '../styles/tokens.css';
+import ThemeInit from '../components/ThemeInit.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
 interface Props {
   title?: string;
 }
@@ -12,6 +16,7 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <ThemeInit />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,6 +30,7 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
   </head>
   <body>
     <slot />
+    <SiteFooter />
   </body>
 </html>
 
@@ -44,19 +50,13 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
   }
 
   :root {
-    --color-bg: #F7FBFC;
-    --color-surface: #ffffff;
-    --color-ink: #1a1a18;
-    --color-heading: #30323E;
-    --color-muted: #6b6b65;
-    --color-accent: #74A89E;
-    --color-border: #d8e0e4;
     --font-display: Georgia, serif;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
     --max-width: 1200px;
     --section-gap: 5rem;
   }
+
 
   html {
     font-family: var(--font-sans);

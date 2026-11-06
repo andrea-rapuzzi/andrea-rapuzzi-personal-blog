@@ -4,50 +4,43 @@ const books = [
     title: "Le mie stupide intenzioni",
     author: "Bernardo Zannoni",
     year: "2021",
-    spine: "#8a5a3a",
-    cover: "linear-gradient(160deg, #c49070 0%, #8a5a3a 100%)",
+    hue: 45,
   },
   {
     title: "Quello che possiamo sapere",
     author: "Ian McEwan",
     year: "2023",
-    spine: "#3a5a7a",
-    cover: "linear-gradient(160deg, #6a9aba 0%, #3a5a7a 100%)",
+    hue: 235,
   },
   {
     title: "Fiori per Algernon",
     author: "Daniel Keyes",
     year: "1966",
-    spine: "#6a3a6a",
-    cover: "linear-gradient(160deg, #aa6aaa 0%, #6a3a6a 100%)",
+    hue: 325,
   },
   {
     title: "Project Hail Mary",
     author: "Andy Weir",
     year: "2021",
-    spine: "#2a5a4a",
-    cover: "linear-gradient(160deg, #5a9a80 0%, #2a5a4a 100%)",
+    hue: 165,
   },
   {
     title: "Schegge",
     author: "Bret Easton Ellis",
     year: "2023",
-    spine: "#4a4a4a",
-    cover: "linear-gradient(160deg, #8a8a8a 0%, #4a4a4a 100%)",
+    hue: 285,
   },
   {
     title: "Considera l'aragosta",
     author: "David Foster Wallace",
     year: "2005",
-    spine: "#7a5a2a",
-    cover: "linear-gradient(160deg, #baa060 0%, #7a5a2a 100%)",
+    hue: 85,
   },
   {
     title: "Abbiamo smesso di capire il mondo",
     author: "Benjamín Labatut",
     year: "2020",
-    spine: "#2a3a5a",
-    cover: "linear-gradient(160deg, #5a6a9a 0%, #2a3a5a 100%)",
+    hue: 265,
   },
 ];
 ---
@@ -61,8 +54,8 @@ const books = [
     <div class="books__track">
       {books.map((book) => (
         <div class="book-card">
-          <div class="book-card__cover" style={`background: ${book.cover};`}>
-            <div class="book-card__spine" style={`background: ${book.spine};`}></div>
+          <div class="book-card__cover" style={`--h:${book.hue}`}>
+            <div class="book-card__spine"></div>
             <div class="book-card__cover-inner">
               <p class="book-card__cover-title">{book.title}</p>
               <p class="book-card__cover-author">{book.author}</p>
@@ -149,6 +142,7 @@ const books = [
     height: 224px;
     border-radius: 2px 6px 6px 2px;
     position: relative;
+    background: linear-gradient(160deg, oklch(0.72 0.17 var(--h)) 0%, oklch(0.42 0.14 var(--h)) 100%);
     box-shadow:
       -4px 0 8px rgba(0,0,0,0.25),
       4px 4px 16px rgba(0,0,0,0.18),
@@ -156,19 +150,22 @@ const books = [
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out);
     overflow: hidden;
   }
 
-  .book-card:hover .book-card__cover {
-    transform: translateY(-5px) rotate(-1deg);
-    box-shadow:
-      -4px 0 10px rgba(0,0,0,0.3),
-      8px 10px 24px rgba(0,0,0,0.22),
-      inset 2px 0 4px rgba(255,255,255,0.1);
+  @media (hover: hover) and (pointer: fine) {
+    .book-card:hover .book-card__cover {
+      transform: translateY(-5px) rotate(-1deg);
+      box-shadow:
+        -4px 0 10px rgba(0,0,0,0.3),
+        8px 10px 24px rgba(0,0,0,0.22),
+        inset 2px 0 4px rgba(255,255,255,0.1);
+    }
   }
 
   .book-card__spine {
+    background: oklch(0.36 0.13 var(--h));
     position: absolute;
     left: 0;
     top: 0;

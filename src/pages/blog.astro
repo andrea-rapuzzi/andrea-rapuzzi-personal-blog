@@ -147,7 +147,11 @@ const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
     padding: 0.125rem 0;
     cursor: pointer;
     border-bottom: 1px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 150ms ease, border-color 150ms ease, transform 160ms var(--ease-out);
+  }
+
+  .blog__tag:active {
+    transform: scale(0.97);
   }
 
   .blog__tag:hover {

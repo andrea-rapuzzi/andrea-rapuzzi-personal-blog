@@ -1,5 +1,8 @@
 ---
 import { tagColor } from '../utils/tagColors';
+import '../styles/tokens.css';
+import ThemeInit from '../components/ThemeInit.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 
 const { frontmatter } = Astro.props;
 
@@ -17,6 +20,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ThemeInit />
     <title>{frontmatter.title} — Andrea Rapuzzi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,8 +50,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
 
         <div class="post-meta">
           {frontmatter.tags?.map((tag: string) => {
-            const { bg, text } = tagColor(tag);
-            return <span class="post-meta__tag" style={`background:${bg};color:${text}`}>{tag}</span>;
+            return <span class="post-meta__tag" style={`--h:${tagColor(tag)}`}>{tag}</span>;
           })}
           <time class="post-meta__date">{formattedDate}</time>
         </div>
@@ -61,6 +64,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
         <a href="/blog" class="post-footer__back">← Tutti gli articoli</a>
       </footer>
     </div>
+    <SiteFooter />
   </body>
 </html>
 
@@ -80,13 +84,6 @@ const formattedDate = date.toLocaleDateString('it-IT', {
   }
 
   :root {
-    --color-bg: #F7FBFC;
-    --color-surface: #ffffff;
-    --color-ink: #1a1a18;
-    --color-heading: #30323E;
-    --color-muted: #6b6b65;
-    --color-accent: #74A89E;
-    --color-border: #d8e0e4;
     --font-display: Georgia, serif;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
@@ -194,6 +191,8 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     text-transform: lowercase;
     padding: 0.2rem 0.6rem;
     border-radius: 99px;
+    background: light-dark(oklch(0.91 0.07 var(--h)), oklch(0.34 0.08 var(--h)));
+    color: light-dark(oklch(0.38 0.13 var(--h)), oklch(0.88 0.09 var(--h)));
   }
 
   .post-meta__date {
@@ -274,10 +273,11 @@ const formattedDate = date.toLocaleDateString('it-IT', {
   }
 
   .post-body :global(blockquote) {
-    border-left: 3px solid var(--color-accent);
-    padding: 0.25rem 0 0.25rem 1.25rem;
+    background: color-mix(in oklch, var(--color-pop) 22%, var(--color-bg));
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
     margin: 2.5rem 0;
-    color: var(--color-muted);
+    color: var(--color-ink);
     font-style: italic;
     font-size: 1.125rem;
   }
@@ -290,14 +290,14 @@ const formattedDate = date.toLocaleDateString('it-IT', {
 
   .post-body :global(code) {
     font-size: 0.875em;
-    background: #f0ece4;
+    background: var(--color-code-bg);
     padding: 0.15em 0.4em;
     border-radius: 3px;
   }
 
   .post-body :global(pre) {
-    background: var(--color-ink);
-    color: #f8f6f1;
+    background: var(--color-code-block-bg);
+    color: var(--color-code-block-text);
     padding: 1.5rem;
     border-radius: 6px;
     overflow-x: auto;
