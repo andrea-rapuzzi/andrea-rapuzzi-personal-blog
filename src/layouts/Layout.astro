@@ -1,4 +1,8 @@
 ---
+import '../styles/tokens.css';
+import ThemeInit from '../components/ThemeInit.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
 interface Props {
   title?: string;
 }
@@ -12,10 +16,11 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <ThemeInit />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Pirata+One&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
     <link rel="preload" href="/Bajern.otf" as="font" type="font/otf" crossorigin="anonymous" />
     <script is:inline>
       document.fonts.load('1em Bajern').then(function() {
@@ -25,6 +30,7 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
   </head>
   <body>
     <slot />
+    <SiteFooter />
   </body>
 </html>
 
@@ -44,17 +50,10 @@ const { title = "Andrea Rapuzzi — CX Lead" } = Astro.props;
   }
 
   :root {
-    --color-bg: #F7FBFC;
-    --color-surface: #ffffff;
-    --color-ink: #1a1a18;
-    --color-heading: #30323E;
-    --color-muted: #6b6b65;
-    --color-accent: #74A89E;
-    --color-border: #d8e0e4;
     --font-display: Georgia, serif;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
-    --max-width: 1200px;
+    --max-width: 800px;
     --section-gap: 5rem;
   }
 

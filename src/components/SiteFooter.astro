@@ -1,0 +1,99 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__copy">© {year} Andrea Rapuzzi</p>
+
+    <div class="theme-switch" role="group" aria-label="Tema">
+      <button type="button" class="theme-switch__btn" data-theme-value="light" aria-pressed="false">Chiaro</button>
+      <button type="button" class="theme-switch__btn" data-theme-value="dark" aria-pressed="false">Scuro</button>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const root = document.documentElement;
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.theme-switch__btn');
+
+  const sync = () => {
+    const current = root.dataset.theme === 'light' ? 'light' : 'dark';
+    buttons.forEach((b) =>
+      b.setAttribute('aria-pressed', String(b.dataset.themeValue === current))
+    );
+  };
+
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      const value = b.dataset.themeValue!;
+      root.dataset.theme = value;
+      try { localStorage.setItem('theme', value); } catch {}
+      sync();
+    })
+  );
+
+  sync();
+</script>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .site-footer__inner {
+    max-width: var(--max-width, 800px);
+    margin: 0 auto;
+    padding: 1.5rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .site-footer__copy {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  .theme-switch {
+    display: inline-flex;
+    padding: 3px;
+    gap: 2px;
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+  }
+
+  .theme-switch__btn {
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    background: none;
+    border: none;
+    border-radius: 99px;
+    padding: 0.3rem 0.85rem;
+    cursor: pointer;
+    transition: background-color 150ms ease, color 150ms ease, transform 160ms var(--ease-out);
+  }
+
+  .theme-switch__btn:active {
+    transform: scale(0.97);
+  }
+
+  .theme-switch__btn[aria-pressed="true"] {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .theme-switch__btn[aria-pressed="false"]:hover {
+      color: var(--color-ink);
+    }
+  }
+
+  .theme-switch__btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+</style>
