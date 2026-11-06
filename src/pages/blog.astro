@@ -23,19 +23,19 @@ const posts = allPosts
 const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
 ---
 
-<Layout title="Scrittura — Andrea Rapuzzi">
+<Layout title="Blog — Andrea Rapuzzi">
   <main>
     <div class="blog-hero-wrap">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <ol class="breadcrumb__list">
           <li class="breadcrumb__item"><a href="/" class="breadcrumb__link">Home</a></li>
-          <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">Scrittura</li>
+          <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">Blog</li>
         </ol>
       </nav>
     </div>
 
     <HeroSection
-      heading="Scrittura"
+      heading="Blog"
       subtitle="Articoli, note e riflessioni"
       bio="Un archivio di pensieri su design, tecnologia e tutto ciò che si trova nel mezzo."
       cta={null}
@@ -117,9 +117,18 @@ const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
     border-top: 1px solid var(--color-border);
     padding-top: 3rem;
     display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 4rem;
+    grid-template-columns: 140px 1fr;
+    gap: 3rem;
     align-items: start;
+  }
+
+  /* La linea sopra la sezione basta: niente doppio bordo, prima riga allineata a "tag" */
+  .blog__articles :global(.post-list) {
+    border-top: none;
+  }
+
+  .blog__articles :global(.post-row:first-child .post-row__link) {
+    padding-top: 0.5rem;
   }
 
   /* Tags sidebar */

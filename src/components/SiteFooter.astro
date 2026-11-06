@@ -15,16 +15,10 @@ const year = new Date().getFullYear();
 
 <script>
   const root = document.documentElement;
-  const media = window.matchMedia('(prefers-color-scheme: dark)');
   const buttons = document.querySelectorAll<HTMLButtonElement>('.theme-switch__btn');
 
-  const effective = () =>
-    root.dataset.theme === 'light' || root.dataset.theme === 'dark'
-      ? root.dataset.theme
-      : media.matches ? 'dark' : 'light';
-
   const sync = () => {
-    const current = effective();
+    const current = root.dataset.theme === 'light' ? 'light' : 'dark';
     buttons.forEach((b) =>
       b.setAttribute('aria-pressed', String(b.dataset.themeValue === current))
     );
@@ -39,7 +33,6 @@ const year = new Date().getFullYear();
     })
   );
 
-  media.addEventListener('change', sync);
   sync();
 </script>
 
@@ -49,7 +42,7 @@ const year = new Date().getFullYear();
   }
 
   .site-footer__inner {
-    max-width: var(--max-width, 1200px);
+    max-width: var(--max-width, 800px);
     margin: 0 auto;
     padding: 1.5rem 2rem 2rem;
     display: flex;

@@ -4,50 +4,52 @@ const books = [
     title: "Le mie stupide intenzioni",
     author: "Bernardo Zannoni",
     year: "2021",
-    hue: 45,
+    hue: 232,
   },
   {
     title: "Quello che possiamo sapere",
     author: "Ian McEwan",
     year: "2023",
-    hue: 235,
+    hue: 248,
   },
   {
     title: "Fiori per Algernon",
     author: "Daniel Keyes",
     year: "1966",
-    hue: 325,
+    hue: 262,
   },
   {
     title: "Project Hail Mary",
     author: "Andy Weir",
     year: "2021",
-    hue: 165,
+    hue: 240,
   },
   {
     title: "Schegge",
     author: "Bret Easton Ellis",
     year: "2023",
-    hue: 285,
+    hue: 276,
   },
   {
     title: "Considera l'aragosta",
     author: "David Foster Wallace",
     year: "2005",
-    hue: 85,
+    hue: 255,
   },
   {
     title: "Abbiamo smesso di capire il mondo",
     author: "Benjamín Labatut",
     year: "2020",
-    hue: 265,
+    hue: 285,
   },
 ];
 ---
 
 <section class="books">
   <div class="books__header">
-    <h2 class="books__heading">Letture</h2>
+    <div class="books__header-inner">
+      <h2 class="books__heading">Letture</h2>
+    </div>
   </div>
 
   <div class="books__track-wrap" role="region" aria-label="Libri letti di recente">
@@ -78,31 +80,26 @@ const books = [
   }
 
   .books__header {
-    padding: 3rem 2rem 2.5rem;
+    padding: 0 2rem;
     max-width: var(--max-width);
     margin: 0 auto;
+  }
+
+  .books__header-inner {
     border-top: 1px solid var(--color-border);
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    padding: 3rem 0 2rem;
   }
 
   .books__heading {
     font-family: var(--font-display);
     font-size: 2rem;
     font-weight: 400;
-    letter-spacing: 0.03em;
   }
 
-  .books__all {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--color-accent);
-    transition: opacity 0.2s;
-  }
-
-  .books__all:hover {
-    opacity: 0.7;
+  @media (max-width: 640px) {
+    .books__heading {
+      font-size: 2.75rem;
+    }
   }
 
   .books__track-wrap {
@@ -124,7 +121,7 @@ const books = [
   .books__track {
     display: flex;
     gap: 1.5rem;
-    padding: 0.5rem 2rem 2rem max(2rem, calc((100vw - var(--max-width)) / 2));
+    padding: 0.5rem 2rem 2rem max(2rem, calc((100vw - var(--max-width)) / 2 + 2rem));
     width: max-content;
     align-items: flex-start;
   }
@@ -142,7 +139,7 @@ const books = [
     height: 224px;
     border-radius: 2px 6px 6px 2px;
     position: relative;
-    background: linear-gradient(160deg, oklch(0.72 0.17 var(--h)) 0%, oklch(0.42 0.14 var(--h)) 100%);
+    background: linear-gradient(160deg, oklch(0.78 0.06 var(--h)) 0%, oklch(0.4 0.12 var(--h)) 100%);
     box-shadow:
       -4px 0 8px rgba(0,0,0,0.25),
       4px 4px 16px rgba(0,0,0,0.18),
@@ -165,7 +162,7 @@ const books = [
   }
 
   .book-card__spine {
-    background: oklch(0.36 0.13 var(--h));
+    background: oklch(0.3 0.1 var(--h));
     position: absolute;
     left: 0;
     top: 0;

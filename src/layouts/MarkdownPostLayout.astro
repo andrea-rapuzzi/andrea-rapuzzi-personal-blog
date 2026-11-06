@@ -1,5 +1,5 @@
 ---
-import { tagColor } from '../utils/tagColors';
+
 import '../styles/tokens.css';
 import ThemeInit from '../components/ThemeInit.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -38,7 +38,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <ol class="breadcrumb__list">
             <li class="breadcrumb__item"><a href="/" class="breadcrumb__link">Home</a></li>
-            <li class="breadcrumb__item"><a href="/blog" class="breadcrumb__link">Scrittura</a></li>
+            <li class="breadcrumb__item"><a href="/blog" class="breadcrumb__link">Blog</a></li>
             <li class="breadcrumb__item breadcrumb__item--current" aria-current="page">{frontmatter.title}</li>
           </ol>
         </nav>
@@ -50,7 +50,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
 
         <div class="post-meta">
           {frontmatter.tags?.map((tag: string) => {
-            return <span class="post-meta__tag" style={`--h:${tagColor(tag)}`}>{tag}</span>;
+            return <span class="post-meta__tag">{tag}</span>;
           })}
           <time class="post-meta__date">{formattedDate}</time>
         </div>
@@ -111,7 +111,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
 <style>
   /* ── Outer container — allineato al hero ── */
   .post-page {
-    max-width: var(--max-width, 1200px);
+    max-width: var(--max-width, 800px);
     margin: 0 auto;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -191,8 +191,8 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     text-transform: lowercase;
     padding: 0.2rem 0.6rem;
     border-radius: 99px;
-    background: light-dark(oklch(0.91 0.07 var(--h)), oklch(0.34 0.08 var(--h)));
-    color: light-dark(oklch(0.38 0.13 var(--h)), oklch(0.88 0.09 var(--h)));
+    background: color-mix(in oklch, var(--color-accent) 16%, transparent);
+    color: var(--color-accent);
   }
 
   .post-meta__date {
@@ -206,7 +206,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     font-family: var(--font-display);
     font-size: clamp(3rem, 8vw, 6.5rem);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.1;
     letter-spacing: 0em;
     color: var(--color-heading);
     margin-top: 7rem;
@@ -218,7 +218,7 @@ const formattedDate = date.toLocaleDateString('it-IT', {
     font-size: 1.0625rem;
     line-height: 1.75;
     color: var(--color-muted);
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
   /* ── Post body ── */
