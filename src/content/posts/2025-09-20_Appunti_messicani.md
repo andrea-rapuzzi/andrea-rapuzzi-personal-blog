@@ -6,20 +6,21 @@ image:
     url: ""
     alt: ""
 pubDate: 2025-09-20
+updatedDate: 2026-11-14
 tags: ["blog", "ai",]
 ---
 
 
-Con l’età che avanza, le vacanze somigliano sempre più a un esercizio di introspezione, un tentativo di carpire qualche consiglio utile per rendere più vivibile la routine milanese.
+Con l’età che avanza, le vacanze sono sempre più un esercizio di introspezione, un tentativo di trovare qualche punto di vista utile per rendere più vivibile la routine milanese al rientro.
 
 E anche in questo secondo viaggio del 2025 gli astri si sono allineati, dandomi qualche spunto per  attivare i miei neuroni anestetizzati dalle ultime settimane cariche di email e ticket JIRA.
 
-## Alla ricerca dell’onda buena, o l’inarrestabile resilienza messicana
+## Alla ricerca dell’onda buena, e l’inarrestabile resilienza messicana
 
-Ad agosto, senza che lo sapessi, il Messico diventa un acquario: sole feroce alternato a temporali improvvisi creano innumerevoli grattacapi a turisti e alla popolazione locale.
+La scelta del Messico per le nostre ferie estevi è stato sicuramente influenzata dalla  totale ignoranza sul microclima locale in questa stagione. Ad agosto il Messico diventa un acquario: il sole feroce si alterna a temporali improvvisi, mettondo alla prova turisti e la popolazione locale con un umidità che sfiora il 100%.
 
-Mentre i turisti affrontano la situazione con un aziendalissimo tentativo di ripianificare le attività programmate in modo da massimizzare la vacanza in barba ai capricci del tempo, i locali impassibili continuavano la loro vita. Senza ombrelli per pararsi dalla pioggia, proseguivano le loro giornate con Havaianas ai piedi e un ottimismo disarmante. 
-Gli americani direbbero “good vibes”. Qui è “onda buena”. Qualcosa che in Europa sembra sparito, e che dovremmo portarci a casa.
+Mentre i turisti affrontano la situazione con un aziendalissimo tentativo di ripianificare le attività programmate in modo sistematico per  massimizzare la vacanza in barba ai capricci del tempo, i locali impassibili continuavano la loro vita. Senza ombrelli per pararsi dalla pioggia, proseguono le loro giornate con Havaianas ai piedi e un ottimismo disarmante. 
+Gli americani direbbero “good vibes”. Qui è “l'onda buena”. Un concetto che in Europa è totalmente alieno, e che dobbiamo capire come portarci a casa.
 
 ## AI won't kill good taste
 
