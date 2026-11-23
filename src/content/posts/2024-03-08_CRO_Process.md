@@ -1,5 +1,5 @@
 --- 
-title: "CRO pragmatica"
+title: "CRO-ing"
 author: "Andrea Rapuzzi"
 description: "Shine bright like a diamond"
 image: 
@@ -24,10 +24,9 @@ Siamo ancora lontani dal riuscire a sfruttare appieno il potenziale di questi 3 
 
 ## Framework e processi
 
-Dopo varie revisioni, e qualche immancabile risposta piccata, abbiamo adottato un processo che potremmo definire un *Triple Diamond*, rivisto e adattato ai nostri bisogni.
+Dopo varie revisioni, e qualche  risposta piccata, abbiamo adottato un processo che potremmo definire un *Triple Diamond*, rivisto e adattato ai nostri bisogni.
 
-
-Il modello *Double Diamond* (ideato dal Design Council, [fonte](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)) è sicuramente un ottimo punto di partenza  per gestire i progetti di innovazione, ma può risultare poco adatto a team con cambiamenti frequenti e non lineari come il nostro. Inoltre penso non si presti molto alla sperimentazione, che è il fulcro del  lavoro che stiamo cercando di introdurre in Pirelli.
+Il modello *Double Diamond* (ideato dal Design Council, [fonte](https://www.designcouncil.org.uk/our-resources/the-double-diamond/)) è sicuramente un ottimo punto di partenza per gestire i progetti di innovazione, ma può risultare poco adatto a team con cambiamenti frequenti e non lineari come il nostro. Inoltre penso non si presti molto alla sperimentazione, che è il fulcro del  lavoro che stiamo cercando di introdurre in Pirelli.
 
 Per questo motivo abbiamo preso spunto dal modello *Triple Diamond* ideato da Design Collective ([fonte](https://uxdesign.cc/why-the-double-diamond-isnt-enough-adaa48a8aec1)) e lo abbiamo adattato ai nostri bisogni interni, semplificando dove serviva e ridefinendo alcune delle attività da portare a termine all'interno di ciascuna fase. 
 
