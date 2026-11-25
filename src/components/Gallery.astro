@@ -226,6 +226,7 @@
   let i = 0;
   let card: HTMLElement | null = null;
   let busy = false;
+  let viaPointer = false; // aperta con dito/mouse (true) o da tastiera (false)
 
   /** Posizione di un foglio della pila: centro, dimensione e rotazione a schermo */
   function sheetPose(el: HTMLElement) {
@@ -337,8 +338,9 @@
     return im.decode().catch(() => {});
   };
 
-  async function open(el: HTMLElement) {
+  async function open(el: HTMLElement, pointer = false) {
     if (busy) return;
+    viaPointer = pointer;
     shots = JSON.parse(el.dataset.gallery || '[]');
     if (!shots.length) return;
     busy = true;
@@ -417,12 +419,22 @@
    */
   function handoff() {
     dlg.close();
+    releaseFocus();
     document.documentElement.style.overflow = '';
     void card?.offsetHeight; // forza il ricalcolo degli stili con la pila ancora bloccata
     cleanup();
   }
 
+  /**
+   * Il dialog restituisce il focus alla card. Dopo un tocco o un click Safari iOS lo tratta
+   * come :focus-visible e disegna l'anello: lo togliamo. Da tastiera resta, per accessibilità.
+   */
+  function releaseFocus() {
+    if (viaPointer && card && document.activeElement === card) card.blur();
+  }
+
   function cleanup() {
+    releaseFocus();
     dlg.removeAttribute('data-closing');
     document.documentElement.style.overflow = '';
     dlg.getAnimations({ subtree: true }).forEach((a) => a.cancel());
@@ -443,7 +455,7 @@
 
   document.addEventListener('click', (e) => {
     const c = (e.target as HTMLElement).closest<HTMLElement>('[data-gallery]');
-    if (c) open(c);
+    if (c) open(c, e.detail > 0);
   });
 
   document.addEventListener('keydown', (e) => {
