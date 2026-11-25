@@ -7,7 +7,10 @@ import BooksCarousel from '../components/BooksCarousel.astro';
 
 <Layout title="Andrea Rapuzzi — CX Lead @Nestlé Waters">
   <main>
-    <HeroSection topPadding="11.5rem" />
+    <HeroSection
+      topPadding="11.5rem"
+      secondaryCta={{ label: "Side projects", href: "/portfolio" }}
+    />
     <ArticlesGrid />
     <BooksCarousel />
   </main>

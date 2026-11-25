@@ -1,0 +1,307 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { Project } from '../data/portfolio';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const Tag = project.detail ? 'a' : 'article';
+const href = project.detail ? `/portfolio/${project.slug}` : undefined;
+
+// Carica in automatico le immagini di src/assets/portfolio/<slug>/
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/portfolio/**/*.{jpg,jpeg,png,webp,avif}',
+  { eager: true },
+);
+const images = Object.entries(modules)
+  .filter(([path]) => path.includes(`/portfolio/${project.slug}/`))
+  .sort(([a], [b]) => a.localeCompare(b))
+  .slice(0, 3)
+  .map(([, mod]) => mod.default);
+
+// Versioni grandi per la galleria, dalla più in alto della pila in giù
+const gallery = project.detail
+  ? []
+  : await Promise.all(
+      [...images].reverse().map(async (img) => {
+        const big = await getImage({ src: img, width: Math.min(1600, img.width) });
+        return { src: big.src, w: big.attributes.width, h: big.attributes.height };
+      }),
+    );
+const galleryProps = gallery.length
+  ? {
+      'data-gallery': JSON.stringify(gallery),
+      'data-title': project.title,
+      role: 'button',
+      tabindex: 0,
+      'aria-label': `${project.title}: apri la galleria`,
+    }
+  : {};
+
+// Con immagini reali la pila ha tanti fogli quante sono; senza, tre segnaposto
+const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, null];
+---
+
+<Tag href={href} class:list={["card", { "card--featured": project.featured, "card--link": project.detail, "card--gallery": gallery.length > 0 }]} data-card {...galleryProps} style={`--hue: ${project.hue}`}>
+  <div class="card__stack" aria-hidden="true">
+    {layers.map((img, i) => (
+      <div class="card__layer" style={`--i: ${i}; --n: ${layers.length}`}>
+        {img ? (
+          <Image src={img} alt="" width={640} class="card__img" loading="lazy" />
+        ) : (
+          <div class="card__placeholder"></div>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <div class="card__body">
+    <p class="card__category">{project.category}</p>
+    <div class="card__title-row">
+      <h2 class="card__title">{project.title}</h2>
+      {project.detail && <span class="card__arrow" aria-hidden="true">→</span>}
+    </div>
+    <p class="card__desc">{project.summary}</p>
+  </div>
+</Tag>
+
+<style>
+  .card {
+    --spring: linear(
+      0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017 19.4%,
+      1.077 22.4%, 1.121 25.8%, 1.149 29.7%, 1.159 33.4%, 1.153 36.9%, 1.135 40.6%,
+      1.072 49.5%, 1.035 55.6%, 1.012 61.6%, 1.002 68.5%, 0.998 77%, 1
+    );
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    height: 100%;
+    color: inherit;
+  }
+
+  .card--gallery {
+    cursor: zoom-in;
+  }
+
+  /* Mentre la galleria è aperta, i fogli "volano" via dalla pila */
+  .card.is-lifted .card__stack {
+    visibility: hidden;
+  }
+
+  /* Pila ferma mentre la galleria è aperta: alla chiusura riappare esattamente dov'era */
+  .card.is-lifted .card__layer {
+    transition: none;
+  }
+
+  .card:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 6px;
+    border-radius: 4px;
+  }
+
+  /* ── Pila di immagini ── */
+  .card__stack {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    /* spazio per il ventaglio */
+    margin: 0 1.25rem;
+  }
+
+  .card__layer {
+    --mid: calc((var(--n) - 1) / 2);
+    --off: calc(var(--i) - var(--mid));
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--i);
+    /* a riposo: pila quasi allineata, leggermente scalata */
+    --fan: translate(calc(var(--off) * 15%), calc(var(--off) * -4px))
+      rotate(calc(var(--off) * 7deg)) scale(0.9);
+    transform: translate(calc(var(--off) * 4px), calc(var(--off) * -3px))
+      rotate(calc(var(--off) * 2.5deg));
+    transition: transform 450ms var(--spring);
+    will-change: transform;
+  }
+
+  /* Le immagini mantengono il proprio formato e si rimpiccioliscono per stare nel riquadro */
+  .card__img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    box-shadow: 0 6px 18px oklch(0% 0 0 / 0.35);
+  }
+
+  .card__placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 6px 18px oklch(0% 0 0 / 0.35);
+    background:
+      radial-gradient(120% 90% at 20% 10%, oklch(62% 0.12 var(--hue)), transparent 60%),
+      linear-gradient(160deg, oklch(34% 0.06 var(--hue)), oklch(22% 0.03 var(--hue)));
+    filter: hue-rotate(calc(var(--i) * 18deg));
+  }
+
+  /* ── Testi ── */
+  .card__category {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    color: var(--color-ink);
+    line-height: 1.3;
+    margin-bottom: 0.125rem;
+  }
+
+  .card__title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .card__title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.75rem;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+  }
+
+  .card__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+    transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out),
+      background-color 150ms ease, border-color 150ms ease;
+  }
+
+  .card__desc {
+    margin-top: 0.625rem;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-muted);
+    max-width: 52ch;
+  }
+
+  /* ── Hover: la pila si apre a ventaglio con spring ── */
+  @media (hover: hover) {
+    .card__arrow {
+      opacity: 0;
+      transform: translateX(-6px);
+    }
+
+    .card:hover .card__layer,
+    .card:focus-visible .card__layer {
+      transform: var(--fan);
+    }
+
+    .card:hover .card__arrow,
+    .card:focus-visible .card__arrow {
+      opacity: 1;
+      transform: none;
+      background: color-mix(in oklch, var(--color-accent) 12%, transparent);
+      border-color: var(--color-accent);
+    }
+  }
+
+  /* Card in apertura: pila a sinistra, testo a destra */
+  @media (min-width: 769px) {
+    .card--featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: center;
+      gap: 3.5rem;
+    }
+
+    .card--featured .card__stack {
+      flex: 1.2;
+      margin: 0 1.75rem;
+    }
+
+    .card--featured .card__body {
+      flex: 1;
+    }
+
+    .card--featured .card__title {
+      font-size: 2.25rem;
+    }
+  }
+
+  /* Schermi stretti: ventaglio più contenuto per non uscire dal viewport */
+  @media (max-width: 768px) {
+    .card__stack {
+      margin: 0 1.5rem;
+    }
+
+    .card__layer {
+      --fan: translate(calc(var(--off) * 11%), calc(var(--off) * -4px))
+        rotate(calc(var(--off) * 6deg)) scale(0.9);
+    }
+  }
+
+  /* Touch: nessun hover, la pila si apre da sola quando la card è al centro dello schermo */
+  @media (hover: none) {
+    .card.is-open .card__layer {
+      transform: var(--fan);
+    }
+  }
+
+  /* Reveal allo scroll (progressive enhancement) */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .card {
+        animation: card-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+      }
+    }
+  }
+
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card__layer,
+    .card__arrow {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Touch: apre la pila quando la card attraversa la fascia centrale del viewport
+  if (window.matchMedia('(hover: none)').matches) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) e.target.classList.toggle('is-open', e.isIntersecting);
+      },
+      { rootMargin: '-30% 0px -30% 0px' },
+    );
+    document.querySelectorAll('[data-card]').forEach((el) => io.observe(el));
+  }
+</script>

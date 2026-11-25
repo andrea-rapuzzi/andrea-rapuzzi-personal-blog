@@ -4,6 +4,7 @@ interface Props {
   subtitle?: string;
   bio?: string;
   cta?: { label: string; href: string } | null;
+  secondaryCta?: { label: string; href: string } | null;
   topPadding?: string;
 }
 
@@ -15,6 +16,7 @@ const {
     label: "Il mio CV",
     href: "https://www.linkedin.com/in/andrea-rapuzzi/",
   },
+  secondaryCta = null,
   topPadding = "7rem",
 } = Astro.props;
 ---
@@ -23,13 +25,18 @@ const {
   <div class="hero__inner">
     <h1 class="hero__name">{heading}</h1>
     {subtitle && <p class="hero__title">{subtitle}</p>}
-    {bio && <p class="hero__bio">{bio}</p>}
+    {(bio || Astro.slots.has('bio')) && <p class="hero__bio">{bio}<slot name="bio" /></p>}
     {
       cta && (
         <div class="hero__links">
           <a href={cta.href} class="hero__link hero__link--primary">
             {cta.label}
           </a>
+          {secondaryCta && (
+            <a href={secondaryCta.href} class="hero__link hero__link--secondary">
+              {secondaryCta.label}
+            </a>
+          )}
         </div>
       )
     }
@@ -105,9 +112,26 @@ const {
     border-radius: 99px;
   }
 
+  .hero__link--secondary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0 1.25rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-border);
+    color: var(--color-ink);
+    transition: opacity 150ms ease, transform 160ms var(--ease-out),
+      border-color 150ms ease, color 150ms ease;
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .hero__link--primary:hover {
       opacity: 0.8;
+    }
+
+    .hero__link--secondary:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
     }
   }
 

@@ -1,0 +1,131 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Gallery from "../components/Gallery.astro";
+import { projects } from "../data/portfolio";
+---
+
+<Layout title="Portfolio — Andrea Rapuzzi" noindex>
+  <main>
+    <div class="wrap wrap--top">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li class="breadcrumb__item">
+            <a href="/" class="breadcrumb__link">
+              Home
+            </a>
+          </li>
+          <li
+            class="breadcrumb__item breadcrumb__item--current"
+            aria-current="page"
+          >
+            Portfolio
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <HeroSection heading="Portfolio" subtitle="Side project" bio="" cta={null}>
+      <Fragment slot="bio">
+        Quando non mi occupo di Customer Experience in Nestlé, amo
+        lavorare a progetti di web design e visual identity per altre realtà.
+        Altre volte, semplicemente, seguo qualche idea che mi passa per la
+        testa. Qui trovi una selezione di entrambe le cose.
+      </Fragment>
+    </HeroSection>
+
+    <div class="wrap">
+      <div class="grid">
+        {projects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </div>
+    </div>
+  </main>
+  <Gallery />
+</Layout>
+
+<style is:global>
+  /* nessuno scatto orizzontale quando la galleria blocca lo scroll */
+  html {
+    scrollbar-gutter: stable;
+  }
+</style>
+
+<style>
+  .wrap {
+    --rhythm: 4.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem var(--section-gap);
+  }
+
+  .wrap--top {
+    max-width: var(--max-width);
+    padding: 3.5rem 2rem 0;
+  }
+
+  /* ── Breadcrumb ── */
+  .breadcrumb__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb__item {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  .breadcrumb__item + .breadcrumb__item::before {
+    content: "/";
+    color: var(--color-border);
+  }
+
+  .breadcrumb__link {
+    color: var(--color-muted);
+    transition: color 0.2s;
+  }
+
+  .breadcrumb__link:hover {
+    color: var(--color-ink);
+  }
+
+  .breadcrumb__item--current {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  /* ── Intro ── */
+  .intro__link {
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-accent);
+    transition: color 150ms ease;
+  }
+
+  .intro__link:hover {
+    color: var(--color-accent);
+  }
+
+  /* ── Griglia ── */
+  .grid {
+    border-top: 1px solid var(--color-border);
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--rhythm) 2.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+      gap: var(--rhythm);
+    }
+  }
+</style>
