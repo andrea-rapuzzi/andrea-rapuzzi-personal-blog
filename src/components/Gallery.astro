@@ -1,0 +1,479 @@
+---
+---
+
+<dialog class="gallery" id="gallery" aria-label="Galleria immagini">
+  <button class="gallery__btn gallery__close" type="button" aria-label="Chiudi">✕</button>
+  <button class="gallery__btn gallery__nav gallery__prev" type="button" aria-label="Immagine precedente">←</button>
+  <button class="gallery__btn gallery__nav gallery__next" type="button" aria-label="Immagine successiva">→</button>
+  <div class="gallery__stage">
+    <img class="gallery__img" alt="" />
+    <p class="gallery__caption"></p>
+    <div class="gallery__thumbs" role="tablist" aria-label="Immagini del progetto"></div>
+  </div>
+</dialog>
+
+<style>
+  .gallery {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-ink);
+    overflow: hidden;
+  }
+
+  .gallery:not([open]) {
+    display: none;
+  }
+
+  .gallery::backdrop {
+    background: oklch(14% 0.05 270 / 0.97);
+  }
+
+  .gallery[open]::backdrop {
+    animation: gallery-fade 300ms var(--ease-out);
+  }
+
+  .gallery[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  .gallery[data-closing]::backdrop {
+    opacity: 0;
+    transition: opacity 300ms var(--ease-out);
+  }
+
+  .gallery__stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 100%;
+    padding: 4.5rem 1rem 1.5rem;
+  }
+
+  .gallery__img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(92vw, 1100px);
+    max-height: calc(100dvh - 14rem);
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 12px 40px oklch(0% 0 0 / 0.45);
+    background: var(--color-surface);
+  }
+
+  .gallery__caption {
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+  }
+
+  .gallery__thumbs {
+    display: flex;
+    gap: 0.625rem;
+    justify-content: center;
+  }
+
+  .gallery__thumbs :global(.gallery__thumb) {
+    display: block;
+    height: 3.5rem;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: opacity 200ms var(--ease-out), border-color 200ms var(--ease-out);
+  }
+
+  .gallery__thumbs :global(.gallery__thumb img) {
+    display: block;
+    height: 100%;
+    width: auto;
+  }
+
+  .gallery__thumbs :global(.gallery__thumb[aria-selected='true']) {
+    opacity: 1;
+    border-color: var(--color-accent);
+  }
+
+  .gallery__thumbs :global(.gallery__thumb:focus-visible) {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  .gallery__btn {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 99px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease,
+      transform 160ms var(--ease-out);
+  }
+
+  .gallery__btn:active {
+    transform: scale(0.95);
+  }
+
+  .gallery__btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  @media (hover: hover) {
+    .gallery__btn:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+
+  .gallery__close {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .gallery__nav {
+    top: 50%;
+    margin-top: -1.375rem;
+  }
+
+  .gallery__prev {
+    left: 1rem;
+  }
+
+  .gallery__next {
+    right: 1rem;
+  }
+
+  .gallery[data-single] .gallery__nav,
+  .gallery[data-single] .gallery__thumbs {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .gallery__nav {
+      top: auto;
+      bottom: 1rem;
+      margin-top: 0;
+    }
+    .gallery__stage {
+      padding-bottom: 5rem;
+    }
+    .gallery__img {
+      max-height: calc(100dvh - 16rem);
+    }
+    .gallery__caption {
+      position: absolute;
+      bottom: 1.75rem;
+    }
+  }
+
+  .gallery :global(.gallery__ghost) {
+    position: fixed;
+    margin: 0;
+    object-fit: cover;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    box-shadow: 0 6px 18px oklch(0% 0 0 / 0.35);
+    pointer-events: none;
+    transform-origin: center;
+  }
+
+  @keyframes gallery-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  type Shot = { src: string; w: number; h: number };
+
+  const SPRING =
+    'linear(0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 12.9%, 0.938 16.7%, 1.017 19.4%, 1.077 22.4%, 1.121 25.8%, 1.149 29.7%, 1.159 33.4%, 1.153 36.9%, 1.135 40.6%, 1.072 49.5%, 1.035 55.6%, 1.012 61.6%, 1.002 68.5%, 0.998 77%, 1)';
+  const OUT = 'cubic-bezier(0.23, 1, 0.32, 1)';
+
+  const dlg = document.getElementById('gallery') as HTMLDialogElement;
+  const img = dlg.querySelector<HTMLImageElement>('.gallery__img')!;
+  const cap = dlg.querySelector<HTMLElement>('.gallery__caption')!;
+  const strip = dlg.querySelector<HTMLElement>('.gallery__thumbs')!;
+  const chrome = dlg.querySelectorAll<HTMLElement>('.gallery__btn, .gallery__caption');
+  const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let shots: Shot[] = [];
+  let title = '';
+  let i = 0;
+  let card: HTMLElement | null = null;
+  let busy = false;
+
+  /** Posizione di un foglio della pila: centro, dimensione e rotazione a schermo */
+  function sheetPose(el: HTMLElement) {
+    const layer = el.closest<HTMLElement>('.card__layer')!;
+    const m = new DOMMatrixReadOnly(getComputedStyle(layer).transform);
+    const scale = Math.hypot(m.a, m.b);
+    const r = el.getBoundingClientRect();
+    return {
+      cx: r.left + r.width / 2,
+      cy: r.top + r.height / 2,
+      w: el.offsetWidth * scale,
+      angle: Math.atan2(m.b, m.a),
+    };
+  }
+
+  /**
+   * I fogli che volano sono cloni a grandezza "foglio": così bordo e angoli arrotondati
+   * restano sottili anche quando l'immagine si rimpicciolisce in una miniatura.
+   */
+  function ghostFlight(
+    k: number,
+    pose: ReturnType<typeof sheetPose>,
+    sheet: HTMLElement,
+    target: HTMLElement,
+    dir: 'in' | 'out',
+    delay: number,
+    duration: number,
+    easing: string,
+  ) {
+    const w = pose.w;
+    const h = sheet.offsetHeight * (pose.w / sheet.offsetWidth);
+    const g = document.createElement('img');
+    g.src = shots[k].src;
+    g.alt = '';
+    g.className = 'gallery__ghost';
+    Object.assign(g.style, {
+      left: `${pose.cx - w / 2}px`,
+      top: `${pose.cy - h / 2}px`,
+      width: `${w}px`,
+      height: `${h}px`,
+      // stesso ordine della pila: il foglio 0 sta sopra gli altri
+      zIndex: String(10 - k),
+    });
+    dlg.append(g);
+
+    const r = target.getBoundingClientRect();
+    const s = r.width / w;
+    const rad = parseFloat(getComputedStyle(target).borderTopLeftRadius) || 6;
+    const at = {
+      transform: `translate(0px, 0px) rotate(${pose.angle}rad) scale(1)`,
+      borderWidth: '1px',
+      borderRadius: '6px',
+    };
+    const to = {
+      transform: `translate(${r.left + r.width / 2 - pose.cx}px, ${r.top + r.height / 2 - pose.cy}px) rotate(0rad) scale(${s}, ${r.height / h})`,
+      borderWidth: `${1 / s}px`,
+      borderRadius: `${rad / s}px`,
+    };
+    target.style.visibility = 'hidden';
+    const anim = g.animate(dir === 'in' ? [at, to] : [to, at], {
+      duration,
+      delay,
+      easing,
+      fill: 'both',
+    });
+    return anim.finished.catch(() => {}).then(() => {
+      if (dir === 'in') {
+        target.style.visibility = '';
+        g.remove();
+      }
+      // in chiusura il clone resta fermo sulla pila finché non avviene il passaggio di consegne
+    });
+  }
+
+  function show(n: number, fade = true) {
+    i = (n + shots.length) % shots.length;
+    const s = shots[i];
+    img.src = s.src;
+    img.width = s.w;
+    img.height = s.h;
+    img.alt = `${title}, immagine ${i + 1} di ${shots.length}`;
+    cap.textContent = `${title} · ${i + 1}/${shots.length}`;
+    [...strip.children].forEach((t, k) => t.setAttribute('aria-selected', String(k === i)));
+    if (fade && !reduced()) img.animate([{ opacity: 0.2 }, { opacity: 1 }], { duration: 220, easing: OUT });
+  }
+
+  function buildThumbs() {
+    strip.replaceChildren();
+    shots.forEach((s, k) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'gallery__thumb';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', `Immagine ${k + 1}`);
+      const t = document.createElement('img');
+      t.src = s.src;
+      t.alt = '';
+      t.width = s.w;
+      t.height = s.h;
+      b.append(t);
+      b.addEventListener('click', () => show(k));
+      strip.append(b);
+    });
+  }
+
+  const decoded = (src: string) => {
+    const im = new Image();
+    im.src = src;
+    return im.decode().catch(() => {});
+  };
+
+  async function open(el: HTMLElement) {
+    if (busy) return;
+    shots = JSON.parse(el.dataset.gallery || '[]');
+    if (!shots.length) return;
+    busy = true;
+    card = el;
+    title = el.dataset.title || '';
+
+    // le immagini grandi devono essere pronte per misurare le posizioni finali
+    await Promise.race([
+      Promise.all(shots.map((s) => decoded(s.src))),
+      new Promise((r) => setTimeout(r, 600)),
+    ]);
+
+    dlg.toggleAttribute('data-single', shots.length < 2);
+    buildThumbs();
+    show(0, false);
+    dlg.showModal();
+    document.documentElement.style.overflow = 'hidden';
+
+    if (!reduced()) {
+      const sheets = ([...card.querySelectorAll('.card__img')] as HTMLElement[]).reverse();
+      const thumbs = [...strip.children] as HTMLElement[];
+      // foglio 0 → immagine principale, foglio k → miniatura k
+      const dest = [img, ...thumbs.slice(1)];
+      dest.forEach((t, k) => {
+        if (!sheets[k]) return;
+        ghostFlight(k, sheetPose(sheets[k]), sheets[k], t, 'in', k * 45, 620, SPRING);
+      });
+      card.classList.add('is-lifted');
+      // la miniatura del foglio principale e i comandi compaiono a composizione quasi finita
+      const late = [...chrome, ...(thumbs[0] ? [thumbs[0]] : [])];
+      late.forEach((c) =>
+        c.animate([{ opacity: 0 }, { opacity: 1 }], {
+          duration: 300,
+          delay: 260,
+          easing: OUT,
+          fill: 'backwards',
+        }),
+      );
+    } else {
+      card.classList.add('is-lifted');
+    }
+    busy = false;
+  }
+
+  async function close() {
+    if (busy || !dlg.open) return;
+    busy = true;
+    if (!reduced() && card) {
+      dlg.setAttribute('data-closing', '');
+      const sheets = ([...card.querySelectorAll('.card__img')] as HTMLElement[]).reverse();
+      const thumbs = [...strip.children] as HTMLElement[];
+      const flights: Promise<unknown>[] = [];
+      // l'immagine mostrata e le miniature tornano al proprio posto nella pila
+      const src = [img, ...thumbs];
+      src.forEach((t, n) => {
+        const k = n === 0 ? i : n - 1;
+        if (n > 0 && k === i) return; // la miniatura attiva è già rappresentata dall'immagine grande
+        if (!sheets[k]) return;
+        flights.push(
+          ghostFlight(k, sheetPose(sheets[k]), sheets[k], t, 'out', n * 30, 460, OUT),
+        );
+      });
+      chrome.forEach((c) =>
+        c.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, fill: 'forwards' }),
+      );
+      if (thumbs[i]) thumbs[i].style.visibility = 'hidden';
+      await Promise.all(flights);
+    }
+    handoff();
+  }
+
+  /**
+   * Passaggio di consegne, tutto nello stesso frame: chiudo il dialog, lascio che stato di
+   * focus/hover si assesti mentre la pila è ancora nascosta e priva di transizioni,
+   * poi scopro la pila e tolgo i cloni. Nessun frame vuoto, nessun riassestamento visibile.
+   */
+  function handoff() {
+    dlg.close();
+    document.documentElement.style.overflow = '';
+    void card?.offsetHeight; // forza il ricalcolo degli stili con la pila ancora bloccata
+    cleanup();
+  }
+
+  function cleanup() {
+    dlg.removeAttribute('data-closing');
+    document.documentElement.style.overflow = '';
+    dlg.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+    dlg.querySelectorAll('.gallery__ghost').forEach((g) => g.remove());
+    img.style.visibility = '';
+    card?.classList.remove('is-lifted');
+    busy = false;
+  }
+
+  // chiusure non passate da handoff() (es. reduced motion)
+  dlg.addEventListener('close', cleanup);
+
+  // Esc: usa la nostra animazione di chiusura
+  dlg.addEventListener('cancel', (e) => {
+    e.preventDefault();
+    close();
+  });
+
+  document.addEventListener('click', (e) => {
+    const c = (e.target as HTMLElement).closest<HTMLElement>('[data-gallery]');
+    if (c) open(c);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const c = (e.target as HTMLElement).closest?.('[data-gallery]') as HTMLElement | null;
+    if (c && !dlg.open && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      open(c);
+    }
+    if (!dlg.open) return;
+    if (e.key === 'ArrowRight') show(i + 1);
+    if (e.key === 'ArrowLeft') show(i - 1);
+  });
+
+  dlg.querySelector('.gallery__close')!.addEventListener('click', close);
+  dlg.querySelector('.gallery__prev')!.addEventListener('click', () => show(i - 1));
+  dlg.querySelector('.gallery__next')!.addEventListener('click', () => show(i + 1));
+
+  // Click sullo sfondo chiude
+  dlg.addEventListener('click', (e) => {
+    const t = e.target as HTMLElement;
+    if (t === dlg || t.classList.contains('gallery__stage')) close();
+  });
+
+  // Swipe orizzontale su touch
+  let x0: number | null = null;
+  dlg.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
+  dlg.addEventListener('touchend', (e) => {
+    if (x0 === null || shots.length < 2) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    x0 = null;
+    if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+  });
+</script>
