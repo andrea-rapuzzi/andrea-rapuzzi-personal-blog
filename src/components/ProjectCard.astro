@@ -31,23 +31,25 @@ const gallery = project.detail
       }),
     );
 const galleryProps = gallery.length
+  ? { 'data-gallery': JSON.stringify(gallery), 'data-title': project.title }
+  : {};
+// Controllo da tastiera sulla pila, così la CTA resta fuori dal "pulsante"
+const stackProps = gallery.length
   ? {
-      'data-gallery': JSON.stringify(gallery),
-      'data-title': project.title,
       role: 'button',
       tabindex: 0,
       'aria-label': `${project.title}: apri la galleria`,
     }
-  : {};
+  : { 'aria-hidden': 'true' as const };
 
 // Con immagini reali la pila ha tanti fogli quante sono; senza, tre segnaposto
 const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, null];
 ---
 
 <Tag href={href} class:list={["card", { "card--featured": project.featured, "card--link": project.detail, "card--gallery": gallery.length > 0 }]} data-card {...galleryProps} style={`--hue: ${project.hue}`}>
-  <div class="card__stack" aria-hidden="true">
+  <div class="card__stack" {...stackProps}>
     {layers.map((img, i) => (
-      <div class="card__layer" style={`--i: ${i}; --n: ${layers.length}`}>
+      <div class="card__layer" aria-hidden="true" style={`--i: ${i}; --n: ${layers.length}`}>
         {img ? (
           <Image src={img} alt="" width={640} class="card__img" loading="lazy" />
         ) : (
@@ -64,6 +66,11 @@ const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, n
       {project.detail && <span class="card__arrow" aria-hidden="true">→</span>}
     </div>
     <p class="card__desc">{project.summary}</p>
+    {project.cta && !project.detail && (
+      <a href={project.cta.href} class="card__cta" aria-label={`${project.cta.label}: ${project.title}`}>
+        {project.cta.label}
+      </a>
+    )}
   </div>
 </Tag>
 
@@ -95,7 +102,8 @@ const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, n
     transition: none;
   }
 
-  .card:focus-visible {
+  .card:focus-visible,
+  .card__stack:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 6px;
     border-radius: 4px;
@@ -200,6 +208,37 @@ const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, n
     max-width: 52ch;
   }
 
+  /* ── CTA ── */
+  .card__cta {
+    display: inline-flex;
+    align-items: center;
+    height: 2.5rem;
+    margin-top: 1.25rem;
+    padding: 0 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-ink);
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+    cursor: pointer;
+    transition: border-color 150ms ease, transform 150ms var(--ease-out);
+  }
+
+  .card__cta:active {
+    transform: scale(0.97);
+  }
+
+  .card__cta:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  @media (hover: hover) {
+    .card__cta:hover {
+      border-color: var(--color-accent);
+    }
+  }
+
   /* ── Hover: la pila si apre a ventaglio con spring ── */
   @media (hover: hover) {
     .card__arrow {
@@ -208,7 +247,8 @@ const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, n
     }
 
     .card:hover .card__layer,
-    .card:focus-visible .card__layer {
+    .card:focus-visible .card__layer,
+    .card__stack:focus-visible .card__layer {
       transform: var(--fan);
     }
 

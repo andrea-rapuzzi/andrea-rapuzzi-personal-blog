@@ -430,7 +430,8 @@
    * come :focus-visible e disegna l'anello: lo togliamo. Da tastiera resta, per accessibilità.
    */
   function releaseFocus() {
-    if (viaPointer && card && document.activeElement === card) card.blur();
+    const active = document.activeElement as HTMLElement | null;
+    if (viaPointer && active && card?.contains(active)) active.blur();
   }
 
   function cleanup() {
@@ -454,13 +455,15 @@
   });
 
   document.addEventListener('click', (e) => {
-    const c = (e.target as HTMLElement).closest<HTMLElement>('[data-gallery]');
+    const t = e.target as HTMLElement;
+    if (t.closest('a')) return; // la CTA della card non apre la galleria
+    const c = t.closest<HTMLElement>('[data-gallery]');
     if (c) open(c, e.detail > 0);
   });
 
   document.addEventListener('keydown', (e) => {
     const c = (e.target as HTMLElement).closest?.('[data-gallery]') as HTMLElement | null;
-    if (c && !dlg.open && (e.key === 'Enter' || e.key === ' ')) {
+    if (c && !(e.target as HTMLElement).closest('a') && !dlg.open && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
       open(c);
     }
