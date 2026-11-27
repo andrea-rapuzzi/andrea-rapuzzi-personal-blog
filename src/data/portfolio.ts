@@ -8,6 +8,8 @@ export interface Project {
   summary: string;
   /** Card larga in apertura */
   featured?: boolean;
+  /** Link esterno: se presente, la card mostra la CTA */
+  cta?: { label: string; href: string };
   /** true quando esiste /portfolio/<slug>: rende la card cliccabile */
   detail?: boolean;
   /** Colore (hue OKLCH) usato per il placeholder finché mancano le immagini */
@@ -24,9 +26,10 @@ export const projects: Project[] = [
     category: "App Development",
     title: "Handle with Care",
     description:
-      "Un piccolo progetto nato da un'esigenza molto concreta: tenere traccia dell'alimentazione e della crescita nei primi giorni di vita di un neonato. Con l'ambizione di diventare open source e magari tornare utile anche ad altri genitori.",
+      "Progetto open source per aiutare i neo-genitori a risolvere un'esigenza molto concreta: tenere traccia dell'alimentazione e della crescita nei primi giorni di vita di un neonato.",
     summary:
-      "Un piccolo progetto nato da un'esigenza molto concreta: tenere traccia dell'alimentazione e della crescita nei primi giorni di vita di un neonato. Con l'ambizione di diventare open source e magari tornare utile anche ad altri genitori.",
+      "Progetto open source per aiutare i neo-genitori a risolvere un'esigenza molto concreta: tenere traccia dell'alimentazione e della crescita nei primi giorni di vita di un neonato.",
+    cta: { label: "Link", href: "https://github.com/andrea-rapuzzi/handle-with-care" },
     hue: 300,
   },
   {
@@ -37,6 +40,7 @@ export const projects: Project[] = [
       "Architettura visiva, layout e typesetting per una ricerca sulle gang giovanili nei media. Dare una forma leggibile a contenuti che leggeri non sono.",
     summary:
       "Architettura visiva, layout e typesetting per una ricerca sulle gang giovanili nei media. Dare una forma leggibile a contenuti che leggeri non sono.",
+    cta: { label: "Leggi il report", href: "https://minotauro.it/wp-content/uploads/2025/05/Gang-giovanili-report.pdf" },
     hue: 25,
   },
   {
@@ -47,6 +51,7 @@ export const projects: Project[] = [
       "Un'identità visiva rinnovata dopo l'acquisizione da parte di Merottofiori. Logo, declinazioni e tipografia, sviluppati e rifiniti insieme al cliente.",
     summary:
       "Un'identità visiva rinnovata dopo l'acquisizione da parte di Merottofiori. Logo, declinazioni e tipografia, sviluppati e rifiniti insieme al cliente.",
+    cta: { label: "Scopri di più", href: "https://www.anfossi1941.it/" },
     hue: 85,
   },
   {
@@ -54,9 +59,9 @@ export const projects: Project[] = [
     category: "Digital Advertising",
     title: "Amazon",
     description:
-      "Una serie di banner per le campagne promozionali Amazon, dagli Anime Day in poi. Progetti realizzati in collaborazione con il team interno.",
+      'Una serie di banner sviluppata in collaborazione con il team interno di category-specialist di Amazon, a supporto di campagne promozionali tematiche come gli "Anime Day".',
     summary:
-      "Una serie di banner per le campagne promozionali Amazon, dagli Anime Day in poi. Progetti realizzati in collaborazione con il team interno.",
+      'Una serie di banner sviluppata in collaborazione con il team interno di category-specialist di Amazon, a supporto di campagne promozionali tematiche come gli "Anime Day".',
     hue: 60,
   },
   {
@@ -67,6 +72,7 @@ export const projects: Project[] = [
       "Fotografie viste oltre 6 milioni di volte e scaricate più di 41.000 volte. Un risultato che mi ha portato nella top 10% della community.",
     summary:
       "Fotografie viste oltre 6 milioni di volte e scaricate più di 41.000 volte. Un risultato che mi ha portato nella top 10% della community.",
+    cta: { label: "Guarda gli scatti", href: "https://unsplash.com/@andrea_rapuzzi" },
     hue: 200,
   },
   {
@@ -77,6 +83,7 @@ export const projects: Project[] = [
       "Disegni digitali realizzati in Procreate, che ricalcano lo stile inchiostro e campiture piatte. Architetture, natura e piccoli dettagli quotidiani: cose che valeva la pena fermare su carta, anche se digitale.",
     summary:
       "Disegni digitali realizzati in Procreate, che ricalcano lo stile inchiostro e campiture piatte. Architetture, natura e piccoli dettagli quotidiani: cose che valeva la pena fermare su carta, anche se digitale.",
+    cta: { label: "Instagram", href: "https://www.instagram.com/the.rapencil/" },
     hue: 160,
   },
 ];
