@@ -160,6 +160,13 @@ const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, n
   }
 
   /* ── Testi ── */
+  /* Il testo riempie l'altezza della card, così le CTA di una riga si allineano in basso */
+  .card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
   .card__category {
     font-size: 0.8125rem;
     font-weight: 500;
@@ -208,12 +215,18 @@ const layers: (ImageMetadata | null)[] = images.length ? images : [null, null, n
     max-width: 52ch;
   }
 
+  /* distanza minima tra testo e CTA */
+  .card__desc:has(+ .card__cta) {
+    margin-bottom: 1.25rem;
+  }
+
   /* ── CTA ── */
   .card__cta {
     display: inline-flex;
     align-items: center;
+    align-self: flex-start;
     height: 2.5rem;
-    margin-top: 1.25rem;
+    margin-top: auto;
     padding: 0 1.25rem;
     font-size: 0.9375rem;
     font-weight: 500;

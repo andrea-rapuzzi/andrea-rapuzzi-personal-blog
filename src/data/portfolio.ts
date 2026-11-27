@@ -80,9 +80,9 @@ export const projects: Project[] = [
     category: "Illustration",
     title: "Illustrazioni",
     description:
-      "Disegni digitali realizzati in Procreate, che ricalcano lo stile inchiostro e campiture piatte. Architetture, natura e piccoli dettagli quotidiani: cose che valeva la pena fermare su carta, anche se digitale.",
+      "Disegni digitali realizzati in Procreate, che ricalcano lo stile inchiostro e campiture piatte. Architetture, natura e piccoli dettagli quotidiani.",
     summary:
-      "Disegni digitali realizzati in Procreate, che ricalcano lo stile inchiostro e campiture piatte. Architetture, natura e piccoli dettagli quotidiani: cose che valeva la pena fermare su carta, anche se digitale.",
+      "Disegni digitali realizzati in Procreate, che ricalcano lo stile inchiostro e campiture piatte. Architetture, natura e piccoli dettagli quotidiani.",
     cta: { label: "Instagram", href: "https://www.instagram.com/the.rapencil/" },
     hue: 160,
   },
