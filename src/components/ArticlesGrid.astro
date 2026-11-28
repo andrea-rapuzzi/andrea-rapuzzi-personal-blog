@@ -43,6 +43,11 @@ const articles = allPosts
     padding-top: 3rem;
   }
 
+  /* In home chiude già il separatore della sezione Letture */
+  .articles :global(.post-row:last-child) {
+    border-bottom: 0;
+  }
+
   .articles__header {
     display: flex;
     align-items: center;
