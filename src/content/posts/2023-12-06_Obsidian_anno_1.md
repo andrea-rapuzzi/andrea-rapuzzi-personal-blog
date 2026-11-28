@@ -4,6 +4,7 @@ author: "Andrea Rapuzzi"
 description: "e qualche considerazione sulla ricerca dell'app note perfetta"
 image: 
     url: "/images/blogpost/obsidian-interfaccia.png"
+    ogUrl: "/images/og/obsidian-interfaccia.jpg"
     alt: "Schermata di Obsidian sul mio PC"
 pubDate: 2023-12-06
 tags: ["productivity", "apps"]

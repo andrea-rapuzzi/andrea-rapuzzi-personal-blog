@@ -23,7 +23,10 @@ const posts = allPosts
 const allTags = [...new Set(posts.flatMap((p) => p.tags))].sort();
 ---
 
-<Layout title="Blog — Andrea Rapuzzi">
+<Layout
+  title="Blog — Andrea Rapuzzi"
+  description="Appunti e riflessioni di Andrea Rapuzzi su lavoro, tecnologia, AI e progetti personali."
+>
   <main>
     <div class="blog-hero-wrap">
       <nav class="breadcrumb" aria-label="Breadcrumb">

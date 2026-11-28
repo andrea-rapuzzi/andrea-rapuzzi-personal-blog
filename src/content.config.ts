@@ -11,6 +11,7 @@ const posts = defineCollection({
     tags: z.array(z.string()).optional().default([]),
     image: z.object({
       url: z.string().optional().default(''),
+      ogUrl: z.string().optional().default(''), // ritaglio 1200×630 per le anteprime social
       alt: z.string().optional().default(''),
     }).optional(),
   }),
