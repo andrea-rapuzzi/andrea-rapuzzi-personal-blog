@@ -26,23 +26,25 @@ const {
     <h1 class="hero__name">{heading}</h1>
     {subtitle && <p class="hero__title">{subtitle}</p>}
     {(bio || Astro.slots.has('bio')) && <p class="hero__bio">{bio}<slot name="bio" /></p>}
-    {
-      cta && (
-        <div class="hero__links">
-          <a href={cta.href} class="hero__link hero__link--primary">
-            {cta.label}
-          </a>
-          {secondaryCta && (
-            <a href={secondaryCta.href} class="hero__link hero__link--secondary">
-              {secondaryCta.label}
+    <div class="hero__footer">
+      {
+        cta && (
+          <div class="hero__links">
+            <a href={cta.href} class="hero__link hero__link--primary">
+              {cta.label}
             </a>
-          )}
-        </div>
-      )
-    }
-  </div>
-  <div class="hero__deco" aria-hidden="true">
-    <span class="hero__deco-year">2026</span>
+            {secondaryCta && (
+              <a href={secondaryCta.href} class="hero__link hero__link--secondary">
+                {secondaryCta.label}
+              </a>
+            )}
+          </div>
+        )
+      }
+      <div class="hero__deco" aria-hidden="true">
+        <time class="hero__deco-time" data-clock></time>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -51,10 +53,6 @@ const {
     padding: 7rem 2rem 5rem;
     max-width: var(--max-width);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 2rem;
   }
 
   .hero__name {
@@ -85,11 +83,19 @@ const {
     margin-top: 1.75rem;
   }
 
+  /* Riga delle CTA: l'orario è ancorato in basso a destra e non ne cambia l'altezza */
+  .hero__footer {
+    position: relative;
+  }
+
+  .hero__footer:has(.hero__links) {
+    margin-top: 2.5rem;
+  }
+
   .hero__links {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
+    gap: 0.75rem;
   }
 
   .hero__link {
@@ -142,22 +148,23 @@ const {
 
   .hero__deco {
     display: flex;
-    align-items: end;
-    padding-bottom: 0.5rem;
+    position: absolute;
+    right: 0;
+    bottom: 0.5rem;
   }
 
-  .hero__deco-year {
+  .hero__deco-time {
     writing-mode: vertical-rl;
     font-size: 0.6875rem;
     font-weight: 300;
     letter-spacing: 0.2em;
+    font-variant-numeric: tabular-nums;
     color: var(--color-teal);
     user-select: none;
   }
 
   @media (max-width: 640px) {
     .hero {
-      grid-template-columns: 1fr;
       padding-top: 5rem;
     }
 
@@ -166,3 +173,23 @@ const {
     }
   }
 </style>
+
+<script>
+  // Ora italiana, indipendente dal fuso di chi visita; si aggiorna ogni secondo
+  const clock = document.querySelector<HTMLTimeElement>('[data-clock]');
+  if (clock) {
+    const format = new Intl.DateTimeFormat('it-IT', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZone: 'Europe/Rome',
+    });
+    const tick = () => {
+      const now = new Date();
+      clock.textContent = format.format(now);
+      clock.dateTime = now.toISOString();
+      setTimeout(tick, 1000 - (now.getTime() % 1000));
+    };
+    tick();
+  }
+</script>
