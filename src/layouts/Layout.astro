@@ -1,12 +1,17 @@
 ---
 import '../styles/tokens.css';
 import SiteFooter from '../components/SiteFooter.astro';
+import SocialMeta from '../components/SocialMeta.astro';
 
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
   noindex?: boolean;
 }
-const { title = "Andrea Rapuzzi — CX Lead", noindex = false } = Astro.props;
+const { title = "Andrea Rapuzzi — CX Lead", description, image, imageAlt, imageWidth, noindex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,6 +23,13 @@ const { title = "Andrea Rapuzzi — CX Lead", noindex = false } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex" />}
     <title>{title}</title>
+    <SocialMeta
+      title={title}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      imageWidth={imageWidth}
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
